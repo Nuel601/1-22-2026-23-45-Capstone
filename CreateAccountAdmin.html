@@ -1,0 +1,2571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control - Barangay 118 Online System</title>
+    <link rel="shortcut icon" type="image/png" href="Logo-Favicon-removebg-preview.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* All CSS styles from the previous CreateAccountAdmin.html remain the same */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --light: #ffffff;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --gray-light: #f1f5f9;
+            --border: #cbd5e1;
+            --error: #dc2626;
+            --error-light: #fef2f2;
+            --success: #16a34a;
+            --success-light: #f0fdf4;
+            --warning: #d97706;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 8px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            box-shadow: var(--shadow-lg);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: var(--gray-light);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
+            border-color: var(--primary-light);
+            font-weight: 700;
+        }
+
+        .admin-panel {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 0;
+            min-height: calc(100vh - 120px);
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, var(--light) 0%, #f8fafc 100%);
+            box-shadow: var(--shadow-lg);
+            padding: 25px 0;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 120px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 0 25px 20px;
+            border-bottom: 2px solid var(--gray-light);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--gray);
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .sidebar-menu a:hover::before {
+            left: 100%;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: var(--gray-light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .sidebar-menu a.active {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(59, 130, 246, 0.1));
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .sidebar-icon {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-menu a:hover .sidebar-icon {
+            transform: scale(1.2);
+        }
+
+        .admin-content {
+            padding: 30px;
+            overflow-y: auto;
+            background: transparent;
+        }
+
+        /* Section Styles */
+        .admin-section {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admin-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+        }
+
+        .admin-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gray-light);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 15px;
+            transition: var(--transition);
+            background: var(--light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #15803d);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning), #b45309);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--error), #b91c1c);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Enhanced Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: nowrap;
+        }
+
+        .btn-sm {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* Table Styles - COMMON FOR ALL TABLES */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--gray-light);
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--light), #f8fafc);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--gray-light);
+            margin-bottom: 25px;
+            background: var(--light);
+            border-radius: var(--radius) var(--radius) 0 0;
+            padding: 0 20px;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--gray);
+            position: relative;
+        }
+
+        .tab:hover {
+            color: var(--primary);
+        }
+
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), transparent);
+        }
+
+        .tab .icon {
+            color: var(--gray) !important;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Alert Styles */
+        .alert {
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            border-left: 4px solid;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .alert-success {
+            background-color: var(--success-light);
+            color: var(--success);
+            border-left-color: var(--success);
+        }
+
+        .alert-error {
+            background-color: var(--error-light);
+            color: var(--error);
+            border-left-color: var(--error);
+        }
+
+        /* Image Preview */
+        .image-preview-container {
+            margin-top: 15px;
+        }
+
+        .image-preview {
+            max-width: 300px;
+            max-height: 200px;
+            border-radius: var(--radius);
+            border: 2px solid var(--border);
+            display: none;
+            margin-top: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .image-preview.visible {
+            display: block;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Feature Badge */
+        .feature-badge {
+            background: linear-gradient(135deg, var(--accent), var(--warning));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .feature-badge i {
+            font-size: 0.6rem;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        /* Save Status */
+        .save-status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Edit Modal Styles */
+        .edit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .edit-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        /* Top Actions inside tab-content */
+        .tab-top-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+            margin-bottom: 25px;
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .tab-top-actions a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gray-light);
+        }
+
+        .tab-top-actions a:hover {
+            color: var(--primary);
+            background-color: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Quick Guide at bottom center */
+        .quick-guide-center {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .quick-guide-header {
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gray-light);
+            margin-bottom: 20px;
+        }
+
+        .quick-guide-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .guide-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--gray-light);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        .guide-section h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .guide-section p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .guide-section ul {
+            padding-left: 20px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        /* Status Indicators */
+        .status-online {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .status-offline {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .status-dot.online {
+            background-color: #27ae60;
+        }
+        
+        .status-dot.offline {
+            background-color: #e74c3c;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .status-pending {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-approved {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .status-rejected {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .status-manual {
+            background-color: #e0e7ff;
+            color: #4f46e5;
+        }
+        
+        /* Role badges */
+        .role-badge {
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .role-super_admin {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .role-admin {
+            background: #3498db;
+            color: white;
+        }
+
+        .role-user {
+            background: #27ae60;
+            color: white;
+        }
+
+        /* Document Status */
+        .doc-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .doc-verified {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .doc-pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .doc-missing {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* Image Gallery for Documents */
+        .doc-gallery {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .doc-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .doc-thumbnail:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Face Capture Preview */
+        .face-captures {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .face-capture {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .admin-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 15px 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 15px;
+            }
+            
+            .sidebar-menu li {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+            
+            .sidebar-menu a {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                padding: 12px 20px;
+            }
+            
+            .sidebar-menu a.active {
+                border-left-color: transparent;
+                border-bottom-color: var(--primary);
+            }
+            
+            .admin-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links {
+                gap: 5px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                padding: 12px 20px;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+            
+            .tab.active {
+                border-bottom-color: transparent;
+                border-left-color: var(--primary);
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-sm {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+
+            .tab-top-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .admin-content {
+                padding: 15px;
+            }
+            
+            .admin-section {
+                padding: 20px;
+            }
+            
+            .logo h1 {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .quick-guide-center {
+                padding: 20px;
+            }
+        }
+
+        /* Save status colors */
+        .save-status.success {
+            background: var(--success);
+        }
+        
+        .save-status.warning {
+            background: var(--warning);
+        }
+        
+        .save-status.error {
+            background: var(--error);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo" onclick="window.open('PanelUserView.html', '_blank')">
+                    <div class="logo-icon"><i class="fas fa-cog"></i></div>
+                    <h1>BARANGAY 118 ONLINE SYSTEM - CREATE ACCOUNT ADMIN</h1>
+                </div>
+
+                <div class="nav-links">
+                    <a href="PanelAdminView.html">Panel-Page</a>
+                    <a href="CreateAccountAdmin.html" class="active">Create-Page</a>
+                    <a href="AboutUsAdmin.html">AboutUs-Page</a>
+                    <a href="LogAdminControl.html">Log-Page</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel">
+        <!-- Left Sidebar - Control Center -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title"><i class="fas fa-cogs"></i> Control Center</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-tab="dashboard">
+                    <span class="sidebar-icon"><i class="fas fa-tachometer-alt"></i></span> Dashboard
+                </a></li>
+
+                <li><a href="#" data-tab="pending-registrations">
+                    <span class="sidebar-icon"><i class="fas fa-hourglass-half"></i></span> Pending Registrations
+                    <span class="feature-badge" id="pending-count">0</span>
+                </a></li>
+
+                <li><a href="#" data-tab="approved-accounts">
+                    <span class="sidebar-icon"><i class="fas fa-check-circle"></i></span> Approved Accounts
+                    <span class="feature-badge" id="approved-count">0</span>
+                </a></li>
+
+                <li><a href="#" data-tab="rejected-applications">
+                    <span class="sidebar-icon"><i class="fas fa-times-circle"></i></span> Rejected Applications
+                    <span class="feature-badge" id="rejected-count">0</span>
+                </a></li>
+
+                <li><a href="#" data-tab="create-manual">
+                    <span class="sidebar-icon"><i class="fas fa-user-plus"></i></span> Create Account Manually
+                </a></li>
+
+                <li><a href="#" data-tab="all-registrations">
+                    <span class="sidebar-icon"><i class="fas fa-list-alt"></i></span> All Registrations
+                </a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="admin-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-pending">0</div>
+                            <div class="stat-label">Pending Registrations</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-approved">0</div>
+                            <div class="stat-label">Approved Accounts</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-rejected">0</div>
+                            <div class="stat-label">Rejected Applications</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-manual">0</div>
+                            <div class="stat-label">Manual Accounts</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong><i class="fas fa-check-circle"></i> System Ready!</strong> Welcome to the Registration Management Panel.
+                    </div>
+                    
+                    <h3 style="margin-bottom: 15px; color: var(--dark);">Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-primary" id="view-pending-btn">
+                            <i class="fas fa-hourglass-half"></i> View Pending
+                        </button>
+                        <button class="btn btn-success" id="view-approved-btn">
+                            <i class="fas fa-check-circle"></i> View Approved
+                        </button>
+                        <button class="btn btn-warning" id="create-manual-btn">
+                            <i class="fas fa-user-plus"></i> Create Manual
+                        </button>
+                        <button class="btn btn-secondary" id="export-data-btn">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-history"></i> Recent Registration Activity</h2>
+                    <div id="recent-activity">
+                        <p style="color: var(--gray); text-align: center; padding: 20px;">
+                            <i class="fas fa-clock"></i> No recent activity...
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Quick Guide -->
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="dashboard-guide" class="guide-section">
+                        <h4>Registration Management Guide</h4>
+                        <p>This panel allows you to manage user registration applications from the Create Account page.</p>
+                        <ul>
+                            <li><strong>Pending Registrations:</strong> Review and process new applications</li>
+                            <li><strong>Approved Accounts:</strong> View successfully created user accounts</li>
+                            <li><strong>Rejected Applications:</strong> Review declined registrations</li>
+                            <li><strong>Create Manual:</strong> Manually create user accounts for special cases</li>
+                            <li><strong>All Registrations:</strong> View complete registration history</li>
+                        </ul>
+                        <p><strong>Note:</strong> All changes require manual save. Remember to click "Save All" after making changes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Registrations Tab -->
+            <div id="pending-registrations" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 class="section-title"><i class="fas fa-hourglass-half"></i> Pending Registrations</h2>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="refresh-pending">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong><i class="fas fa-info-circle"></i> Instructions:</strong> Click on any registration to review details and approve/reject.
+                    </div>
+                    
+                    <div class="search-container" style="margin-bottom: 20px;">
+                        <input type="text" id="pending-search" class="form-control" placeholder="Search pending registrations...">
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Control No.</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Date Submitted</th>
+                                <th>Documents</th>
+                                <th>Face Scan</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pending-table-body">
+                            <!-- Pending registrations will be loaded here -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="no-data" id="no-pending-data" style="display: none; text-align: center; padding: 40px; color: var(--gray);">
+                        <i class="fas fa-inbox" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p>No pending registrations found.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Approved Accounts Tab -->
+            <div id="approved-accounts" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 class="section-title"><i class="fas fa-check-circle"></i> Approved Accounts</h2>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="refresh-approved">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-container" style="margin-bottom: 20px;">
+                        <input type="text" id="approved-search" class="form-control" placeholder="Search approved accounts...">
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Control No.</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Date Approved</th>
+                                <th>Approved By</th>
+                                <th>Account Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="approved-table-body">
+                            <!-- Approved accounts will be loaded here -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="no-data" id="no-approved-data" style="display: none; text-align: center; padding: 40px; color: var(--gray);">
+                        <i class="fas fa-check-circle" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p>No approved accounts found.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rejected Applications Tab -->
+            <div id="rejected-applications" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 class="section-title"><i class="fas fa-times-circle"></i> Rejected Applications</h2>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="refresh-rejected">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-container" style="margin-bottom: 20px;">
+                        <input type="text" id="rejected-search" class="form-control" placeholder="Search rejected applications...">
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Control No.</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Date Rejected</th>
+                                <th>Rejected By</th>
+                                <th>Reason</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rejected-table-body">
+                            <!-- Rejected applications will be loaded here -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="no-data" id="no-rejected-data" style="display: none; text-align: center; padding: 40px; color: var(--gray);">
+                        <i class="fas fa-times-circle" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p>No rejected applications found.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Account Manually Tab -->
+            <div id="create-manual" class="tab-content">
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-user-plus"></i> Create Account Manually</h2>
+                    <p style="color: var(--gray); margin-bottom: 25px;">Use this form to create user accounts manually. This bypasses the regular registration process.</p>
+                    
+                    <form id="manual-account-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="manual-last-name">Last Name *</label>
+                                <input type="text" class="form-control" id="manual-last-name" placeholder="Enter last name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="manual-first-name">First Name *</label>
+                                <input type="text" class="form-control" id="manual-first-name" placeholder="Enter first name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="manual-middle-name">Middle Name</label>
+                            <input type="text" class="form-control" id="manual-middle-name" placeholder="Enter middle name (optional)">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="manual-email">Email Address *</label>
+                                <input type="email" class="form-control" id="manual-email" placeholder="Enter email address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="manual-phone">Phone Number</label>
+                                <input type="tel" class="form-control" id="manual-phone" placeholder="Enter phone number">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="manual-password">Password *</label>
+                                <input type="password" class="form-control" id="manual-password" placeholder="Create password" required minlength="6">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="manual-confirm-password">Confirm Password *</label>
+                                <input type="password" class="form-control" id="manual-confirm-password" placeholder="Confirm password" required minlength="6">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="manual-address">Complete Address *</label>
+                            <textarea class="form-control" id="manual-address" placeholder="Enter complete address" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="manual-date-of-birth">Date of Birth *</label>
+                                <input type="date" class="form-control" id="manual-date-of-birth" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="manual-gender">Gender *</label>
+                                <select class="form-control" id="manual-gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="manual-reason">Reason for Manual Creation</label>
+                            <textarea class="form-control" id="manual-reason" placeholder="Explain why this account is being created manually" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="action-buttons" style="margin-top: 25px;">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-user-plus"></i> Create Account
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Reset Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- All Registrations Tab -->
+            <div id="all-registrations" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h2 class="section-title"><i class="fas fa-list-alt"></i> All Registrations</h2>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="refresh-all">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                            <button class="btn btn-warning" id="export-all-btn">
+                                <i class="fas fa-download"></i> Export All
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-container" style="margin-bottom: 20px;">
+                        <input type="text" id="all-search" class="form-control" placeholder="Search all registrations...">
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Control No.</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Type</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="all-table-body">
+                            <!-- All registrations will be loaded here -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="no-data" id="no-all-data" style="display: none; text-align: center; padding: 40px; color: var(--gray);">
+                        <i class="fas fa-database" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
+                        <p>No registration data found.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Details Modal -->
+    <div class="edit-modal" id="registrationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Registration Details</h2>
+                <button class="close-modal" id="closeRegistrationModal">&times;</button>
+            </div>
+            <div id="registrationDetails">
+                <!-- Registration details will be populated here -->
+            </div>
+            <div class="modal-footer" style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-success" id="approveRegistration">Approve</button>
+                <button class="btn btn-danger" id="rejectRegistration">Reject</button>
+                <button class="btn btn-secondary" id="closeDetails">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rejection Reason Modal -->
+    <div class="edit-modal" id="rejectionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Reject Registration</h2>
+                <button class="close-modal" id="closeRejectionModal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="rejectionReason">Reason for Rejection *</label>
+                <textarea class="form-control" id="rejectionReason" placeholder="Provide a clear reason for rejecting this application" rows="4" required></textarea>
+            </div>
+            <div class="modal-footer" style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-danger" id="confirmRejection">Confirm Rejection</button>
+                <button class="btn btn-secondary" id="cancelRejection">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Status Indicator -->
+    <div id="save-status" class="save-status">• Manual Save</div>
+
+    <script>
+        // Enhanced Registration Admin Panel
+        class RegistrationAdminPanel {
+            constructor() {
+                this.registrationKey = 'barangayRegistrations';
+                this.usersKey = 'barangayUsers';
+                this.currentRegistrations = [];
+                this.currentUsers = [];
+                this.activityLog = [];
+                this.currentRegistrationId = null;
+                this.init();
+            }
+
+            init() {
+                this.loadData();
+                this.setupEventListeners();
+                this.updateDashboard();
+                this.loadPendingTable();
+                this.logActivity('System initialized', 'success');
+                this.updateSaveStatus('• Manual Save');
+            }
+
+            loadData() {
+                // Load registrations
+                const savedRegistrations = localStorage.getItem(this.registrationKey);
+                if (savedRegistrations) {
+                    try {
+                        this.currentRegistrations = JSON.parse(savedRegistrations);
+                        console.log('Registrations loaded:', this.currentRegistrations.length);
+                    } catch (error) {
+                        console.error('Error parsing registrations:', error);
+                        this.currentRegistrations = [];
+                    }
+                }
+
+                // Load users
+                const savedUsers = localStorage.getItem(this.usersKey);
+                if (savedUsers) {
+                    try {
+                        this.currentUsers = JSON.parse(savedUsers);
+                        console.log('Users loaded:', this.currentUsers.length);
+                    } catch (error) {
+                        console.error('Error parsing users:', error);
+                        this.currentUsers = [];
+                    }
+                }
+            }
+
+            saveData() {
+                try {
+                    localStorage.setItem(this.registrationKey, JSON.stringify(this.currentRegistrations));
+                    localStorage.setItem(this.usersKey, JSON.stringify(this.currentUsers));
+                    console.log('Data saved successfully');
+                    
+                    this.updateSaveStatus('Saved successfully', 'success');
+                    this.updateDashboard();
+                    this.logActivity('Data saved successfully', 'success');
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Save failed:', error);
+                    this.updateSaveStatus('Save failed', 'error');
+                    this.logActivity('Data save failed', 'error');
+                    return false;
+                }
+            }
+
+            updateSaveStatus(message = '• Manual Save', type = 'default') {
+                const statusElement = document.getElementById('save-status');
+                if (!statusElement) return;
+                
+                // Update text and class
+                statusElement.textContent = message;
+                statusElement.className = 'save-status';
+                
+                if (type === 'success') {
+                    statusElement.classList.add('success');
+                } else if (type === 'error') {
+                    statusElement.classList.add('error');
+                } else if (type === 'warning') {
+                    statusElement.classList.add('warning');
+                }
+                
+                // Reset to default after 3 seconds if it's a success/error message
+                if (type === 'success' || type === 'error') {
+                    setTimeout(() => {
+                        statusElement.textContent = '• Manual Save';
+                        statusElement.className = 'save-status';
+                    }, 3000);
+                }
+            }
+
+            updateDashboard() {
+                if (!this.currentRegistrations) return;
+                
+                const pending = this.currentRegistrations.filter(r => r.status === 'pending').length;
+                const approved = this.currentRegistrations.filter(r => r.status === 'approved').length;
+                const rejected = this.currentRegistrations.filter(r => r.status === 'rejected').length;
+                const manual = this.currentRegistrations.filter(r => r.manualCreation).length;
+                
+                document.getElementById('total-pending').textContent = pending;
+                document.getElementById('total-approved').textContent = approved;
+                document.getElementById('total-rejected').textContent = rejected;
+                document.getElementById('total-manual').textContent = manual;
+                
+                // Update sidebar counts
+                document.getElementById('pending-count').textContent = pending;
+                document.getElementById('approved-count').textContent = approved;
+                document.getElementById('rejected-count').textContent = rejected;
+            }
+
+            setupEventListeners() {
+                // Sidebar navigation
+                document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const tabId = link.getAttribute('data-tab');
+                        this.switchTab(tabId);
+                    });
+                });
+
+                // Quick action buttons
+                document.getElementById('view-pending-btn').addEventListener('click', () => {
+                    this.switchTab('pending-registrations');
+                });
+
+                document.getElementById('view-approved-btn').addEventListener('click', () => {
+                    this.switchTab('approved-accounts');
+                });
+
+                document.getElementById('create-manual-btn').addEventListener('click', () => {
+                    this.switchTab('create-manual');
+                });
+
+                document.getElementById('export-data-btn').addEventListener('click', () => {
+                    this.exportData();
+                });
+
+                // Refresh buttons
+                document.getElementById('refresh-pending')?.addEventListener('click', () => {
+                    this.loadPendingTable();
+                });
+
+                document.getElementById('refresh-approved')?.addEventListener('click', () => {
+                    this.loadApprovedTable();
+                });
+
+                document.getElementById('refresh-rejected')?.addEventListener('click', () => {
+                    this.loadRejectedTable();
+                });
+
+                document.getElementById('refresh-all')?.addEventListener('click', () => {
+                    this.loadAllTable();
+                });
+
+                // Search functionality
+                document.getElementById('pending-search')?.addEventListener('input', (e) => {
+                    this.searchTable('pending', e.target.value);
+                });
+
+                document.getElementById('approved-search')?.addEventListener('input', (e) => {
+                    this.searchTable('approved', e.target.value);
+                });
+
+                document.getElementById('rejected-search')?.addEventListener('input', (e) => {
+                    this.searchTable('rejected', e.target.value);
+                });
+
+                document.getElementById('all-search')?.addEventListener('input', (e) => {
+                    this.searchTable('all', e.target.value);
+                });
+
+                // Manual account form
+                document.getElementById('manual-account-form')?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.createManualAccount();
+                });
+
+                // Modal controls
+                document.getElementById('closeRegistrationModal').addEventListener('click', () => {
+                    this.closeRegistrationModal();
+                });
+
+                document.getElementById('closeDetails').addEventListener('click', () => {
+                    this.closeRegistrationModal();
+                });
+
+                document.getElementById('approveRegistration').addEventListener('click', () => {
+                    this.approveRegistration();
+                });
+
+                document.getElementById('rejectRegistration').addEventListener('click', () => {
+                    this.showRejectionModal();
+                });
+
+                document.getElementById('closeRejectionModal').addEventListener('click', () => {
+                    this.closeRejectionModal();
+                });
+
+                document.getElementById('cancelRejection').addEventListener('click', () => {
+                    this.closeRejectionModal();
+                });
+
+                document.getElementById('confirmRejection').addEventListener('click', () => {
+                    this.confirmRejection();
+                });
+
+                // Export all button
+                document.getElementById('export-all-btn')?.addEventListener('click', () => {
+                    this.exportAllData();
+                });
+            }
+
+            switchTab(tabId) {
+                // Update sidebar active state
+                document.querySelectorAll('.sidebar-menu a').forEach(item => {
+                    item.classList.remove('active');
+                });
+                const targetLink = document.querySelector(`[data-tab="${tabId}"]`);
+                if (targetLink) {
+                    targetLink.classList.add('active');
+                }
+
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+
+                // Show the selected tab content
+                const selectedTab = document.getElementById(tabId);
+                if (selectedTab) {
+                    selectedTab.classList.add('active');
+                }
+
+                // Load data for the tab
+                switch(tabId) {
+                    case 'pending-registrations':
+                        this.loadPendingTable();
+                        break;
+                    case 'approved-accounts':
+                        this.loadApprovedTable();
+                        break;
+                    case 'rejected-applications':
+                        this.loadRejectedTable();
+                        break;
+                    case 'all-registrations':
+                        this.loadAllTable();
+                        break;
+                }
+            }
+
+            loadPendingTable() {
+                const tbody = document.getElementById('pending-table-body');
+                const noData = document.getElementById('no-pending-data');
+                
+                if (!tbody) return;
+                
+                const pendingRegistrations = this.currentRegistrations.filter(r => r.status === 'pending');
+                
+                if (pendingRegistrations.length === 0) {
+                    tbody.innerHTML = '';
+                    noData.style.display = 'block';
+                    return;
+                }
+                
+                noData.style.display = 'none';
+                tbody.innerHTML = '';
+                
+                // Sort by date (newest first)
+                pendingRegistrations.sort((a, b) => {
+                    return new Date(b.submittedAt) - new Date(a.submittedAt);
+                });
+                
+                pendingRegistrations.forEach(registration => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${registration.controlNumber || 'N/A'}</td>
+                        <td>${registration.personalInfo?.lastName || ''}, ${registration.personalInfo?.firstName || ''}</td>
+                        <td>${registration.accountInfo?.email || 'N/A'}</td>
+                        <td>${registration.submittedAt || 'N/A'}</td>
+                        <td>
+                            <span class="doc-status ${registration.documents?.idType ? 'doc-verified' : 'doc-missing'}">
+                                <i class="fas fa-${registration.documents?.idType ? 'check' : 'times'}"></i>
+                                ${registration.documents?.idType || 'No ID'}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="doc-status ${registration.faceCaptures?.flags?.front ? 'doc-verified' : 'doc-missing'}">
+                                <i class="fas fa-${registration.faceCaptures?.flags?.front ? 'check' : 'times'}"></i>
+                                Face Scan
+                            </span>
+                        </td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-registration" data-id="${registration.controlNumber}">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Add event listeners to view buttons
+                document.querySelectorAll('.view-registration').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const controlNumber = e.target.closest('button').getAttribute('data-id');
+                        this.viewRegistrationDetails(controlNumber);
+                    });
+                });
+            }
+
+            loadApprovedTable() {
+                const tbody = document.getElementById('approved-table-body');
+                const noData = document.getElementById('no-approved-data');
+                
+                if (!tbody) return;
+                
+                const approvedRegistrations = this.currentRegistrations.filter(r => r.status === 'approved');
+                
+                if (approvedRegistrations.length === 0) {
+                    tbody.innerHTML = '';
+                    noData.style.display = 'block';
+                    return;
+                }
+                
+                noData.style.display = 'none';
+                tbody.innerHTML = '';
+                
+                approvedRegistrations.sort((a, b) => {
+                    return new Date(b.approvedAt || b.submittedAt) - new Date(a.approvedAt || a.submittedAt);
+                });
+                
+                approvedRegistrations.forEach(registration => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${registration.controlNumber || 'N/A'}</td>
+                        <td>${registration.personalInfo?.lastName || ''}, ${registration.personalInfo?.firstName || ''}</td>
+                        <td>${registration.accountInfo?.email || 'N/A'}</td>
+                        <td>${registration.approvedAt || 'N/A'}</td>
+                        <td>${registration.approvedBy || 'System'}</td>
+                        <td>
+                            <span class="status-indicator status-online">
+                                <span class="status-dot online"></span>
+                                Active
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-registration" data-id="${registration.controlNumber}">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn btn-warning btn-sm deactivate-account" data-id="${registration.controlNumber}">
+                                    <i class="fas fa-ban"></i> Deactivate
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Add event listeners
+                document.querySelectorAll('.view-registration').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const controlNumber = e.target.closest('button').getAttribute('data-id');
+                        this.viewRegistrationDetails(controlNumber);
+                    });
+                });
+
+                document.querySelectorAll('.deactivate-account').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const controlNumber = e.target.closest('button').getAttribute('data-id');
+                        this.deactivateAccount(controlNumber);
+                    });
+                });
+            }
+
+            loadRejectedTable() {
+                const tbody = document.getElementById('rejected-table-body');
+                const noData = document.getElementById('no-rejected-data');
+                
+                if (!tbody) return;
+                
+                const rejectedRegistrations = this.currentRegistrations.filter(r => r.status === 'rejected');
+                
+                if (rejectedRegistrations.length === 0) {
+                    tbody.innerHTML = '';
+                    noData.style.display = 'block';
+                    return;
+                }
+                
+                noData.style.display = 'none';
+                tbody.innerHTML = '';
+                
+                rejectedRegistrations.sort((a, b) => {
+                    return new Date(b.rejectedAt || b.submittedAt) - new Date(a.rejectedAt || a.submittedAt);
+                });
+                
+                rejectedRegistrations.forEach(registration => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${registration.controlNumber || 'N/A'}</td>
+                        <td>${registration.personalInfo?.lastName || ''}, ${registration.personalInfo?.firstName || ''}</td>
+                        <td>${registration.accountInfo?.email || 'N/A'}</td>
+                        <td>${registration.rejectedAt || 'N/A'}</td>
+                        <td>${registration.rejectedBy || 'System'}</td>
+                        <td>${registration.rejectionReason ? registration.rejectionReason.substring(0, 50) + '...' : 'No reason provided'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-registration" data-id="${registration.controlNumber}">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                                <button class="btn btn-success btn-sm restore-application" data-id="${registration.controlNumber}">
+                                    <i class="fas fa-redo"></i> Restore
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Add event listeners
+                document.querySelectorAll('.view-registration').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const controlNumber = e.target.closest('button').getAttribute('data-id');
+                        this.viewRegistrationDetails(controlNumber);
+                    });
+                });
+
+                document.querySelectorAll('.restore-application').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const controlNumber = e.target.closest('button').getAttribute('data-id');
+                        this.restoreApplication(controlNumber);
+                    });
+                });
+            }
+
+            loadAllTable() {
+                const tbody = document.getElementById('all-table-body');
+                const noData = document.getElementById('no-all-data');
+                
+                if (!tbody) return;
+                
+                if (this.currentRegistrations.length === 0) {
+                    tbody.innerHTML = '';
+                    noData.style.display = 'block';
+                    return;
+                }
+                
+                noData.style.display = 'none';
+                tbody.innerHTML = '';
+                
+                // Sort by date (newest first)
+                const sortedRegistrations = [...this.currentRegistrations].sort((a, b) => {
+                    return new Date(b.submittedAt || b.date) - new Date(a.submittedAt || a.date);
+                });
+                
+                sortedRegistrations.forEach(registration => {
+                    let statusBadge = '';
+                    if (registration.status === 'pending') {
+                        statusBadge = '<span class="status-badge status-pending">Pending</span>';
+                    } else if (registration.status === 'approved') {
+                        statusBadge = '<span class="status-badge status-approved">Approved</span>';
+                    } else if (registration.status === 'rejected') {
+                        statusBadge = '<span class="status-badge status-rejected">Rejected</span>';
+                    }
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${registration.controlNumber || 'N/A'}</td>
+                        <td>${registration.personalInfo?.lastName || ''}, ${registration.personalInfo?.firstName || ''}</td>
+                        <td>${registration.accountInfo?.email || 'N/A'}</td>
+                        <td>${registration.submittedAt || 'N/A'}</td>
+                        <td>${statusBadge}</td>
+                        <td>${registration.manualCreation ? '<span class="status-badge status-manual">Manual</span>' : 'Online'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-registration" data-id="${registration.controlNumber}">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Add event listeners to view buttons
+                document.querySelectorAll('.view-registration').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const controlNumber = e.target.closest('button').getAttribute('data-id');
+                        this.viewRegistrationDetails(controlNumber);
+                    });
+                });
+            }
+
+            searchTable(tableType, searchTerm) {
+                let tbody;
+                switch(tableType) {
+                    case 'pending':
+                        tbody = document.getElementById('pending-table-body');
+                        break;
+                    case 'approved':
+                        tbody = document.getElementById('approved-table-body');
+                        break;
+                    case 'rejected':
+                        tbody = document.getElementById('rejected-table-body');
+                        break;
+                    case 'all':
+                        tbody = document.getElementById('all-table-body');
+                        break;
+                    default:
+                        return;
+                }
+                
+                if (!tbody) return;
+                
+                const rows = tbody.querySelectorAll('tr');
+                const searchText = searchTerm.toLowerCase().trim();
+                
+                if (searchText === '') {
+                    rows.forEach(row => row.style.display = '');
+                    return;
+                }
+                
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    let found = false;
+                    
+                    cells.forEach(cell => {
+                        if (cell.textContent.toLowerCase().includes(searchText)) {
+                            found = true;
+                        }
+                    });
+                    
+                    row.style.display = found ? '' : 'none';
+                });
+            }
+
+            viewRegistrationDetails(controlNumber) {
+                const registration = this.currentRegistrations.find(r => r.controlNumber === controlNumber);
+                
+                if (!registration) {
+                    this.showAlert('Registration not found!', 'error');
+                    return;
+                }
+
+                this.currentRegistrationId = controlNumber;
+                
+                const modal = document.getElementById('registrationModal');
+                const detailsContainer = document.getElementById('registrationDetails');
+                
+                // Format personal info
+                const personalInfo = registration.personalInfo || {};
+                const accountInfo = registration.accountInfo || {};
+                const householdInfo = registration.householdInfo || {};
+                const documents = registration.documents || {};
+                const faceCaptures = registration.faceCaptures || {};
+                
+                // Build details HTML
+                let detailsHTML = `
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Registration Information</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                            <div><strong>Control Number:</strong> ${registration.controlNumber || 'N/A'}</div>
+                            <div><strong>Status:</strong> ${registration.status || 'N/A'}</div>
+                            <div><strong>Submitted:</strong> ${registration.submittedAt || 'N/A'}</div>
+                            <div><strong>Type:</strong> ${registration.manualCreation ? 'Manual Creation' : 'Online Registration'}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Personal Information</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                `;
+                
+                // Add personal info fields
+                if (personalInfo.lastName) detailsHTML += `<div><strong>Last Name:</strong> ${personalInfo.lastName}</div>`;
+                if (personalInfo.firstName) detailsHTML += `<div><strong>First Name:</strong> ${personalInfo.firstName}</div>`;
+                if (personalInfo.middleName) detailsHTML += `<div><strong>Middle Name:</strong> ${personalInfo.middleName}</div>`;
+                if (personalInfo.extName && personalInfo.extName !== 'N/A') detailsHTML += `<div><strong>Extension:</strong> ${personalInfo.extName}</div>`;
+                if (personalInfo.gender) detailsHTML += `<div><strong>Gender:</strong> ${personalInfo.gender}</div>`;
+                if (personalInfo.dateOfBirth) detailsHTML += `<div><strong>Date of Birth:</strong> ${personalInfo.dateOfBirth}</div>`;
+                if (personalInfo.age) detailsHTML += `<div><strong>Age:</strong> ${personalInfo.age}</div>`;
+                if (personalInfo.civilStatus) detailsHTML += `<div><strong>Civil Status:</strong> ${personalInfo.civilStatus}</div>`;
+                if (personalInfo.citizenship) detailsHTML += `<div><strong>Citizenship:</strong> ${personalInfo.citizenship}</div>`;
+                if (personalInfo.occupation) detailsHTML += `<div><strong>Occupation:</strong> ${personalInfo.occupation}</div>`;
+                if (personalInfo.phone) detailsHTML += `<div><strong>Phone:</strong> ${personalInfo.phone}</div>`;
+                
+                detailsHTML += `</div>`;
+                
+                if (personalInfo.address) detailsHTML += `<div style="margin-top: 10px;"><strong>Address:</strong> ${personalInfo.address}</div>`;
+                if (personalInfo.placeOfBirth) detailsHTML += `<div style="margin-top: 10px;"><strong>Place of Birth:</strong> ${personalInfo.placeOfBirth}</div>`;
+                
+                // Special categories
+                if (personalInfo.specialCategories && personalInfo.specialCategories.length > 0) {
+                    detailsHTML += `<div style="margin-top: 10px;"><strong>Special Categories:</strong> ${personalInfo.specialCategories.join(', ')}</div>`;
+                }
+                
+                // Account info
+                detailsHTML += `
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Account Information</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                `;
+                
+                if (accountInfo.email) detailsHTML += `<div><strong>Email:</strong> ${accountInfo.email}</div>`;
+                if (accountInfo.emailVerified !== undefined) detailsHTML += `<div><strong>Email Verified:</strong> ${accountInfo.emailVerified ? 'Yes' : 'No'}</div>`;
+                
+                detailsHTML += `</div></div>`;
+                
+                // Household info
+                if (householdInfo.householdMembers || householdInfo.ownerName || householdInfo.precinctNo || householdInfo.yearsInBarangay) {
+                    detailsHTML += `
+                        <div style="margin-bottom: 20px;">
+                            <h3 style="color: var(--primary); margin-bottom: 10px;">Household Information</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    `;
+                    
+                    if (householdInfo.householdMembers) detailsHTML += `<div><strong>Household Members:</strong> ${householdInfo.householdMembers}</div>`;
+                    if (householdInfo.ownerName) detailsHTML += `<div><strong>Property Owner:</strong> ${householdInfo.ownerName}</div>`;
+                    if (householdInfo.precinctNo) detailsHTML += `<div><strong>Precinct No:</strong> ${householdInfo.precinctNo}</div>`;
+                    if (householdInfo.yearsInBarangay) detailsHTML += `<div><strong>Years in Barangay:</strong> ${householdInfo.yearsInBarangay}</div>`;
+                    
+                    detailsHTML += `</div></div>`;
+                }
+                
+                // Documents
+                detailsHTML += `
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Documents</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                `;
+                
+                if (documents.idType) detailsHTML += `<div><strong>ID Type:</strong> ${documents.idType}</div>`;
+                if (documents.userReason) detailsHTML += `<div><strong>Reason for Registration:</strong> ${documents.userReason}</div>`;
+                
+                detailsHTML += `</div>`;
+                
+                // Document images if available
+                if (documents.idFrontPreviewSrc || documents.idBackPreviewSrc) {
+                    detailsHTML += `<div style="margin-top: 10px;"><strong>Uploaded Documents:</strong></div>`;
+                    detailsHTML += `<div class="doc-gallery">`;
+                    if (documents.idFrontPreviewSrc) {
+                        detailsHTML += `<img src="${documents.idFrontPreviewSrc}" class="doc-thumbnail" onclick="window.open('${documents.idFrontPreviewSrc}', '_blank')">`;
+                    }
+                    if (documents.idBackPreviewSrc) {
+                        detailsHTML += `<img src="${documents.idBackPreviewSrc}" class="doc-thumbnail" onclick="window.open('${documents.idBackPreviewSrc}', '_blank')">`;
+                    }
+                    detailsHTML += `</div>`;
+                }
+                
+                detailsHTML += `</div>`;
+                
+                // Face captures
+                if (faceCaptures.flags || faceCaptures.frontPreview) {
+                    detailsHTML += `
+                        <div style="margin-bottom: 20px;">
+                            <h3 style="color: var(--primary); margin-bottom: 10px;">Face Verification</h3>
+                    `;
+                    
+                    if (faceCaptures.flags) {
+                        detailsHTML += `<div style="margin-bottom: 10px;"><strong>Captured Angles:</strong> `;
+                        const angles = [];
+                        if (faceCaptures.flags.front) angles.push('Front');
+                        if (faceCaptures.flags.left) angles.push('Left');
+                        if (faceCaptures.flags.right) angles.push('Right');
+                        if (faceCaptures.flags.closed) angles.push('Closed Eyes');
+                        detailsHTML += angles.join(', ') + `</div>`;
+                    }
+                    
+                    // Face capture images if available
+                    if (faceCaptures.frontPreview || faceCaptures.leftPreview || faceCaptures.rightPreview || faceCaptures.closedPreview) {
+                        detailsHTML += `<div><strong>Face Captures:</strong></div>`;
+                        detailsHTML += `<div class="face-captures">`;
+                        if (faceCaptures.frontPreview) {
+                            detailsHTML += `<img src="${faceCaptures.frontPreview}" class="face-capture" onclick="window.open('${faceCaptures.frontPreview}', '_blank')">`;
+                        }
+                        if (faceCaptures.leftPreview) {
+                            detailsHTML += `<img src="${faceCaptures.leftPreview}" class="face-capture" onclick="window.open('${faceCaptures.leftPreview}', '_blank')">`;
+                        }
+                        if (faceCaptures.rightPreview) {
+                            detailsHTML += `<img src="${faceCaptures.rightPreview}" class="face-capture" onclick="window.open('${faceCaptures.rightPreview}', '_blank')">`;
+                        }
+                        if (faceCaptures.closedPreview) {
+                            detailsHTML += `<img src="${faceCaptures.closedPreview}" class="face-capture" onclick="window.open('${faceCaptures.closedPreview}', '_blank')">`;
+                        }
+                        detailsHTML += `</div>`;
+                    }
+                    
+                    detailsHTML += `</div>`;
+                }
+                
+                // Approval/Rejection info
+                if (registration.status === 'approved') {
+                    detailsHTML += `
+                        <div style="margin-bottom: 20px; padding: 15px; background: var(--success-light); border-radius: var(--radius); border-left: 4px solid var(--success);">
+                            <strong><i class="fas fa-check-circle"></i> Approved Information</strong>
+                            <div style="margin-top: 10px;">
+                                <div><strong>Approved By:</strong> ${registration.approvedBy || 'System'}</div>
+                                <div><strong>Approved At:</strong> ${registration.approvedAt || 'N/A'}</div>
+                            </div>
+                        </div>
+                    `;
+                } else if (registration.status === 'rejected') {
+                    detailsHTML += `
+                        <div style="margin-bottom: 20px; padding: 15px; background: var(--error-light); border-radius: var(--radius); border-left: 4px solid var(--error);">
+                            <strong><i class="fas fa-times-circle"></i> Rejection Information</strong>
+                            <div style="margin-top: 10px;">
+                                <div><strong>Rejected By:</strong> ${registration.rejectedBy || 'System'}</div>
+                                <div><strong>Rejected At:</strong> ${registration.rejectedAt || 'N/A'}</div>
+                                <div><strong>Reason:</strong> ${registration.rejectionReason || 'No reason provided'}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                detailsContainer.innerHTML = detailsHTML;
+                
+                // Show or hide action buttons based on status
+                const approveBtn = document.getElementById('approveRegistration');
+                const rejectBtn = document.getElementById('rejectRegistration');
+                
+                if (registration.status === 'pending') {
+                    approveBtn.style.display = 'inline-block';
+                    rejectBtn.style.display = 'inline-block';
+                } else {
+                    approveBtn.style.display = 'none';
+                    rejectBtn.style.display = 'none';
+                }
+                
+                modal.classList.add('active');
+            }
+
+            closeRegistrationModal() {
+                document.getElementById('registrationModal').classList.remove('active');
+                this.currentRegistrationId = null;
+            }
+
+            showRejectionModal() {
+                document.getElementById('rejectionModal').classList.add('active');
+            }
+
+            closeRejectionModal() {
+                document.getElementById('rejectionModal').classList.remove('active');
+                document.getElementById('rejectionReason').value = '';
+            }
+
+            approveRegistration() {
+                if (!this.currentRegistrationId) return;
+                
+                const registration = this.currentRegistrations.find(r => r.controlNumber === this.currentRegistrationId);
+                
+                if (!registration) {
+                    this.showAlert('Registration not found!', 'error');
+                    return;
+                }
+                
+                // Update registration status
+                registration.status = 'approved';
+                registration.approvedAt = new Date().toLocaleString();
+                registration.approvedBy = "Administrator";
+                
+                // Create user account
+                this.createUserFromRegistration(registration);
+                
+                // Save changes
+                this.saveData();
+                
+                // Close modal and refresh tables
+                this.closeRegistrationModal();
+                this.loadPendingTable();
+                this.loadApprovedTable();
+                this.updateDashboard();
+                
+                this.logActivity(`Registration approved: ${registration.controlNumber}`, 'success');
+                this.showAlert('Registration approved successfully!', 'success');
+            }
+
+            confirmRejection() {
+                const reason = document.getElementById('rejectionReason').value.trim();
+                
+                if (!reason) {
+                    this.showAlert('Please provide a reason for rejection', 'error');
+                    return;
+                }
+                
+                if (!this.currentRegistrationId) return;
+                
+                const registration = this.currentRegistrations.find(r => r.controlNumber === this.currentRegistrationId);
+                
+                if (!registration) {
+                    this.showAlert('Registration not found!', 'error');
+                    return;
+                }
+                
+                // Update registration status
+                registration.status = 'rejected';
+                registration.rejectedAt = new Date().toLocaleString();
+                registration.rejectedBy = "Administrator";
+                registration.rejectionReason = reason;
+                
+                // Save changes
+                this.saveData();
+                
+                // Close modals and refresh tables
+                this.closeRejectionModal();
+                this.closeRegistrationModal();
+                this.loadPendingTable();
+                this.loadRejectedTable();
+                this.updateDashboard();
+                
+                this.logActivity(`Registration rejected: ${registration.controlNumber}`, 'error');
+                this.showAlert('Registration rejected successfully!', 'success');
+            }
+
+            createManualAccount() {
+                // Get form values
+                const lastName = document.getElementById('manual-last-name').value.trim();
+                const firstName = document.getElementById('manual-first-name').value.trim();
+                const middleName = document.getElementById('manual-middle-name').value.trim();
+                const email = document.getElementById('manual-email').value.trim();
+                const phone = document.getElementById('manual-phone').value.trim();
+                const password = document.getElementById('manual-password').value;
+                const confirmPassword = document.getElementById('manual-confirm-password').value;
+                const address = document.getElementById('manual-address').value.trim();
+                const dateOfBirth = document.getElementById('manual-date-of-birth').value;
+                const gender = document.getElementById('manual-gender').value;
+                const reason = document.getElementById('manual-reason').value.trim();
+                
+                // Validate required fields
+                if (!lastName || !firstName || !email || !password || !confirmPassword || !address || !dateOfBirth || !gender) {
+                    this.showAlert('Please fill in all required fields', 'error');
+                    return;
+                }
+                
+                // Check password match
+                if (password !== confirmPassword) {
+                    this.showAlert('Passwords do not match', 'error');
+                    return;
+                }
+                
+                // Check password length
+                if (password.length < 6) {
+                    this.showAlert('Password must be at least 6 characters', 'error');
+                    return;
+                }
+                
+                // Generate control number
+                const date = new Date();
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+                const controlNumber = `BRGY118-MANUAL-${year}${month}${day}-${randomNum}`;
+                
+                // Create registration object
+                const manualRegistration = {
+                    controlNumber: controlNumber,
+                    personalInfo: {
+                        lastName: lastName,
+                        firstName: firstName,
+                        middleName: middleName || '',
+                        gender: gender,
+                        dateOfBirth: dateOfBirth,
+                        address: address,
+                        phone: phone || ''
+                    },
+                    accountInfo: {
+                        email: email,
+                        password: password,
+                        emailVerified: true
+                    },
+                    status: 'approved',
+                    submittedAt: new Date().toLocaleString(),
+                    registrationDate: new Date().toISOString(),
+                    approvedAt: new Date().toLocaleString(),
+                    approvedBy: "Administrator",
+                    manualCreation: true,
+                    adminNotes: reason
+                };
+                
+                // Add to registrations
+                this.currentRegistrations.push(manualRegistration);
+                
+                // Create user account
+                this.createUserFromRegistration(manualRegistration);
+                
+                // Save changes
+                this.saveData();
+                
+                // Reset form
+                document.getElementById('manual-account-form').reset();
+                
+                // Refresh tables and dashboard
+                this.loadApprovedTable();
+                this.updateDashboard();
+                
+                this.logActivity(`Manual account created: ${controlNumber} (${firstName} ${lastName})`, 'success');
+                this.showAlert('Manual account created successfully!', 'success');
+                
+                // Switch to approved tab
+                this.switchTab('approved-accounts');
+            }
+
+            createUserFromRegistration(registration) {
+                // Check if user already exists
+                const existingUser = this.currentUsers.find(user => user.email === registration.accountInfo.email);
+                if (existingUser) {
+                    // Update existing user
+                    existingUser.name = `${registration.personalInfo.firstName} ${registration.personalInfo.lastName}`;
+                    existingUser.status = 'active';
+                    existingUser.phone = registration.personalInfo.phone || '';
+                    existingUser.address = registration.personalInfo.address || '';
+                    existingUser.updatedAt = new Date().toISOString();
+                } else {
+                    // Create new user
+                    const newUser = {
+                        id: this.currentUsers.length > 0 ? Math.max(...this.currentUsers.map(u => u.id)) + 1 : 1,
+                        email: registration.accountInfo.email,
+                        password: registration.accountInfo.password,
+                        role: 'user',
+                        name: `${registration.personalInfo.firstName} ${registration.personalInfo.lastName}`,
+                        status: 'active',
+                        registered: new Date().toLocaleDateString(),
+                        phone: registration.personalInfo.phone || '',
+                        address: registration.personalInfo.address || '',
+                        dateOfBirth: registration.personalInfo.dateOfBirth || '',
+                        gender: registration.personalInfo.gender || '',
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString(),
+                        registrationSource: registration.manualCreation ? 'manual' : 'online',
+                        controlNumber: registration.controlNumber
+                    };
+                    this.currentUsers.push(newUser);
+                }
+            }
+
+            deactivateAccount(controlNumber) {
+                if (!confirm('Are you sure you want to deactivate this account?')) return;
+                
+                const registration = this.currentRegistrations.find(r => r.controlNumber === controlNumber);
+                
+                if (!registration) {
+                    this.showAlert('Registration not found!', 'error');
+                    return;
+                }
+                
+                // Update registration status to pending
+                registration.status = 'pending';
+                delete registration.approvedAt;
+                delete registration.approvedBy;
+                
+                // Remove user from users list
+                this.currentUsers = this.currentUsers.filter(user => user.controlNumber !== controlNumber);
+                
+                // Save changes
+                this.saveData();
+                
+                // Refresh tables
+                this.loadApprovedTable();
+                this.loadPendingTable();
+                this.updateDashboard();
+                
+                this.logActivity(`Account deactivated: ${controlNumber}`, 'warning');
+                this.showAlert('Account deactivated successfully!', 'success');
+            }
+
+            restoreApplication(controlNumber) {
+                if (!confirm('Are you sure you want to restore this application?')) return;
+                
+                const registration = this.currentRegistrations.find(r => r.controlNumber === controlNumber);
+                
+                if (!registration) {
+                    this.showAlert('Registration not found!', 'error');
+                    return;
+                }
+                
+                // Update registration status to pending
+                registration.status = 'pending';
+                delete registration.rejectedAt;
+                delete registration.rejectedBy;
+                delete registration.rejectionReason;
+                
+                // Save changes
+                this.saveData();
+                
+                // Refresh tables
+                this.loadRejectedTable();
+                this.loadPendingTable();
+                this.updateDashboard();
+                
+                this.logActivity(`Application restored: ${controlNumber}`, 'success');
+                this.showAlert('Application restored successfully!', 'success');
+            }
+
+            exportData() {
+                const data = {
+                    registrations: this.currentRegistrations,
+                    users: this.currentUsers,
+                    exportDate: new Date().toISOString(),
+                    totalRegistrations: this.currentRegistrations.length,
+                    totalUsers: this.currentUsers.length
+                };
+                
+                const dataStr = JSON.stringify(data, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `barangay-registrations-backup-${new Date().toISOString().split('T')[0]}.json`;
+                link.click();
+                URL.revokeObjectURL(url);
+                
+                this.logActivity('Data exported successfully', 'success');
+                this.showAlert('Data exported successfully!', 'success');
+            }
+
+            exportAllData() {
+                this.exportData();
+            }
+
+            showAlert(message, type) {
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type}`;
+                alert.innerHTML = `<strong><i class="fas fa-${type === 'success' ? 'check' : 'exclamation'}-circle"></i> ${message}</strong>`;
+                
+                const currentTab = document.querySelector('.tab-content.active');
+                if (currentTab) {
+                    currentTab.insertBefore(alert, currentTab.querySelector('.admin-section'));
+                }
+                
+                setTimeout(() => {
+                    if (alert.parentNode) {
+                        alert.remove();
+                    }
+                }, 5000);
+            }
+
+            logActivity(message, type) {
+                const activity = {
+                    timestamp: new Date().toLocaleTimeString(),
+                    message: message,
+                    type: type
+                };
+                this.activityLog.unshift(activity);
+                
+                if (this.activityLog.length > 10) {
+                    this.activityLog.pop();
+                }
+                
+                this.updateRecentActivity();
+            }
+
+            updateRecentActivity() {
+                const container = document.getElementById('recent-activity');
+                if (!container) return;
+
+                if (this.activityLog.length === 0) {
+                    container.innerHTML = `<p style="color: var(--gray); text-align: center; padding: 20px;"><i class="fas fa-clock"></i> No recent activity</p>`;
+                    return;
+                }
+
+                container.innerHTML = this.activityLog.map(activity => `
+                    <div style="padding: 10px 15px; border-left: 3px solid ${
+                        activity.type === 'success' ? 'var(--success)' : 
+                        activity.type === 'error' ? 'var(--error)' : 'var(--warning)'
+                    }; margin-bottom: 10px; background: var(--gray-light); border-radius: 0 var(--radius) var(--radius) 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 15px;">
+                            <span style="font-weight: 600;">${activity.message}</span>
+                            <small style="color: var(--gray);">${activity.timestamp}</small>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.registrationAdminPanel = new RegistrationAdminPanel();
+        });
+    </script>
+</body>
+</html>

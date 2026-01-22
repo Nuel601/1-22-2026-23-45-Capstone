@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Admin | Barangay 118</title>
+    <link rel="shortcut icon" type="image/png" href="Logo-Favicon-removebg-preview.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="AboutUsAdmin.css">
+    <style>
+        /* Additional CSS for save status */ 
+        .save-status.success {
+            background: var(--success);
+        }
+        
+        .save-status.warning {
+            background: var(--warning);
+        }
+        
+        .save-status.error {
+            background: var(--error);
+        }
+        
+        .save-status.info {
+            background: var(--info);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo" onclick="window.open('index.html', '_blank')">
+                    <div class="logo-icon"><i class="fas fa-cog"></i></div>
+                    <h1>BARANGAY 118 ONLINE SYSTEM - ADMIN PANEL</h1>
+                </div>
+
+                <div class="nav-links">
+                    <a href="PanelAdminView.html" class="active">Home</a>
+                    <a href="AboutUsAdmin.html">About</a>
+                    <a href="NewsAdmin.html">News</a>
+                    <a href="EmergencyAdmin.html">Emergency</a>
+                    <a href="CreateAccountAdmin.html">Create</a>
+                    <a href="LogAdminControl.html">LogIn</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel">
+        <!-- Left Sidebar - Control Center -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title"><i class="fas fa-cogs"></i> Control Center</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-tab="dashboard"><span class="sidebar-icon"><i class="fas fa-chart-line"></i></span> Dashboard Overview</a></li>
+                <li><a href="#" data-tab="hero"><span class="sidebar-icon"><i class="fas fa-image"></i></span> Hero Section</a></li>
+                <li><a href="#" data-tab="welcome"><span class="sidebar-icon"><i class="fas fa-handshake"></i></span> Welcome Section</a></li>
+                <li><a href="#" data-tab="footer"><span class="sidebar-icon"><i class="fas fa-sitemap"></i></span> Footer & Social</a></li>
+            </ul>
+
+            <!-- ADDED LOGOUT BUTTON AT BOTTOM OF SIDEBAR -->
+            <div class="sidebar-footer">
+                <a href="LogIn.html" class="sidebar-logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="system-status">Ready</div>
+                            <div class="stat-label">System Status</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="user-count">0</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="last-updated">Today</div>
+                            <div class="stat-label">Last Updated</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="data-size">0 KB</div>
+                            <div class="stat-label">Data Size</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong><i class="fas fa-check-circle"></i> System Ready!</strong> Welcome to the Barangay 118 Admin Control Panel.
+                    </div>
+                    
+                    <h3 style="margin-bottom: 15px; color: var(--dark);">Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-primary" id="preview-site-btn">
+                            <i class="fas fa-external-link-alt"></i> Preview Site
+                        </button>
+                        <button class="btn btn-secondary" id="export-data-btn">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                        <button class="btn btn-success" id="backup-btn">
+                            <i class="fas fa-database"></i> Backup Data
+                        </button>
+                        <button class="btn btn-warning" id="refresh-btn">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                        <button class="btn btn-danger" id="clear-all-data-btn">
+                            <i class="fas fa-trash"></i> Clear All Data
+                        </button>
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-history"></i> Recent Activity</h2>
+                    <div id="recent-activity">
+                        <p style="color: var(--gray); text-align: center; padding: 20px;">
+                            <i class="fas fa-clock"></i> Activity log will appear here...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="dashboard-guide" class="guide-section">
+                        <h4>Dashboard Overview</h4>
+                        <p>The dashboard provides a quick overview of your system's key metrics and recent activity.</p>
+                        <ul>
+                            <li>Monitor system status and data size</li>
+                            <li>Track active user count</li>
+                            <li>View recent system activity</li>
+                            <li>Use quick actions for common tasks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section Tab -->
+            <div id="hero" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-star"></i> Hero Section Management</h2>
+                        <div class="action-buttons">
+                            <a href="index.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Update the main banner section that appears at the top of your website.</p>
+                    
+                    <form id="hero-form">
+                        <div class="form-group">
+                            <label class="form-label" for="system-name">System Name</label>
+                            <input type="text" class="form-control" id="system-name" placeholder="Enter system name">
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">This is the name of the system displayed in the header</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="hero-title">Hero Title</label>
+                            <input type="text" class="form-control" id="hero-title" placeholder="Enter compelling hero title">
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">This is the main headline that grabs attention</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="hero-description">Hero Description</label>
+                            <textarea class="form-control" id="hero-description" placeholder="Enter engaging description that explains your system"></textarea>
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">Brief description that appears below the title</small>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Hero Section
+                            </button>
+                            <button type="button" class="btn btn-warning" id="hero-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="hero-guide" class="guide-section">
+                        <h4>Hero Section Management</h4>
+                        <p>Customize the main banner section of your website.</p>
+                        <ul>
+                            <li>Update the main headline text</li>
+                            <li>Modify the description below the title</li>
+                            <li>Set the system name displayed in header</li>
+                            <li>Changes appear immediately on the main site after saving</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome Section Tab -->
+            <div id="welcome" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-home"></i> Welcome Section Management</h2>
+                        <div class="action-buttons">
+                            <a href="index.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Customize the welcome section with background image and welcoming content.</p>
+                    
+                    <form id="welcome-form">
+                        <div class="form-group">
+                            <label class="form-label" for="welcome-title">Welcome Title</label>
+                            <input type="text" class="form-control" id="welcome-title" placeholder="Enter welcoming title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="welcome-subtitle">Welcome Subtitle</label>
+                            <input type="text" class="form-control" id="welcome-subtitle" placeholder="Enter engaging subtitle">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="welcome-background">Background Image URL</label>
+                            <input type="text" class="form-control" id="welcome-background" placeholder="received_32392388620408695_edit_2410797689912.png">
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">Enter direct URL to high-quality background image</small>
+                            <div class="image-preview-container">
+                                <img id="welcome-bg-preview" class="image-preview" alt="Background preview">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="welcome-logo">Barangay Logo URL</label>
+                            <input type="text" class="form-control" id="welcome-logo" placeholder="https://example.com/logo-image.jpg">
+                            <small style="color: var(--gray); margin-top: 5px; display:block;">Enter direct URL to your barangay logo</small>
+                            <div class="image-preview-container">
+                                <img id="welcome-logo-preview" class="image-preview" alt="Logo preview">
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Welcome Section
+                            </button>
+                            <button type="button" class="btn btn-warning" id="welcome-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="welcome-guide" class="guide-section">
+                        <h4>Welcome Section Management</h4>
+                        <p>Customize the welcome section with background image and content.</p>
+                        <ul>
+                            <li>Update the welcome title and subtitle</li>
+                            <li>Add background image URL</li>
+                            <li>Upload your barangay logo</li>
+                            <li>Preview images before saving</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Tab -->
+            <div id="footer" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-icons"></i> Footer & Social Media</h2>
+                        <div class="action-buttons">
+                            <a href="index.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Manage footer content and social media links.</p>
+                    
+                    <form id="footer-form">
+                        <div class="form-group">
+                            <label class="form-label" for="footer-title">Footer Title</label>
+                            <input type="text" class="form-control" id="footer-title" placeholder="Enter footer title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="footer-description">Footer Description</label>
+                            <textarea class="form-control" id="footer-description" placeholder="Enter footer description"></textarea>
+                        </div>
+                        
+                        <h4 style="margin: 20px 0 10px 0; color: var(--dark);">Contact Information</h4>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="address-line1">Address Line 1</label>
+                            <input type="text" class="form-control" id="address-line1" placeholder="402 2nd St, Grace Park East, Caloocan">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="address-line2">Address Line 2</label>
+                            <input type="text" class="form-control" id="address-line2" placeholder="Metro Manila, Philippines">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="phone">Phone Number</label>
+                                <input type="text" class="form-control" id="phone" placeholder="(02) 8123-4567">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="info@barangay118.gov.ph">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="office-hours">Office Hours</label>
+                            <input type="text" class="form-control" id="office-hours" placeholder="Mon–Fri: 8:00 AM – 5:00 PM">
+                        </div>
+                        
+                        <h4 style="margin: 20px 0 10px 0; color: var(--dark);">Social Media Links</h4>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="facebook-url">Facebook URL</label>
+                                <input type="text" class="form-control" id="facebook-url" placeholder="https://facebook.com/barangay118">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="messenger-url">Messenger URL</label>
+                                <input type="text" class="form-control" id="messenger-url" placeholder="https://m.me/barangay118">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="copyright-text">Copyright Text</label>
+                            <input type="text" class="form-control" id="copyright-text" placeholder="&copy; 2025 Barangay 118 Online System. All Rights Reserved.">
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Footer
+                            </button>
+                            <button type="button" class="btn btn-warning" id="footer-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="footer-guide" class="guide-section">
+                        <h4>Footer & Social Media</h4>
+                        <p>Customize the footer section and social media links.</p>
+                        <ul>
+                            <li>Update footer title and description</li>
+                            <li>Add contact information (address, phone, email)</li>
+                            <li>Set office hours</li>
+                            <li>Update Facebook and Messenger links</li>
+                            <li>Modify copyright information</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Save Status Indicator - MOVED TO RIGHT SIDE -->
+    <div id="save-status" class="save-status">• Manual Save</div>
+
+    <script>
+        // Add Font Awesome solid icons
+        const faScript = document.createElement('script');
+        faScript.src = 'https://kit.fontawesome.com/4b5e5b5a5e.js';
+        faScript.crossOrigin = 'anonymous';
+        document.head.appendChild(faScript);
+
+        // Default data structure matching the user view
+        const defaultBarangayData = {
+            systemName: "BARANGAY 118 ONLINE SYSTEM",
+            hero: {
+                title: "Barangay 118 Online Management System",
+                description: "Digital service for a faster, smoother, and more connected community."
+            },
+            welcomeSection: {
+                backgroundImage: "8055825756095.png",
+                title: "Welcome to Barangay 118",
+                subtitle: "A Community of Unity and Progress",
+                logo: "308673009_177778618128931_642779678020875763_n.png"
+            },
+            footer: {
+                title: "Barangay 118 Online System",
+                description: "Secure and efficient online services for Barangay 118. Connecting our community through technology.",
+                contactInfo: {
+                    addressLine1: "402 2nd St, Grace Park East, Caloocan",
+                    addressLine2: "Metro Manila, Philippines",
+                    phone: "(02) 8123-4567",
+                    email: "info@barangay118.gov.ph",
+                    officeHours: "Mon–Fri: 8:00 AM – 5:00 PM"
+                },
+                socialMedia: {
+                    facebook: "https://facebook.com/barangay118",
+                    messenger: "https://m.me/barangay118"
+                },
+                copyright: "&copy; 2025 Barangay 118 Online System. All Rights Reserved."
+            }
+        };
+
+        // Enhanced Admin Panel with Manual Save
+        class BarangayAdminPanel {
+            constructor() {
+                this.dataKey = 'barangayData';
+                this.currentData = null;
+                this.activityLog = [];
+                this.lastSavedData = null;
+                this.saveStatusTimeout = null;
+                this.init();
+            }
+
+            init() {
+                this.loadData();
+                this.lastSavedData = JSON.parse(JSON.stringify(this.currentData));
+                this.setupEventListeners();
+                this.updateDashboard();
+                this.logActivity('System initialized with pre-loaded data', 'success');
+                this.updateSaveStatus('• Manual Save');
+                this.checkUserViewConnection();
+            }
+
+            checkUserViewConnection() {
+                console.log('Panel Admin loaded successfully');
+                this.showAlert('Admin Panel loaded in standalone mode', 'info');
+            }
+
+            getDefaultData() {
+                return JSON.parse(JSON.stringify(defaultBarangayData));
+            }
+
+            loadData() {
+                let loaded = false;
+                const savedData = localStorage.getItem(this.dataKey);
+                if (savedData) {
+                    try {
+                        this.currentData = JSON.parse(savedData);
+                        console.log('Data loaded from localStorage');
+                        loaded = true;
+                    } catch (error) {
+                        console.error('Error parsing localStorage data:', error);
+                    }
+                }
+                
+                if (!loaded) {
+                    this.currentData = this.getDefaultData();
+                    console.log('Using pre-loaded default data');
+                }
+                
+                this.populateForms();
+            }
+
+            hasActualChanges() {
+                if (!this.lastSavedData) return true;
+                
+                const currentDataStr = JSON.stringify(this.currentData);
+                const lastSavedDataStr = JSON.stringify(this.lastSavedData);
+                
+                return currentDataStr !== lastSavedDataStr;
+            }
+
+            // Manual save data with change detection
+            saveData(forceSave = false) {
+                if (!forceSave && !this.hasActualChanges()) {
+                    console.log('No changes detected, skipping save');
+                    this.updateSaveStatus('No changes to save', 'info');
+                    this.showAlert('No changes to save', 'info');
+                    return true;
+                }
+
+                let saved = false;
+                
+                try {
+                    localStorage.setItem(this.dataKey, JSON.stringify(this.currentData));
+                    console.log('Data saved to localStorage');
+                    saved = true;
+                    
+                    this.lastSavedData = JSON.parse(JSON.stringify(this.currentData));
+                    
+                    this.updateDashboard();
+                    this.updateSaveStatus('Saved successfully', 'success');
+                    this.logActivity('Data saved successfully', 'success');
+                    
+                } catch (error) {
+                    console.error('Save failed:', error);
+                    this.updateSaveStatus('Save failed', 'error');
+                    this.logActivity('Data save failed', 'error');
+                    saved = false;
+                }
+                
+                return saved;
+            }
+            
+            updateSaveStatus(message = '• Manual Save', type = 'default') {
+                const statusElement = document.getElementById('save-status');
+                if (!statusElement) return;
+                
+                // Clear existing timeout
+                if (this.saveStatusTimeout) {
+                    clearTimeout(this.saveStatusTimeout);
+                }
+                
+                // Update text and class
+                statusElement.textContent = message;
+                
+                // Remove all existing classes
+                statusElement.className = 'save-status';
+                
+                // Add appropriate class based on type
+                if (type === 'success') {
+                    statusElement.classList.add('success');
+                } else if (type === 'warning') {
+                    statusElement.classList.add('warning');
+                } else if (type === 'error') {
+                    statusElement.classList.add('error');
+                } else if (type === 'info') {
+                    statusElement.classList.add('info');
+                }
+                
+                // If it's a success message, set timeout to return to default after 3 seconds
+                if (type === 'success' || type === 'info' || type === 'warning') {
+                    this.saveStatusTimeout = setTimeout(() => {
+                        statusElement.textContent = '• Manual Save';
+                        statusElement.className = 'save-status';
+                    }, 3000);
+                }
+            }
+
+            populateForms() {
+                if (!this.currentData) return;
+
+                // Hero section
+                document.getElementById('system-name').value = this.currentData.systemName || '';
+                document.getElementById('hero-title').value = this.currentData.hero?.title || '';
+                document.getElementById('hero-description').value = this.currentData.hero?.description || '';
+                
+                // Welcome section
+                document.getElementById('welcome-title').value = this.currentData.welcomeSection?.title || '';
+                document.getElementById('welcome-subtitle').value = this.currentData.welcomeSection?.subtitle || '';
+                document.getElementById('welcome-background').value = this.currentData.welcomeSection?.backgroundImage || '';
+                document.getElementById('welcome-logo').value = this.currentData.welcomeSection?.logo || '';
+                
+                // Footer section
+                document.getElementById('footer-title').value = this.currentData.footer?.title || '';
+                document.getElementById('footer-description').value = this.currentData.footer?.description || '';
+                
+                // Contact Info
+                if (this.currentData.footer?.contactInfo) {
+                    document.getElementById('address-line1').value = this.currentData.footer.contactInfo.addressLine1 || '';
+                    document.getElementById('address-line2').value = this.currentData.footer.contactInfo.addressLine2 || '';
+                    document.getElementById('phone').value = this.currentData.footer.contactInfo.phone || '';
+                    document.getElementById('email').value = this.currentData.footer.contactInfo.email || '';
+                    document.getElementById('office-hours').value = this.currentData.footer.contactInfo.officeHours || '';
+                }
+                
+                // Social Media
+                if (this.currentData.footer?.socialMedia) {
+                    document.getElementById('facebook-url').value = this.currentData.footer.socialMedia.facebook || '';
+                    document.getElementById('messenger-url').value = this.currentData.footer.socialMedia.messenger || '';
+                }
+                
+                // Copyright
+                document.getElementById('copyright-text').value = this.currentData.footer?.copyright || '';
+
+                // Update image previews
+                this.updateImagePreviews();
+            }
+
+            updateImagePreviews() {
+                const bgPreview = document.getElementById('welcome-bg-preview');
+                const logoPreview = document.getElementById('welcome-logo-preview');
+
+                if (bgPreview && this.currentData.welcomeSection?.backgroundImage) {
+                    bgPreview.src = this.currentData.welcomeSection.backgroundImage;
+                    bgPreview.classList.add('visible');
+                }
+
+                if (logoPreview && this.currentData.welcomeSection?.logo) {
+                    logoPreview.src = this.currentData.welcomeSection.logo;
+                    logoPreview.classList.add('visible');
+                }
+            }
+
+            setupEventListeners() {
+                // Sidebar navigation
+                document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const tabId = link.getAttribute('data-tab');
+                        this.switchTab(tabId);
+                        this.updateQuickGuide(tabId);
+                    });
+                });
+
+                // Sidebar logout button
+                document.querySelector('.sidebar-logout-btn').addEventListener('click', (e) => {
+                    if (!confirm('Are you sure you want to logout?')) {
+                        e.preventDefault();
+                    }
+                });
+
+                // Form submissions
+                this.setupFormListeners();
+
+                // Quick action buttons
+                document.getElementById('preview-site-btn').addEventListener('click', () => {
+                    window.open('index.html', '_blank');
+                });
+
+                document.getElementById('export-data-btn').addEventListener('click', () => {
+                    this.exportData();
+                });
+
+                document.getElementById('backup-btn').addEventListener('click', () => {
+                    this.exportData();
+                    this.showAlert('Backup created successfully!', 'success');
+                });
+
+                document.getElementById('refresh-btn').addEventListener('click', () => {
+                    this.loadData();
+                    this.showAlert('Data refreshed!', 'success');
+                });
+
+                document.getElementById('clear-all-data-btn').addEventListener('click', () => {
+                    if (confirm('Clear ALL data? This will remove everything and cannot be undone.')) {
+                        this.clearAllData();
+                    }
+                });
+
+                // Image preview handlers
+                document.getElementById('welcome-background').addEventListener('input', (e) => {
+                    this.updateImagePreview('welcome-bg-preview', e.target.value);
+                });
+
+                document.getElementById('welcome-logo').addEventListener('input', (e) => {
+                    this.updateImagePreview('welcome-logo-preview', e.target.value);
+                });
+
+                // Prevent form submission from reloading page
+                document.querySelectorAll('form').forEach(form => {
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                    });
+                });
+            }
+
+            setupFormListeners() {
+                // Hero Form
+                document.getElementById('hero-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const oldTitle = this.currentData.hero.title;
+                    const oldDesc = this.currentData.hero.description;
+                    const oldSystemName = this.currentData.systemName;
+                    const newTitle = document.getElementById('hero-title').value;
+                    const newDesc = document.getElementById('hero-description').value;
+                    const newSystemName = document.getElementById('system-name').value;
+                    
+                    // Only update if there are actual changes
+                    if (oldTitle !== newTitle || oldDesc !== newDesc || oldSystemName !== newSystemName) {
+                        this.currentData.hero.title = newTitle;
+                        this.currentData.hero.description = newDesc;
+                        this.currentData.systemName = newSystemName;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('Hero section updated successfully!', 'success');
+                        this.logActivity('Hero section updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in Hero section', 'info');
+                    }
+                });
+
+                // Hero Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('hero-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset Hero section to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentWelcome = {...this.currentData.welcomeSection};
+                        const currentFooter = {...this.currentData.footer};
+                        
+                        // Reset only hero section and system name
+                        this.currentData.hero = {...defaultData.hero};
+                        this.currentData.systemName = defaultData.systemName;
+                        
+                        // Restore other sections
+                        this.currentData.welcomeSection = currentWelcome;
+                        this.currentData.footer = currentFooter;
+                        
+                        // Update form
+                        document.getElementById('hero-title').value = defaultData.hero.title;
+                        document.getElementById('hero-description').value = defaultData.hero.description;
+                        document.getElementById('system-name').value = defaultData.systemName;
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('Hero section reset to defaults and saved!', 'success');
+                        this.logActivity('Hero section reset to defaults and saved', 'warning');
+                    }
+                });
+
+                // Welcome Form
+                document.getElementById('welcome-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const oldData = {...this.currentData.welcomeSection};
+                    const newData = {
+                        backgroundImage: document.getElementById('welcome-background').value,
+                        title: document.getElementById('welcome-title').value,
+                        subtitle: document.getElementById('welcome-subtitle').value,
+                        logo: document.getElementById('welcome-logo').value
+                    };
+                    
+                    // Check if there are actual changes
+                    if (JSON.stringify(oldData) !== JSON.stringify(newData)) {
+                        this.currentData.welcomeSection = newData;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('Welcome section updated successfully!', 'success');
+                        this.logActivity('Welcome section updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in Welcome section', 'info');
+                    }
+                });
+
+                // Welcome Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('welcome-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset Welcome section to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentHero = {...this.currentData.hero};
+                        const currentSystemName = this.currentData.systemName;
+                        const currentFooter = {...this.currentData.footer};
+                        
+                        // Reset only welcome section
+                        this.currentData.welcomeSection = {...defaultData.welcomeSection};
+                        
+                        // Restore other sections
+                        this.currentData.hero = currentHero;
+                        this.currentData.systemName = currentSystemName;
+                        this.currentData.footer = currentFooter;
+                        
+                        // Update form
+                        document.getElementById('welcome-title').value = defaultData.welcomeSection.title;
+                        document.getElementById('welcome-subtitle').value = defaultData.welcomeSection.subtitle;
+                        document.getElementById('welcome-background').value = defaultData.welcomeSection.backgroundImage;
+                        document.getElementById('welcome-logo').value = defaultData.welcomeSection.logo;
+                        
+                        // Update image previews
+                        this.updateImagePreviews();
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('Welcome section reset to defaults and saved!', 'success');
+                        this.logActivity('Welcome section reset to defaults and saved', 'warning');
+                    }
+                });
+
+                // Footer Form
+                document.getElementById('footer-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const oldData = {...this.currentData.footer};
+                    const newData = {
+                        title: document.getElementById('footer-title').value,
+                        description: document.getElementById('footer-description').value,
+                        contactInfo: {
+                            addressLine1: document.getElementById('address-line1').value,
+                            addressLine2: document.getElementById('address-line2').value,
+                            phone: document.getElementById('phone').value,
+                            email: document.getElementById('email').value,
+                            officeHours: document.getElementById('office-hours').value
+                        },
+                        socialMedia: {
+                            facebook: document.getElementById('facebook-url').value,
+                            messenger: document.getElementById('messenger-url').value
+                        },
+                        copyright: document.getElementById('copyright-text').value
+                    };
+                    
+                    // Check if there are actual changes
+                    if (JSON.stringify(oldData) !== JSON.stringify(newData)) {
+                        this.currentData.footer = newData;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('Footer updated successfully!', 'success');
+                        this.logActivity('Footer updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in footer', 'info');
+                    }
+                });
+
+                // Footer Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('footer-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset Footer section to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentHero = {...this.currentData.hero};
+                        const currentSystemName = this.currentData.systemName;
+                        const currentWelcome = {...this.currentData.welcomeSection};
+                        
+                        // Reset only footer section
+                        this.currentData.footer = {...defaultData.footer};
+                        
+                        // Restore other sections
+                        this.currentData.hero = currentHero;
+                        this.currentData.systemName = currentSystemName;
+                        this.currentData.welcomeSection = currentWelcome;
+                        
+                        // Update form
+                        document.getElementById('footer-title').value = defaultData.footer.title;
+                        document.getElementById('footer-description').value = defaultData.footer.description;
+                        document.getElementById('address-line1').value = defaultData.footer.contactInfo.addressLine1;
+                        document.getElementById('address-line2').value = defaultData.footer.contactInfo.addressLine2;
+                        document.getElementById('phone').value = defaultData.footer.contactInfo.phone;
+                        document.getElementById('email').value = defaultData.footer.contactInfo.email;
+                        document.getElementById('office-hours').value = defaultData.footer.contactInfo.officeHours;
+                        document.getElementById('facebook-url').value = defaultData.footer.socialMedia.facebook;
+                        document.getElementById('messenger-url').value = defaultData.footer.socialMedia.messenger;
+                        document.getElementById('copyright-text').value = defaultData.footer.copyright;
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('Footer section reset to defaults and saved!', 'success');
+                        this.logActivity('Footer section reset to defaults and saved', 'warning');
+                    }
+                });
+            }
+
+            switchTab(tabId) {
+                // Update sidebar active state
+                document.querySelectorAll('.sidebar-menu a').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show the selected tab content
+                const selectedTab = document.getElementById(tabId);
+                if (selectedTab) {
+                    selectedTab.classList.add('active');
+                }
+                
+                this.updateQuickGuide(tabId);
+                
+                // Scroll to top of admin-content area
+                document.querySelector('.admin-content').scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            updateQuickGuide(tabId) {
+                document.querySelectorAll('.guide-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                const guideId = `${tabId}-guide`;
+                const guideSection = document.getElementById(guideId);
+                if (guideSection) {
+                    guideSection.style.display = 'block';
+                }
+            }
+
+            updateDashboard() {
+                if (!this.currentData) return;
+                
+                // Update simple dashboard stats
+                document.getElementById('system-status').textContent = 'Ready';
+                document.getElementById('user-count').textContent = '0';
+                document.getElementById('last-updated').textContent = new Date().toLocaleDateString();
+                
+                // Calculate data size
+                const dataSize = JSON.stringify(this.currentData).length;
+                document.getElementById('data-size').textContent = `${Math.round(dataSize / 1024)} KB`;
+            }
+
+            updateImagePreview(previewId, url) {
+                const preview = document.getElementById(previewId);
+                if (preview) {
+                    if (url) {
+                        preview.src = url;
+                        preview.classList.add('visible');
+                    } else {
+                        preview.classList.remove('visible');
+                    }
+                }
+            }
+
+            exportData() {
+                const dataStr = JSON.stringify(this.currentData, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `barangay-118-backup-${new Date().toISOString().split('T')[0]}.json`;
+                link.click();
+                URL.revokeObjectURL(url);
+                this.logActivity('Data exported successfully', 'success');
+                this.showAlert('Data exported successfully!', 'success');
+            }
+
+            clearAllData() {
+                if (confirm('Clear ALL data? This will remove everything and cannot be undone.')) {
+                    localStorage.removeItem('barangayData');
+                    this.currentData = this.getDefaultData();
+                    this.populateForms();
+                    this.saveData(true); // Force save
+                    this.logActivity('All data cleared', 'error');
+                    this.showAlert('All data has been cleared!', 'success');
+                }
+            }
+
+            showAlert(message, type) {
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type}`;
+                alert.innerHTML = `<strong><i class="fas fa-${type === 'success' ? 'check' : 'exclamation'}-circle"></i> ${message}</strong>`;
+                
+                const currentTab = document.querySelector('.tab-content.active');
+                if (currentTab) {
+                    currentTab.insertBefore(alert, currentTab.firstChild);
+                }
+                
+                setTimeout(() => {
+                    if (alert.parentNode) {
+                        alert.remove();
+                    }
+                }, 5000);
+            }
+
+            logActivity(message, type) {
+                const activity = {
+                    timestamp: new Date().toLocaleTimeString(),
+                    message: message,
+                    type: type
+                };
+                this.activityLog.unshift(activity);
+                
+                if (this.activityLog.length > 10) {
+                    this.activityLog.pop();
+                }
+                
+                this.updateActivityLog();
+            }
+
+            updateActivityLog() {
+                const container = document.getElementById('recent-activity');
+                if (!container) return;
+
+                if (this.activityLog.length === 0) {
+                    container.innerHTML = `<p style="color: var(--gray); text-align: center; padding: 20px;"><i class="fas fa-clock"></i> No recent activity</p>`;
+                    return;
+                }
+
+                container.innerHTML = this.activityLog.map(activity => `
+                    <div style="padding: 10px 15px; border-left: 3px solid ${
+                        activity.type === 'success' ? 'var(--success)' : 
+                        activity.type === 'error' ? 'var(--error)' : 'var(--warning)'
+                    }; margin-bottom: 10px; background: var(--gray-light); border-radius: 0 var(--radius) var(--radius) 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 15px;">
+                            <span style="font-weight: 600;">${activity.message}</span>
+                            <small style="color: var(--gray);">${activity.timestamp}</small>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Initialize the admin panel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.adminPanel = new BarangayAdminPanel();
+        });
+    </script>
+</body>
+</html>

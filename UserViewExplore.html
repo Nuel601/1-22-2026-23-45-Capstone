@@ -1,0 +1,111 @@
+
+OTP Code
+Service ID:service_y0sh9nd
+
+One-Time Password
+Template ID:template_vdbhhq5
+
+API keys
+Public Key
+KkQSfG62Jg8W8uies
+
+Private Key
+gDPSwhQqFDtRVP_8LGbWq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+User Feedback
+Service ID:service_upx49ro
+
+Contact Us
+Template ID:template_4loo5dp
+
+API keys
+Public Key
+KkQSfG62Jg8W8uies
+
+Private Key
+gDPSwhQqFDtRVP_8LGbWq
+
+
+
+    <button onclick="resetDatabase()">Reset Local Database</button>
+
+<script>
+function resetDatabase() {
+    localStorage.clear(); // burahin lahat ng saved data
+    alert("Local database has been reset!");
+}
+</script>
+
+
+
+        setupEventListeners() {
+            // TANGGALIN - Inilipat na sa setupTabSwitching method
+            // document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            //     link.addEventListener('click', (e) => {
+            //         e.preventDefault();
+            //         const tabId = link.getAttribute('data-tab');
+            //         this.switchTab(tabId);
+            //         this.updateQuickGuide(tabId);
+            //     });
+            // });
+
+
+
+
+
+                /* Tabs */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid var(--gray-light);
+    margin-bottom: 25px;
+    background: var(--light);
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 0 20px;
+}
+
+.tab {
+    padding: 15px 25px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    font-weight: 600;
+    color: var(--gray);
+    position: relative;
+}
+
+.tab:hover {
+    color: var(--primary);
+}
+
+.tab.active {
+    border-bottom-color: var(--primary);
+    color: var(--primary);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), transparent);
+}
+
+
+.tab .icon {
+    color: var(--gray) !important;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}

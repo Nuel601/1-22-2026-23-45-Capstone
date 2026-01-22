@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control - Barangay 118 Online System</title>
+    <link rel="shortcut icon" type="image/png" href="Logo-Favicon-removebg-preview.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --light: #ffffff;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --gray-light: #f1f5f9;
+            --border: #cbd5e1;
+            --error: #dc2626;
+            --error-light: #fef2f2;
+            --success: #16a34a;
+            --success-light: #f0fdf4;
+            --warning: #d97706;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 8px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            box-shadow: var(--shadow-lg);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: var(--gray-light);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
+            border-color: var(--primary-light);
+            font-weight: 700;
+        }
+
+        /* Two Column Layout */
+        .admin-panel {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 0;
+            min-height: calc(100vh - 120px);
+        }
+        
+        .sidebar {
+            background: linear-gradient(180deg, var(--light) 0%, #f8fafc 100%);
+            box-shadow: var(--shadow-lg);
+            padding: 25px 0;
+            border-right: 1px solid var(--border);
+            position: sticky;
+            top: 120px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 0 25px 20px;
+            border-bottom: 2px solid var(--gray-light);
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--gray);
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .sidebar-menu a:hover::before {
+            left: 100%;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: var(--gray-light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-menu a.active {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(59, 130, 246, 0.1));
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .sidebar-icon {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-menu a:hover .sidebar-icon {
+            transform: scale(1.2);
+        }
+        
+        .admin-content {
+            padding: 30px;
+            overflow-y: auto;
+            background: transparent;
+        }
+        
+        /* Section Styles */
+        .admin-section {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .admin-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+        }
+        
+        .admin-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gray-light);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title i {
+            color: var(--primary);
+        }
+        
+/* Top Bar Flex Layout */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.top-bar .alert {
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--success);
+    background-color: var(--success-light);
+    color: var(--success);
+    animation: slideIn 0.3s ease;
+}
+
+.top-bar .search-container {
+    flex: 0 0 300px; 
+    position: relative;
+}
+
+.top-bar .search-box {
+    width: 100%;
+    padding: 12px 45px 12px 16px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 15px;
+    transition: var(--transition);
+    background: var(--light);
+}
+
+.top-bar .search-box:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.top-bar .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+}
+
+        .form-group {
+            margin-bottom: 15px; 
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px; 
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 15px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 14px; 
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 15px;
+            transition: var(--transition);
+            background: var(--light);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #15803d);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning), #b45309);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, var(--error), #b91c1c);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 6px;
+            flex-wrap: nowrap;
+        }
+        
+        .btn-sm {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .data-table tr:hover {
+            background-color: var(--gray-light);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--light), #f8fafc);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+       
+        .stat-label {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--gray-light);
+            margin-bottom: 25px;
+            background: var(--light);
+            border-radius: var(--radius) var(--radius) 0 0;
+            padding: 0 20px;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--gray);
+            position: relative;
+        }
+        
+        .tab:hover {
+            color: var(--primary);
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), transparent);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Alert Styles */
+        .alert {
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            margin-bottom: 5px;
+            border-left: 4px solid;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .alert-success {
+            background-color: var(--success-light);
+            color: var(--success);
+            border-left-color: var(--success);
+        }
+        
+        .alert-error {
+            background-color: var(--error-light);
+            color: var(--error);
+            border-left-color: var(--error);
+        }
+        
+        /* Image Preview */
+        .image-preview-container {
+            margin-top: 15px;
+        }
+        
+        .image-preview {
+            max-width: 300px;
+            max-height: 200px;
+            border-radius: var(--radius);
+            border: 2px solid var(--border);
+            display: none;
+            margin-top: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .image-preview.visible {
+            display: block;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        
+        /* Feature Badge - FIXED */
+        .feature-badge {
+            background: linear-gradient(135deg, var(--accent), var(--warning));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .feature-badge i {
+            font-size: 0.6rem;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        /* Manual Save Status - LEFT SIDE */
+        .save-status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            z-index: 9999;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Edit Modal Styles */
+        .edit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .edit-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        /* NEW: Top Actions inside tab-content */
+        .tab-top-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+            margin-bottom: 25px;
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        .tab-top-actions a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gray-light);
+        }
+        
+        .tab-top-actions a:hover {
+            color: var(--primary);
+            background-color: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab .icon {
+            color: var(--gray) !important;
+        }
+
+        /* NEW: Quick Guide at bottom center */
+        .quick-guide-center {
+            background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid var(--border);
+        }
+        
+        .quick-guide-header {
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gray-light);
+            margin-bottom: 20px;
+        }
+        
+        .quick-guide-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .guide-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--gray-light);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .guide-section h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .guide-section p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .guide-section ul {
+            padding-left: 20px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .guide-section li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        /* Status Indicators */
+        .status-online {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .status-offline {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .status-dot.online {
+            background-color: #27ae60;
+        }
+        
+        .status-dot.offline {
+            background-color: #e74c3c;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .admin-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 15px 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 15px;
+            }
+            
+            .sidebar-menu li {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+            
+            .sidebar-menu a {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                padding: 12px 20px;
+            }
+            
+            .sidebar-menu a.active {
+                border-left-color: transparent;
+                border-bottom-color: var(--primary);
+            }
+            
+            .admin-content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links {
+                gap: 5px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                padding: 12px 20px;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+            
+            .tab.active {
+                border-bottom-color: transparent;
+                border-left-color: var(--primary);
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-sm {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+
+            .tab-top-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .admin-content {
+                padding: 15px;
+            }
+            
+            .admin-section {
+                padding: 20px;
+            }
+            
+            .logo h1 {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .quick-guide-center {
+                padding: 20px;
+            }
+        }
+
+        /* Role badges */
+        .role-badge {
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .role-super_admin {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .role-admin {
+            background: #3498db;
+            color: white;
+        }
+
+        .role-user {
+            background: #27ae60;
+            color: white;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            border-radius: 6px;
+            font-size: 12px;
+            padding: 8px 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            border-left: 4px solid #3498db;
+        }
+
+        .toast.success {
+            border-left-color: #27ae60;
+        }
+
+        .toast.error {
+            border-left-color: #e74c3c;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .admin-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                padding: 15px 0;
+            }
+            
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 15px;
+            }
+            
+            .sidebar-menu li {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+            
+            .sidebar-menu a {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                padding: 12px 20px;
+            }
+            
+            .sidebar-menu a.active {
+                border-left-color: transparent;
+                border-bottom-color: var(--primary);
+            }
+            
+            .admin-content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-links {
+                gap: 5px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                padding: 12px 20px;
+                border-bottom: none;
+                border-left: 3px solid transparent;
+            }
+            
+            .tab.active {
+                border-bottom-color: transparent;
+                border-left-color: var(--primary);
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-sm {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+
+            .tab-top-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .admin-content {
+                padding: 15px;
+            }
+            
+            .admin-section {
+                padding: 20px;
+            }
+            
+            .logo h1 {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .quick-guide-center {
+                padding: 20px;
+            }
+        }
+
+        /* Laptop Media Queries */
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            .admin-panel {
+                grid-template-columns: 260px 1fr;
+                gap: 10px;
+            }
+            
+            .sidebar {
+                width: 260px;
+                padding: 20px 0;
+            }
+            
+            .admin-content {
+                padding: 25px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .form-row {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .tab-top-actions {
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 12px;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .btn-sm {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                min-width: 70px;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .stat-value {
+                font-size: 2.2rem;
+            }
+            
+            .guide-section {
+                padding: 15px;
+            }
+        }
+
+        /* For larger laptops (1441px and above) */
+        @media (min-width: 1441px) and (max-width: 1920px) {
+            .container {
+                max-width: 1600px;
+            }
+            
+            .admin-panel {
+                grid-template-columns: 280px 1fr;
+                gap: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+            
+            .admin-content {
+                padding: 35px;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 16px;
+            }
+            
+            .form-row {
+                gap: 25px;
+            }
+            
+            .action-buttons {
+                flex-direction: row;
+                gap: 8px;
+            }
+            
+            .btn-sm {
+                min-width: 80px;
+                padding: 8px 12px;
+            }
+            
+            .quick-guide-center {
+                padding: 30px;
+            }
+            
+            .section-title {
+                font-size: 1.9rem;
+            }
+            
+            .stat-value {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+            .admin-panel {
+                grid-template-columns: 240px 1fr;
+            }
+            
+            .sidebar {
+                width: 240px;
+                padding: 15px 0;
+            }
+            
+            .sidebar-menu a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .admin-content {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .data-table {
+                font-size: 14px;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 10px;
+            }
+        }
+
+        /* For high-resolution laptop screens */
+        @media (min-width: 1921px) {
+            .container {
+                max-width: 1800px;
+            }
+            
+            .admin-panel {
+                grid-template-columns: 300px 1fr;
+                gap: 20px;
+            }
+            
+            .sidebar {
+                width: 300px;
+                padding: 30px 0;
+            }
+            
+            .admin-content {
+                padding: 40px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .form-control {
+                padding: 14px 18px;
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 15px;
+            }
+            
+            .stat-value {
+                font-size: 3rem;
+            }
+            
+            .data-table {
+                font-size: 16px;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 18px;
+            }
+        }
+
+        /* Optimize for laptop trackpad scrolling */
+        @media (min-width: 1024px) {
+            .sidebar {
+                overflow-y: auto;
+                scrollbar-width: thin;
+                scrollbar-color: var(--primary-light) var(--gray-light);
+            }
+            
+            .sidebar::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            .sidebar::-webkit-scrollbar-track {
+                background: var(--gray-light);
+                border-radius: 10px;
+            }
+            
+            .sidebar::-webkit-scrollbar-thumb {
+                background-color: var(--primary-light);
+                border-radius: 10px;
+            }
+            
+            .admin-content {
+                overflow-y: auto;
+                scrollbar-width: thin;
+                scrollbar-color: var(--primary-light) var(--gray-light);
+            }
+            
+            .admin-content::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            .admin-content::-webkit-scrollbar-track {
+                background: var(--gray-light);
+                border-radius: 10px;
+            }
+            
+            .admin-content::-webkit-scrollbar-thumb {
+                background-color: var(--primary);
+                border-radius: 10px;
+            }
+        }
+
+        /* Adjust form layouts for laptop screens */
+        @media (min-width: 1024px) and (max-width: 1366px) {
+            .form-row {
+                flex-wrap: wrap;
+            }
+            
+            .form-row .form-group {
+                min-width: calc(50% - 10px);
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                flex: 1;
+                min-width: 150px;
+                text-align: center;
+            }
+            
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* For laptop screens with touch capability */
+        @media (min-width: 1024px) and (hover: none) and (pointer: coarse) {
+            .nav-links a,
+            .sidebar-menu a,
+            .btn,
+            .tab {
+                padding: 12px 20px;
+                min-height: 44px;
+            }
+            
+            .action-buttons .btn-sm {
+                min-height: 36px;
+                min-width: 80px;
+            }
+            
+            .form-control {
+                min-height: 44px;
+            }
+            
+            select.form-control {
+                min-height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo" onclick="window.open('PanelUserView.html', '_blank')">
+                    <div class="logo-icon"><i class="fas fa-cog"></i></div>
+                    <h1>BARANGAY 118 ONLINE SYSTEM - ADMIN LOG</h1>
+                </div>
+
+                <div class="nav-links">
+                    <a href="PanelAdminView.html">Panel-Page</a>
+                    <a href="CreateAccountAdmin.html">Create-Page</a>
+                    <a href="AboutUsAdmin.html">AboutUs-Page</a>
+                    <a href="LogAdminControl.html" class="active">Log-Page</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel">
+        <!-- Left Sidebar - Control Center -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title"><i class="fas fa-cogs"></i> Control Center</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" data-tab="dashboard" class="active"><span class="sidebar-icon"><i class="fas fa-tachometer-alt"></i></span> Dashboard Overview</a></li>
+                <li><a href="#" data-tab="user-management"><span class="sidebar-icon"><i class="fas fa-users-cog"></i></span> User Management</a></li>
+                <li><a href="#" data-tab="admin-management"><span class="sidebar-icon"><i class="fas fa-user-shield"></i></span> Admin Management</a></li>
+            </ul>
+        </div>
+
+        <!-- Center Content -->
+        <div class="admin-content">
+            <!-- Top Action Buttons -->
+            <div class="tab-top-actions">
+                <a href="#" id="save-all-btn"><i class="fas fa-save"></i> Save</a>
+                <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalUsers">0</div>
+                            <div class="stat-label">Total Users</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="activeAdmins">0</div>
+                            <div class="stat-label">Admin Account</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="onlineUsers">0</div>
+                            <div class="stat-label">Online Users</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value"><i class="fas fa-check-circle" style="color: #27ae60;"></i></div>
+                            <div class="stat-label">System Status</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong><i class="fas fa-check-circle"></i> System Ready!</strong> Welcome to the Barangay 118 Admin Control Panel. All changes are saved manually.
+                    </div>
+                    
+                    <h3 style="margin-bottom: 15px; color: var(--dark);">Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-primary" id="preview-site-btn">
+                            <i class="fas fa-external-link-alt"></i> Preview Site
+                        </button>
+                        <button class="btn btn-secondary" id="export-data-btn">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- System Logs Section in Dashboard -->
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-clipboard-list"></i> System Logs</h2>
+                    <p style="color: var(--gray); margin-bottom: 25px;">Audit trail of all system activities.</p>
+                    
+                    <div class="top-bar">
+                        <div class="form-group" style="margin-bottom: 0; min-width: 200px;">
+                            <label class="form-label">Filter Logs:</label>
+                            <select class="form-control" id="logFilter">
+                                <option value="all">All Activities</option>
+                                <option value="login">Login Attempts</option>
+                                <option value="user_created">User Creation</option>
+                                <option value="admin_actions">Admin Actions</option>
+                                <option value="system">System Events</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-container">
+                            <input type="text" class="search-box" id="systemLogsSearch" placeholder="Search system logs...">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="systemLogs">
+                            <!-- System logs will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Quick Guide -->
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="dashboard-guide" class="guide-section">
+                        <h4>Dashboard Overview</h4>
+                        <p>The dashboard provides a quick overview of your system's key metrics and recent activity.</p>
+                        <ul>
+                            <li>Monitor total users, admins, and pending requests</li>
+                            <li>Track recent system activity</li>
+                            <li>Use quick actions for common tasks</li>
+                            <li>Check system status at a glance</li>
+                            <li>View and filter system logs</li>
+                            <li>Remember to save changes manually using the "Save All" button</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management Tab -->
+            <div id="user-management" class="tab-content">
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-users-cog"></i> User Management</h2>
+                    <p style="color: var(--gray); margin-bottom: 25px;">Manage all user accounts in the system.</p>
+                    
+                    <!-- Existing Users Only - Add New User removed -->
+                    <div id="existing-users">
+                        <div class="top-bar">
+                            <div class="alert alert-success">
+                                <strong><i class="fas fa-info-circle"></i> Pro Tip:</strong> Click on any user to edit their details.
+                            </div>
+                            <div class="search-container">
+                                <input type="text" class="search-box" id="userSearch" placeholder="Search users...">
+                                <i class="fas fa-search search-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Registered</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTable">
+                                <!-- Users will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Guide -->
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="user-guide" class="guide-section">
+                        <h4>User Management</h4>
+                        <p>Manage all user accounts in the system.</p>
+                        <ul>
+                            <li>View existing user accounts</li>
+                            <li>Search and filter users</li>
+                            <li>Monitor user status and activity</li>
+                            <li>Check registration dates</li>
+                            <li>Remember to save changes manually</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Management Tab -->
+            <div id="admin-management" class="tab-content">
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-user-shield"></i> Admin Management</h2>
+                    <p style="color: var(--gray); margin-bottom: 25px;">Manage administrative accounts and permissions.</p>
+                    
+                    <!-- Existing Admins Only - Add New Admin removed -->
+                    <div id="existing-admins">
+                        <div class="top-bar">
+                            <div class="alert alert-success">
+                                <strong><i class="fas fa-info-circle"></i> Pro Tip:</strong> Super Admin accounts cannot be deleted.
+                            </div>
+                            
+                            <div class="search-container">
+                                <input type="text" class="search-box" id="adminSearch" placeholder="Search admins...">
+                                <i class="fas fa-search search-icon"></i>
+                            </div>  
+                        </div>
+                          
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Last Login</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminsTable">
+                                <!-- Admins will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Guide -->
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="admin-guide" class="guide-section">
+                        <h4>Admin Management</h4>
+                        <p>Manage administrative accounts and permissions.</p>
+                        <ul>
+                            <li>View existing admin accounts</li>
+                            <li>Monitor admin login activity</li>
+                            <li>Super Admin accounts have full system access</li>
+                            <li>Track admin status and roles</li>
+                            <li>Remember to save changes manually</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manual Save Status Indicator - LEFT SIDE -->
+    <div id="save-status" class="save-status">Manual Save: Ready</div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+<script>
+    // Enhanced Admin Panel with Manual Save System from PanelAdminView
+    class BarangayAdminPanel {
+        constructor() {
+            this.currentData = null;
+            this.hasUnsavedChanges = false;
+            this.activityLog = [];
+            this.lastSavedData = null;
+            this.init();
+        }
+
+        init() {
+            this.loadData();
+            this.lastSavedData = this.getCurrentData();
+            this.setupEventListeners();
+            this.updateDashboard();
+            this.loadUsersTable();
+            this.loadAdminsTable();
+            this.loadSystemLogs();
+            this.logActivity('System initialized with manual save', 'success');
+            this.updateSaveStatus();
+        }
+
+        getCurrentData() {
+            return {
+                users: JSON.parse(JSON.stringify(users)),
+                admins: JSON.parse(JSON.stringify(admins)),
+                systemLogs: JSON.parse(JSON.stringify(systemLogs)),
+                userStatus: JSON.parse(JSON.stringify(userStatus))
+            };
+        }
+
+        hasActualChanges() {
+            if (!this.lastSavedData) return true;
+            
+            const currentDataStr = JSON.stringify(this.getCurrentData());
+            const lastSavedDataStr = JSON.stringify(this.lastSavedData);
+            
+            return currentDataStr !== lastSavedDataStr;
+        }
+
+        loadData() {
+            const defaultUsers = [
+                { id: 1, email: "superadmin@barangay118.gov.ph", password: "superadmin123", role: "super_admin", name: "Primary Administrator", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 2, email: "superadmin2@barangay118.gov.ph", password: "superadmin123", role: "super_admin", name: "Chief Administrator", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 3, email: "admin1@barangay118.gov.ph", password: "admin123", role: "admin", name: "Records Administrator", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 4, email: "admin2@barangay118.gov.ph", password: "admin123", role: "admin", name: "Operations Administrator", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 5, email: "admin3@barangay118.gov.ph", password: "admin123", role: "admin", name: "Logistics Administrator", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 6, email: "almanzor_jhlox@barangay118.gov.ph", password: "user123", role: "user", name: "Jhlox De Guzman ALMANZOR", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 7, email: "andaya_zantrix@barangay118.gov.ph", password: "user123", role: "user", name: "Zantrix Geoff Dandoy ANDAYA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 8, email: "aranas_john@barangay118.gov.ph", password: "user123", role: "user", name: "John Aezer Fajardo ARANAS", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 9, email: "argallon_ezekiel@barangay118.gov.ph", password: "user123", role: "user", name: "Ezekiel Lazaro ARGALLON", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 10, email: "badilla_carl@barangay118.gov.ph", password: "user123", role: "user", name: "Carl John Henry Smith BADILLA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 11, email: "bag-id_alvin@barangay118.gov.ph", password: "user123", role: "user", name: "Alvin Evangelista BAG-ID", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 12, email: "blanco_zidane@barangay118.gov.ph", password: "user123", role: "user", name: "Zidane Punzalan BLANCO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 13, email: "burgos_alfred@barangay118.gov.ph", password: "user123", role: "user", name: "Alfred BURGOS", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 14, email: "canlas_chester@barangay118.gov.ph", password: "user123", role: "user", name: "Chester Jon Guttierez CANLAS", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 15, email: "castro_jomar@barangay118.gov.ph", password: "user123", role: "user", name: "Jomar Santino Novilla CASTRO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 16, email: "catimbang_john@barangay118.gov.ph", password: "user123", role: "user", name: "John Mark Toledo CATIMBANG", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 17, email: "cruz_jezrel@barangay118.gov.ph", password: "user123", role: "user", name: "Jezrel Villa CRUZ", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 18, email: "espino_rance@barangay118.gov.ph", password: "user123", role: "user", name: "Rance Ego Soliman ESPINO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 19, email: "fernandez_mico@barangay118.gov.ph", password: "user123", role: "user", name: "Mico Palencia FERNANDEZ", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 20, email: "flores_calvin@barangay118.gov.ph", password: "user123", role: "user", name: "Calvin Brent Ardonza FLORES", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 21, email: "galibo_gemanuel@barangay118.gov.ph", password: "user123", role: "user", name: "Gemanuel Pedoche GALIBO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 22, email: "garcia_john@barangay118.gov.ph", password: "user123", role: "user", name: "John Cedric Rias GARCIA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 23, email: "gatmaitan_renz@barangay118.gov.ph", password: "user123", role: "user", name: "Renz Albert Acab GATMAITAN", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 24, email: "honradez_zacchary@barangay118.gov.ph", password: "user123", role: "user", name: "Zacchary Angeles HONRADEZ", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 25, email: "judaya_aedrick@barangay118.gov.ph", password: "user123", role: "user", name: "Aedrick John Cabales JUDAYA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 26, email: "lingan_andres@barangay118.gov.ph", password: "user123", role: "user", name: "Andres Lei Aguilar LINGAN", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 27, email: "mahilum_shcem@barangay118.gov.ph", password: "user123", role: "user", name: "Shcem Yae Pagador MAHILUM", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 28, email: "manalo_carlos@barangay118.gov.ph", password: "user123", role: "user", name: "Carlos Sebastian Lagatuz MANALO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 29, email: "mendina_john@barangay118.gov.ph", password: "user123", role: "user", name: "John Paul Magnaye MENDINA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 30, email: "moldez_john@barangay118.gov.ph", password: "user123", role: "user", name: "John Paul Agotipac MOLDEZ", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 31, email: "ortega_danny@barangay118.gov.ph", password: "user123", role: "user", name: "Danny King Mendoza ORTEGA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 32, email: "pangco_miguel@barangay118.gov.ph", password: "user123", role: "user", name: "Miguel Adriel Gallo PANGCO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 33, email: "pontilan_neo@barangay118.gov.ph", password: "user123", role: "user", name: "Neo Angelo Degamon PONTILAN", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 34, email: "pozon_david@barangay118.gov.ph", password: "user123", role: "user", name: "David Bryant Peralta POZON", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 35, email: "pozon_john@barangay118.gov.ph", password: "user123", role: "user", name: "John Patrick Peralta POZON", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 36, email: "quindoza_mark@barangay118.gov.ph", password: "user123", role: "user", name: "Mark Raymond Sia QUINDOZA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 37, email: "saflor_jillian@barangay118.gov.ph", password: "user123", role: "user", name: "Jillian Gidayawan SAFLOR", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 38, email: "sandiego_mark@barangay118.gov.ph", password: "user123", role: "user", name: "Mark Ehnzo Tesorio SAN DIEGO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 39, email: "solis_jacob@barangay118.gov.ph", password: "user123", role: "user", name: "Jacob Emmanuel Hetigan SOLIS", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 40, email: "sy_aarondave@barangay118.gov.ph", password: "user123", role: "user", name: "Aaron Dave Ariegado SY", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 41, email: "vasquez_terrence@barangay118.gov.ph", password: "user123", role: "user", name: "Terrence Keil Guese VASQUEZ", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 42, email: "villarosa_kris@barangay118.gov.ph", password: "user123", role: "user", name: "Kris Jarred Maravilla VILLAROSA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 43, email: "carlos_aaliyah@barangay118.gov.ph", password: "user123", role: "user", name: "Aaliyah Alyssa Nicole Macasanas CARLOS", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 44, email: "limbo_jewel@barangay118.gov.ph", password: "user123", role: "user", name: "Jewel Hyacinth LIMBO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 45, email: "magampo_celestine@barangay118.gov.ph", password: "user123", role: "user", name: "Celestine Isabelle Salud MAGAMPO", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 46, email: "ong_clariza@barangay118.gov.ph", password: "user123", role: "user", name: "Clariza Claire Dela Cruz ONG", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 47, email: "orpilla_jemilhyn@barangay118.gov.ph", password: "user123", role: "user", name: "Jemilhyn Frances Ong ORPILLA", status: "active", registered: new Date().toLocaleDateString() },
+                { id: 48, email: "ruiz_angel@barangay118.gov.ph", password: "user123", role: "user", name: "Angel Rosales RUIZ", status: "active", registered: new Date().toLocaleDateString() }
+            ];
+            
+            window.users = JSON.parse(localStorage.getItem('barangayUsers')) || defaultUsers;
+            window.admins = JSON.parse(localStorage.getItem('barangayAdmins')) || defaultUsers.filter(user => user.role === 'admin' || user.role === 'super_admin');
+            window.systemLogs = JSON.parse(localStorage.getItem('systemLogs')) || [];
+            window.userStatus = JSON.parse(localStorage.getItem('userStatus')) || {};
+
+            if (window.systemLogs.length === 0) {
+                const now = new Date();
+                const initialLog = {
+                    date: now.toLocaleDateString(),
+                    time: now.toLocaleTimeString(),
+                    user: "System",
+                    action: "SYSTEM_STARTED",
+                    status: "success",
+                    type: "system"
+                };
+                window.systemLogs.push(initialLog);
+            }
+
+            this.currentData = this.getCurrentData();
+            console.log('✅ Data loaded with manual save system');
+        }
+
+        // Manual save data with change detection
+        saveData() {
+            if (!this.hasActualChanges()) {
+                console.log('No changes detected, skipping save');
+                this.updateSaveStatus('No changes to save');
+                this.showAlert('No changes to save', 'info');
+                return true;
+            }
+
+            let saved = false;
+            
+            try {
+                // Save all data to localStorage
+                localStorage.setItem('barangayUsers', JSON.stringify(window.users));
+                localStorage.setItem('barangayAdmins', JSON.stringify(window.admins));
+                localStorage.setItem('systemLogs', JSON.stringify(window.systemLogs));
+                localStorage.setItem('userStatus', JSON.stringify(window.userStatus));
+                
+                // Update last saved data reference
+                this.lastSavedData = this.getCurrentData();
+                this.hasUnsavedChanges = false;
+                
+                this.updateDashboard();
+                this.updateSaveStatus('Saved successfully');
+                this.logActivity('Data saved successfully', 'success');
+                saved = true;
+                
+            } catch (error) {
+                console.error('Save failed:', error);
+                this.updateSaveStatus('Save failed');
+                this.logActivity('Data save failed', 'error');
+                saved = false;
+            }
+            
+            return saved;
+        }
+
+        // Update save status
+        updateSaveStatus(status = 'Manual Save') {
+            const statusElement = document.getElementById('save-status');
+            if (statusElement) {
+                const baseStatus = '• Manual Save';
+                const hasChanges = this.hasActualChanges() ? ' - Unsaved changes' : '';
+                
+                if (status) {
+                    statusElement.textContent = `${baseStatus} - ${status}`;
+                    statusElement.style.background = status.includes('failed') ? 'var(--error)' : 
+                    status.includes('Saving') ? 'var(--warning)' : 
+                    status.includes('success') ? 'var(--success)' : 'rgba(0,0,0,0.8)';
+                    
+                    // Reset color after 3 seconds
+                    if (status !== 'Saved successfully' && !status.includes('failed')) {
+                        setTimeout(() => {
+                            statusElement.style.background = 'rgba(0,0,0,0.8)';
+                            statusElement.textContent = `${baseStatus}${hasChanges}`;
+                        }, 3000);
+                    }
+                } else {
+                    statusElement.textContent = `${baseStatus}${hasChanges}`;
+                    statusElement.style.background = 'rgba(0,0,0,0.8)';
+                }
+            }
+        }
+
+        setupEventListeners() {
+            // Sidebar navigation
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = link.getAttribute('data-tab');
+                    this.switchTab(tabId);
+                    this.updateQuickGuide(tabId);
+                });
+            });
+
+            // Manual Save All button
+            document.getElementById('save-all-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!this.hasActualChanges()) {
+                    this.showAlert('No changes to save', 'info');
+                    return;
+                }
+                this.saveData();
+                this.showAlert('All changes saved successfully!', 'success');
+            });
+
+            document.getElementById('logout-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (confirm('Are you sure you want to logout?')) {
+                    window.location.href = 'LogIn.html';
+                }
+            });
+
+            document.getElementById('preview-site-btn').addEventListener('click', () => {
+                window.open('PanelUserView.html', '_blank');
+            });
+
+            document.getElementById('export-data-btn').addEventListener('click', () => {
+                this.exportData();
+            });
+
+            // Search functionality
+            document.getElementById('userSearch').addEventListener('input', (e) => {
+                this.filterTable('usersTable', e.target.value.toLowerCase());
+            });
+
+            document.getElementById('adminSearch').addEventListener('input', (e) => {
+                this.filterTable('adminsTable', e.target.value.toLowerCase());
+            });
+
+            document.getElementById('systemLogsSearch').addEventListener('input', (e) => {
+                this.filterTable('systemLogs', e.target.value.toLowerCase());
+            });
+
+            document.getElementById('logFilter').addEventListener('change', () => {
+                this.loadSystemLogs();
+            });
+
+            // Auto-check for changes every 5 seconds
+            setInterval(() => {
+                this.updateSaveStatus();
+            }, 5000);
+        }
+
+        filterTable(tableId, searchText) {
+            const table = document.getElementById(tableId);
+            if (!table) return;
+            
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let found = false;
+                
+                for (let j = 0; j < cells.length; j++) {
+                    const cellText = cells[j].textContent.toLowerCase();
+                    if (cellText.includes(searchText)) {
+                        found = true;
+                        break;
+                    }
+                }
+                
+                rows[i].style.display = found ? '' : 'none';
+            }
+        }
+
+        switchTab(tabId) {
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar-menu a').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show the selected tab content
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+            
+            this.updateQuickGuide(tabId);
+            
+            // Scroll to top of admin-content area
+            document.querySelector('.admin-content').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        updateQuickGuide(tabId) {
+            document.querySelectorAll('.guide-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            const guideId = `${tabId}-guide`;
+            const guideSection = document.getElementById(guideId);
+            if (guideSection) {
+                guideSection.style.display = 'block';
+            }
+        }
+
+        updateDashboard() {
+            const currentTime = new Date().getTime();
+            const onlineUsersCount = Object.values(window.userStatus).filter(status => 
+                status && status.online && (currentTime - new Date(status.lastLogin).getTime() < 300000)
+            ).length;
+
+            document.getElementById('totalUsers').textContent = window.users.length;
+            document.getElementById('activeAdmins').textContent = window.admins.filter(a => a.status === 'active').length;
+            document.getElementById('onlineUsers').textContent = onlineUsersCount;
+
+            this.loadSystemLogs();
+        }
+
+        loadUsersTable() {
+            const usersTable = document.getElementById('usersTable');
+            if (!usersTable) return;
+            
+            usersTable.innerHTML = '';
+
+            if (window.users.length === 0) {
+                usersTable.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--gray); padding: 30px;">No users found.</td></tr>`;
+                return;
+            }
+
+            const currentTime = new Date().getTime();
+
+            window.users.forEach(user => {
+                const status = window.userStatus[user.email];
+                const isOnline = status && status.online && 
+                                (currentTime - new Date(status.lastLogin).getTime() < 300000);
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td><span class="role-badge role-${user.role}">${user.role}</span></td>
+                    <td>
+                        <span class="status-indicator ${isOnline ? 'status-online' : 'status-offline'}">
+                            <span class="status-dot ${isOnline ? 'online' : 'offline'}"></span>
+                            ${isOnline ? 'Online' : 'Offline'}
+                        </span>
+                    </td>
+                    <td>${user.registered}</td>
+                `;
+                usersTable.appendChild(row);
+            });
+        }
+
+        loadAdminsTable() {
+            const adminsTable = document.getElementById('adminsTable');
+            if (!adminsTable) return;
+            
+            adminsTable.innerHTML = '';
+
+            if (window.admins.length === 0) {
+                adminsTable.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--gray); padding: 30px;">No admins found.</td></tr>`;
+                return;
+            }
+
+            const currentTime = new Date().getTime();
+
+            window.admins.forEach(admin => {
+                const status = window.userStatus[admin.email];
+                const isOnline = status && status.online && 
+                                (currentTime - new Date(status.lastLogin).getTime() < 300000);
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${admin.id}</td>
+                    <td>${admin.name}</td>
+                    <td>${admin.email}</td>
+                    <td><span class="role-badge role-${admin.role}">${admin.role}</span></td>
+                    <td>
+                        <span class="status-indicator ${isOnline ? 'status-online' : 'status-offline'}">
+                            <span class="status-dot ${isOnline ? 'online' : 'offline'}"></span>
+                            ${isOnline ? 'Online' : 'Offline'}
+                        </span>
+                    </td>
+                    <td>${admin.lastLogin || 'Never'}</td>
+                `;
+                adminsTable.appendChild(row);
+            });
+        }
+
+        loadSystemLogs() {
+            const logsTable = document.getElementById('systemLogs');
+            if (!logsTable) return;
+            
+            const filter = document.getElementById('logFilter').value;
+            
+            let filteredLogs = window.systemLogs;
+            if (filter !== 'all') {
+                filteredLogs = window.systemLogs.filter(log => log.type === filter);
+            }
+            
+            logsTable.innerHTML = filteredLogs.reverse().map(log => {
+                // Handle both old and new log formats
+                let date = log.date;
+                let time = log.time;
+                let status = log.status || log.type;
+                
+                // If old format (timestamp), split it
+                if (!date && log.timestamp) {
+                    const parts = log.timestamp.split(', ');
+                    date = parts[0];
+                    time = parts[1] || '';
+                }
+                
+                return `
+                    <tr>
+                        <td>${date || ''}</td>
+                        <td>${time || ''}</td>
+                        <td>${log.user}</td>
+                        <td>${log.action}</td>
+                        <td><span class="status-indicator ${status === 'success' ? 'status-online' : 'status-offline'}">${status}</span></td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        exportData() {
+            const data = {
+                users: window.users,
+                admins: window.admins,
+                systemLogs: window.systemLogs,
+                userStatus: window.userStatus
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `barangay-118-admin-backup-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            this.logActivity('Data exported successfully', 'success');
+            this.showAlert('Data exported successfully!', 'success');
+        }
+
+        showAlert(message, type) {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = `<strong><i class="fas fa-${type === 'success' ? 'check' : 'exclamation'}-circle"></i> ${message}</strong>`;
+            
+            const currentTab = document.querySelector('.tab-content.active');
+            if (currentTab) {
+                currentTab.insertBefore(alert, currentTab.firstChild);
+            }
+            
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.remove();
+                }
+            }, 5000);
+        }
+
+        logActivity(message, status) {
+            const currentUser = 'Administrator';
+            const now = new Date();
+            
+            const activity = {
+                date: now.toLocaleDateString(),
+                time: now.toLocaleTimeString(),
+                user: currentUser,
+                action: message,
+                status: status,
+                type: 'admin_actions'
+            };
+            
+            window.systemLogs.push(activity);
+            
+            // Update save status since we made changes
+            this.updateSaveStatus();
+            
+            if (document.getElementById('dashboard').classList.contains('active')) {
+                this.loadSystemLogs();
+            }
+        }
+
+        showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    }
+
+    // Initialize the admin panel when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        window.adminPanel = new BarangayAdminPanel();
+    });
+</script>
+</body>
+</html>

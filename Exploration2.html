@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay 118 News & Announcements</title>
+
+    <link rel="shortcut icon" type="image/png" href="Logo-Favicon-removebg-preview.png">
+    <meta name="description" content="Latest news, updates, and announcements from Barangay 118">
+    <meta name="keywords" content="barangay news, community updates, announcements, barangay 118 news">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --primary-soft: #dbeafe;
+            --primary-hover: rgba(37, 99, 235, 0.08);
+            --primary-10: rgba(37, 99, 235, 0.1);
+            
+            --light: #ffffff;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --gray-light: #f8fafc;
+            --gray-border: #e2e8f0;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --shadow-nav: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            
+            --radius: 10px;
+            --radius-sm: 6px;
+            --radius-lg: 16px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+            
+            --border: #cbd5e1;
+            
+            --error: #dc2626;
+            --error-light: #fef2f2;
+            --success: #16a34a;
+            --success-light: #f0fdf4;
+            --warning: #d97706;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            
+            --transition: all 0.25s ease;
+            --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--light);
+            box-shadow: var(--shadow-nav);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            height: 74px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 74px;
+            padding: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            padding: 8px 16px 8px 8px;
+            border-radius: var(--radius);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 36px;
+            width: 3px;
+            background: linear-gradient(to bottom, 
+                var(--primary-light), 
+                var(--primary), 
+                var(--primary-dark));
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+
+        .logo img {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, var(--primary-soft), var(--light));
+            border: 3px solid transparent;
+            box-shadow: 
+                0 2px 8px rgba(37, 99, 235, 0.15),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+            padding: 2px;
+        }
+
+        .logo:hover img {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 
+                0 4px 14px rgba(37, 99, 235, 0.25),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+        }
+
+        .logo h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.3px;
+            position: relative;
+            background: linear-gradient(135deg, 
+                var(--primary-dark) 0%, 
+                var(--primary) 50%, 
+                var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: var(--transition-smooth);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            line-height: 1.2;
+        }
+
+        .logo:hover h1 {
+            background: linear-gradient(135deg, 
+                #1e40af 0%, 
+                var(--primary-dark) 50%, 
+                var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 0;
+            background: none;
+            border: none;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 17px;
+            font-weight: 500;
+            padding: 6px 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a i {
+            font-size: 16px;
+            color: inherit;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 45px 0;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* ===== BARANGAY NEWS SECTION (NEW DESIGN - PAGE 1) ===== */
+        .news-main-wrapper {
+            padding: 60px 0;
+            background: #ffffff;
+        }
+
+        .barangay-news {
+            padding: 40px 0;
+        }
+
+        .news-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .news-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .news-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .news-grid {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Featured News (55% width) */
+        .featured-news {
+            flex: 0 0 55%;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-smooth);
+            height: 100%;
+            border: 1px solid var(--border);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .featured-image-container {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-card:hover .featured-image {
+            transform: scale(1.05);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .featured-content {
+            padding: 30px;
+        }
+
+        .featured-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .featured-title {
+            font-size: 1.6rem;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .featured-excerpt {
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .featured-read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: var(--primary-10);
+        }
+
+        .featured-read-more:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* News List (45% width) */
+        .news-list {
+            flex: 0 0 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            height: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .news-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid var(--border);
+            background: var(--gray-light);
+        }
+
+        .news-list-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .news-list-items {
+            flex: 1;
+            overflow-y: auto;
+            max-height: 600px;
+            padding: 0;
+        }
+
+        .news-item {
+            background: white;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 20px;
+            cursor: pointer;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-item:hover {
+            background: var(--gray-light);
+            padding-left: 30px;
+        }
+
+        .news-item-image-container {
+            flex: 0 0 130px;
+            position: relative;
+            height: 110px;
+        }
+
+        .news-item-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .news-item-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-item-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .news-item-date {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-item-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .news-item-excerpt {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            font-size: 0.85rem;
+        }
+
+        .news-item-read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .news-item-read-time {
+            background: var(--gray-light);
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray);
+        }
+
+        /* Scrollbar styling for news list */
+        .news-list-items::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .news-list-items::-webkit-scrollbar-track {
+            background: var(--gray-light);
+            border-radius: 10px;
+        }
+
+        .news-list-items::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+            border-radius: 10px;
+        }
+
+        .news-list-items::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--primary-dark), var(--primary));
+        }
+
+        /* No news message */
+        .no-news {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray);
+            font-size: 1.1rem;
+            grid-column: 1 / -1;
+        }
+
+        /* ===== NEWS MODAL ===== */
+        .news-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .news-modal-content {
+            background-color: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .news-modal-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+            flex: 1;
+        }
+
+        .news-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .news-modal-close:hover {
+            background: var(--gray-light);
+            color: var(--dark);
+        }
+
+        .news-modal-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: var(--gray-light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .news-modal-date {
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .news-modal-category {
+            background: var(--primary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-modal-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .news-modal-body {
+            padding: 30px;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--dark);
+        }
+
+        .news-modal-body p {
+            margin-bottom: 20px;
+        }
+
+        .news-modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-secondary {
+            background: var(--gray-light);
+            color: var(--dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        /* ===== PAGE 2 - BOTTOM GRID (ORIGINAL - HINDI BINAGO) ===== */
+        .news-layout {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .news-layout .container {
+            max-width: 1200px;
+        }
+
+        .news-main-title {
+            text-align: center;
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .news-bottom-grid {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 40px;
+        }
+
+        .news-column h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #374151;
+            margin-bottom: 20px;
+        }
+
+        .news-list-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+            transition: var(--transition);
+        }
+
+        .news-list-item:hover {
+            transform: translateX(5px);
+        }
+
+        .news-list-item h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+
+        .news-list-item p {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .news-column.center {
+            text-align: center;
+        }
+
+        .event-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .event-image-placeholder {
+            height: 220px;
+            background: linear-gradient(#cfe9fb, #eaf6ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .event-desc {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #374151;
+            padding: 0 15px;
+        }
+
+        .event-sub {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            padding: 0 15px 15px;
+        }
+
+        /* Calendar Section */
+
+        .events-container {
+    display: flex;
+    justify-content: center;    
+    gap: 40px; 
+    flex-wrap: wrap; 
+}
+
+        .calendar-section {
+    width: 40%; 
+    display: flex;
+    justify-content: center; 
+}
+
+        .calendar {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+            min-height: 500px;
+        }
+
+        .calendar:hover {
+            transform: translateY(-5px);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar-nav button {
+            background: var(--primary);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .calendar-nav button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        #calendar-month {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .calendar-grid {
+          display: grid;
+          grid-template-columns: repeat(7, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        .calendar-day {
+          aspect-ratio: 1 / 1;
+          width: 100%;
+          max-width: 70px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--gray-light);
+          border-radius: 12px;
+          font-weight: 700;
+          color: var(--primary);
+          font-size: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .calendar-date {
+            text-align: center;
+            padding: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            min-height: 45px;
+            color: var(--dark);
+            font-weight: 600;
+            background-color: var(--gray-light);
+            z-index: 1;
+        }
+
+        .calendar-date:hover {
+            background-color: var(--primary-light);
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .calendar-date.event {
+            background-color: rgba(37, 99, 235, 0.15);
+            border: 2px solid var(--primary-light);
+            font-weight: 700;
+            color: var(--primary-dark);
+            z-index: 2;
+        }
+
+        .calendar-date.event::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        .calendar-date.today {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            font-weight: 700;
+            border-color: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            color: white !important;
+            position: relative;
+            z-index: 4;
+        }
+
+        .calendar-date.today.event {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+            color: white !important;
+            border-color: var(--primary-dark) !important;
+            font-weight: 900;
+            z-index: 6;
+        }
+
+        .calendar-date.today.event::after {
+            background-color: white !important;
+            width: 7px;
+            height: 7px;
+            z-index: 7;
+        }
+
+        .calendar-date.other-month {
+            color: var(--gray);
+            opacity: 0.5;
+            background-color: rgba(100, 116, 139, 0.1);
+        }
+
+        .calendar-date.other-month:hover {
+            opacity: 0.8;
+        }
+
+        /* ===== EVENT MODAL (ORIGINAL) ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow-xl);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            background: var(--gray-light);
+            color: var(--dark);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-event-date {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .modal-event-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .modal-event-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .modal-event-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-event-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+        }
+
+        .modal-event-detail i {
+            color: var(--primary);
+            width: 16px;
+        }
+
+        .modal-footer {
+            padding: 20px 25px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* ===== FOOTER ===== */
+        #footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0 5px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .footer-column {
+            max-width: 500px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: white;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary));
+            border-radius: 2px;
+        }
+
+        .footer-column p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: white;
+            margin: 0;
+            word-wrap: break-word;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-column ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-column ul li i {
+            color: #3b82f6;
+            font-size: 16px;
+            width: 20px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-column ul li span,
+        .footer-column ul li a {
+            font-weight: 400;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: white;
+            text-decoration: none;
+        }
+
+        .copyright {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px 0 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: #aab6c5;
+            font-size: 0.75rem;
+            margin-top: 20px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .container {
+                width: 90%;
+                padding: 0 16px;
+            }
+            
+            .events-container {
+                flex-direction: column;
+            }
+            
+            .calendar-section,
+            .events-section {
+                width: 100%;
+            }
+            
+            .calendar {
+                min-height: 450px;
+            }
+            
+            .logo h1 {
+                font-size: 20px;
+            }
+            
+            .logo img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .news-grid {
+                flex-direction: column;
+            }
+            
+            .featured-news,
+            .news-list {
+                flex: 0 0 100%;
+            }
+
+            .news-bottom-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 0 12px;
+            }
+            
+            .news-main-title {
+                font-size: 2rem;
+            }
+            
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .page-hero p {
+                font-size: 0.95rem;
+            }
+            
+            .calendar-nav button {
+                width: 36px;
+                height: 36px;
+                padding: 6px;
+            }
+            
+            .calendar-date {
+                min-height: 40px;
+                font-size: 0.85rem;
+            }
+            
+            .event-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .event-date {
+                align-self: flex-start;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 12px 0;
+            }
+            
+            .logo {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                padding: 10px;
+                background: var(--gray-light);
+                border-radius: var(--radius-lg);
+                margin-bottom: 10px;
+                gap: 12px;
+            }
+            
+            .logo::before {
+                display: none;
+            }
+            
+            .logo h1 {
+                font-size: 18px;
+                text-align: center;
+            }
+            
+            .logo img {
+                width: 44px;
+                height: 44px;
+            }
+
+            .nav-links {
+                gap: 4px;
+                width: 100%;
+                justify-content: center;
+                order: 3;
+            }
+            
+            .nav-links a {
+                flex: 1;
+                justify-content: center;
+                min-width: 0;
+                padding: 10px 12px;
+            }
+            
+            .nav-links a span {
+                display: none;
+            }
+            
+            .nav-links a i {
+                font-size: 16px;
+                margin: 0;
+            }
+
+            .news-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .featured-title {
+                font-size: 1.4rem;
+            }
+            
+            .news-item {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .news-item-image-container {
+                flex: 0 0 auto;
+                height: 150px;
+                width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .events-subtext-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .calendar {
+                padding: 20px;
+            }
+            
+            .calendar-date {
+                min-height: 35px;
+                font-size: 0.8rem;
+            }
+            
+            .calendar-day {
+                font-size: 0.9rem;
+            }
+
+            .nav-links a {
+                flex: 0 0 100%;
+                justify-content: flex-start;
+                padding: 12px 16px;
+            }
+            
+            .nav-links a span {
+                font-size: 14px;
+                display: inline-block;
+            }
+            
+            .nav-links a i {
+                display: inline-block;
+                font-size: 14px;
+                margin-right: 10px;
+            }
+            
+            .logo h1 {
+                font-size: 16px;
+            }
+            
+            .logo img {
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo h1 {
+                font-size: 15px;
+            }
+            
+            .logo img {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .logo {
+                padding: 6px;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <img src="Logo-Favicon-removebg-preview.png" alt="Barangay 118 Logo" width="70">
+                <h1>BARANGAY 118 ONLINE SYSTEM</h1>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="AboutUs.html"><i class="fas fa-info-circle"></i><span>About Us</span></a>
+                <a href="News.html" class="active"><i class="fas fa-newspaper"></i><span>News</span></a>
+                <a href="Emergency.html"><i class="fas fa-exclamation-triangle"></i><span>Emergency</span></a>
+                <a href="CreateAnAccount.html"><i class="fas fa-user-plus"></i><span>Create Account</span></a>
+                <a href="LogIn.html"><i class="fas fa-sign-in-alt"></i><span>Login</span></a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="page-hero">
+    <div class="container">
+        <h1>News & Announcements</h1>
+        <p>Latest updates, advisories, and community news for Barangay 118.</p>
+    </div>
+</section>
+<div class="container">
+    <h1 class="news-main-title">BARANGAY 118 NEWS</h1>
+<!-- ================= PAGE 1 - NEW NEWS SECTION (PINAGPALIT) ================= -->
+<div class="container news-main-wrapper">
+    <!-- Barangay News Section -->
+    <section class="barangay-news">
+        <div class="news-header">
+            <h2 id="news-section-title">Latest Stories</h2>
+            <p class="news-subtitle" id="news-section-subtitle">Stay updated with the latest news and announcements from Barangay 118</p>
+        </div>
+        
+        <div class="news-grid" id="news-grid-container">
+            <!-- News content will be loaded dynamically by JavaScript -->
+        </div>
+    </section>
+</div>
+
+<!-- News Modal -->
+<div class="news-modal" id="news-modal">
+    <div class="news-modal-content">
+        <div class="news-modal-header">
+            <h2 class="news-modal-title" id="news-modal-title">News Title</h2>
+            <button class="news-modal-close" id="news-modal-close">&times;</button>
+        </div>
+        <div class="news-modal-meta">
+            <div class="news-modal-date" id="news-modal-date"><i class="far fa-calendar"></i> Date</div>
+            <div class="news-modal-category" id="news-modal-category">Category</div>
+        </div>
+        <img id="news-modal-image" src="" alt="" class="news-modal-image">
+        <div class="news-modal-body" id="news-modal-body"></div>
+        <div class="news-modal-footer">
+            <button class="btn-secondary" id="news-modal-close-btn">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= PAGE 2 - BOTTOM GRID ================= -->
+
+<section class="events">
+    <div class="container">
+        <h2 class="section-title" id="events-title">Barangay 118 Community Events Calendar</h2>
+        <div class="news-bottom-grid">
+            <!-- PAST EVENTS -->
+            <div class="news-column">
+                <h3>PAST EVENTS</h3>
+
+                <div class="news-list-item">
+                    <h4>Clean-Up Drive</h4>
+                    <p>Successful barangay-wide environmental activity.</p>
+                </div>
+
+                <div class="news-list-item">
+                    <h4>Medical Mission</h4>
+                    <p>Free health services provided to residents.</p>
+                </div>
+
+                <div class="news-list-item">
+                    <h4>General Assembly</h4>
+                    <p>Community discussion on upcoming projects.</p>
+                </div>
+
+                <div class="news-list-item">
+                    <h4>Fire Safety Seminar</h4>
+                    <p>Orientation on fire prevention and emergency response.</p>
+                </div>
+            </div>
+
+            <!-- CURRENT EVENT -->
+            <div class="news-column center">
+                <h3>CURRENT EVENT</h3>
+                <div class="event-card">
+                    <div class="event-image-placeholder">EVENT IMAGE</div>
+                    <p class="event-desc">
+                        Ongoing barangay activities and official announcements.
+                    </p>
+                    <span class="event-sub">Updated regularly</span>
+                </div>
+            </div>
+
+            <!-- UPCOMING EVENTS -->
+            <div class="news-column">
+                <h3>UPCOMING EVENTS</h3>
+
+                <div class="news-list-item">
+                    <h4>Youth Sports Fest</h4>
+                    <p>Annual sports competition for the youth.</p>
+                </div>
+
+                <div class="news-list-item">
+                    <h4>Anti-Dengue Drive</h4>
+                    <p>Barangay health and safety initiative.</p>
+                </div>
+
+                <div class="news-list-item">
+                    <h4>Senior Citizens Day</h4>
+                    <p>Celebration honoring senior residents.</p>
+                </div>
+
+                <div class="news-list-item">
+                    <h4>Disaster Preparedness Drill</h4>
+                    <p>Community-wide earthquake and evacuation drill.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+paki lagay ito sa center yung calendar lang
+<!-- ================= pa================= -->
+<section class="events">
+    <div class="container">
+        <h2 class="section-title" id="events-title">Barangay 118 Calendar</h2>
+        <div class="events-subtext-row">
+            <span class="events-left-note">Calendar</span>
+        </div>
+        
+        <div class="events-container">
+            <div class="calendar-section">
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <h3 id="calendar-month">November 2025</h3>
+                    </div>
+                    <div class="calendar-grid" id="calendar-dates">
+                        <!-- Calendar dates will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="events-section">
+                <div class="event-list">
+                    <h3 class="event-list-title" id="upcoming-events-title">Upcoming Events</h3>
+                    <div class="events-container-inner" id="events-container">
+                        <!-- Event items will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= EVENT MODAL (ORIGINAL) ================= -->
+<div id="event-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Event Details</h3>
+            <button class="close-modal" id="close-modal">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <!-- Event details will be loaded here -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" id="close-modal-btn">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer id="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Barangay 118 Online System</h3>
+                <p>Connecting the community through secure digital services.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>402 2nd St, Grace Park East</span></li>
+                    <li><i class="fas fa-phone"></i> <span>(02) 8123-4567</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>info@barangay118.gov.ph</span></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><i class="fab fa-facebook"></i> <span>Barangay 118 Facebook</span></li>
+                    <li><i class="fab fa-facebook-messenger"></i> <span>Messenger Chat</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2025 Barangay 118 Online System. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    // Barangay News Data (NEW)
+    const barangayNewsData = {
+        newsSection: {
+            title: "Latest Stories",
+            subtitle: "Stay updated with the latest news and announcements from Barangay 118"
+        },
+        news: [
+            {
+                id: 1,
+                title: "Japan builds new facility for Grace Park Health Center in Caloocan (2025)",
+                excerpt: "The Embassy of Japan provided around PHP 6 million to construct the new Grace Park Health Center in Caloocan City.",
+                content: "On March 10, 2025, Embassy of Japan Second Secretary MATSUSHIGE Tomoaki attended the turnover ceremony for the 'Project for the Construction of the Grace Park Health Center in Caloocan City.' Japan allocated USD 120,477 (≈ PHP 6 million) under the Official Development Assistance – Grant Assistance for Grass-roots Human Security Projects (GGP). This new facility replaces the old, flood-prone building to ensure safer, cleaner, and modern healthcare services for approximately 9,600 patients annually.",
+                date: "March 10, 2025",
+                image: "https://www.ph.emb-japan.go.jp/files/100808323.jpg",
+                category: "Community",
+                readTime: "5 min",
+                isFeatured: true
+            },
+            {
+                id: 2,
+                title: "Caloocan Fire: 1 PWD dead, 50 families displaced",
+                excerpt: "A person with disability died after a large fire broke out in Barangay 118, Grace Park, Caloocan in December 2024.",
+                content: "According to Caloocan BFP, the fire started around 2:56 AM at 4th Avenue and quickly spread due to houses being built closely together. 'A PWD died in a fire which razed about 20 houses in Caloocan City…' GMA News reported.",
+                date: "December 2024",
+                image: "https://images.gmanews.tv/webpics/2024/12/caloocan_fire_12-29-24_2024_12_29_18_34_08.jpg",
+                category: "Fire",
+                readTime: "3 min",
+                isFeatured: false
+            },
+            {
+                id: 3,
+                title: "New Barangay Health Center in Brgy. 118-120, Caloocan",
+                excerpt: "SM Foundation turned over the newly improved Barangay Health Center of Grace Park (Brgy. 118-120) in Caloocan City days before 2024 arrived.",
+                content: "SM Foundation and its partners led this renovation project to turn the facility into a more comfortable and efficient clinic. 'A few days before New Year's Day, SM Foundation turned over…' according to Market Monitor.",
+                date: "January 16, 2024",
+                image: "https://i0.wp.com/marketmonitor.com.ph/wp-content/uploads/2024/01/SMFI-image2.jpg?resize=618%2C927&ssl=1",
+                category: "Health",
+                readTime: "4 min",
+                isFeatured: false
+            },
+            {
+                id: 4,
+                title: "Barangay 118 Annual Sports Festival",
+                excerpt: "Annual sports competition for youth and adults with various games and activities.",
+                content: "The Barangay 118 Annual Sports Festival is scheduled for November 2025, featuring basketball, volleyball, badminton, and traditional Filipino games. This event aims to promote physical fitness and community bonding among residents.",
+                date: "November 15, 2025",
+                image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Events",
+                readTime: "4 min",
+                isFeatured: false
+            }
+        ]
+    };
+
+// Barangay Calendar Data (UPDATED - with Past & Upcoming Events)
+const barangayCalendarData = {
+    events: [
+        // ===== PAST EVENTS =====
+        {
+            day: "10",
+            month: "Jan",
+            title: "New Year's Resolution Forum",
+            description: "Community forum to discuss goals and plans for the new year.",
+            time: "6:00 PM - 8:00 PM",
+            location: "Barangay 118 Multi-purpose Hall"
+        },
+        {
+            day: "15",
+            month: "Dec",
+            title: "Barangay Christmas Party",
+            description: "Annual Christmas celebration for all residents of Barangay 118.",
+            time: "5:00 PM - 10:00 PM",
+            location: "Barangay 118 Covered Court"
+        },
+        {
+            day: "30",
+            month: "Nov",
+            title: "Senior Citizens Day",
+            description: "Special program and activities for senior residents of Barangay 118.",
+            time: "9:00 AM - 3:00 PM",
+            location: "Barangay 118 Social Hall"
+        },
+        {
+            day: "24",
+            month: "Nov",
+            title: "Community Clean-up Drive",
+            description: "Monthly community clean-up activity. All residents are welcome to join.",
+            time: "6:00 AM - 9:00 AM",
+            location: "Meet at Barangay 118 Plaza"
+        },
+
+        // ===== UPCOMING EVENTS =====
+        {
+            day: "25",
+            month: "Jan",
+            title: "Youth Sports Orientation",
+            description: "Orientation for upcoming inter-barangay youth sports activities.",
+            time: "3:00 PM - 5:00 PM",
+            location: "Barangay 118 Covered Court"
+        },
+        {
+            day: "2",
+            month: "Feb",
+            title: "Anti-Dengue Awareness Campaign",
+            description: "Information drive on dengue prevention and barangay clean zones.",
+            time: "8:00 AM - 11:00 AM",
+            location: "Barangay 118 Plaza"
+        },
+        {
+            day: "10",
+            month: "Feb",
+            title: "Disaster Preparedness Seminar",
+            description: "Training on earthquake and fire emergency response.",
+            time: "1:00 PM - 4:00 PM",
+            location: "Barangay 118 Hall Covered Court"
+        },
+        {
+            day: "18",
+            month: "Feb",
+            title: "Livelihood Skills Training",
+            description: "Skills training program to support small business and livelihood.",
+            time: "9:00 AM - 3:00 PM",
+            location: "Barangay 118 Training Room"
+        }
+    ],
+
+    sectionTitles: {
+        events: "Barangay 118 Community Events Calendar",
+        upcomingEvents: "Upcoming Events"
+    }
+};
+
+    
+    let currentDate = new Date(2025, 10, 1); // November 2025
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+    
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize News Section
+        renderNews();
+        setupNewsEventListeners();
+        setupNewsListScrolling();
+        
+        // Initialize Calendar Section
+        renderEvents();
+        generateCalendar(currentMonth, currentYear);
+        setupEventListeners();
+    });
+    
+    // ===== NEWS SECTION FUNCTIONS =====
+    
+    // Render news section
+    function renderNews() {
+        const newsGrid = document.getElementById('news-grid-container');
+        if (!newsGrid) return;
+
+        newsGrid.innerHTML = '';
+
+        // Ensure we have news data
+        if (!barangayNewsData.news || barangayNewsData.news.length === 0) {
+            newsGrid.innerHTML = '<div class="no-news">No news available</div>';
+            return;
+        }
+
+        // Sort news by date (newest first)
+        const sortedNews = [...barangayNewsData.news].sort((a, b) => {
+            // Simple date sorting (for demonstration)
+            return new Date(b.date) - new Date(a.date);
+        });
+
+        // Find featured news
+        const featuredNews = sortedNews.find(news => news.isFeatured) || sortedNews[0];
+        const regularNews = sortedNews.filter(news => news.id !== featuredNews.id).slice(0, 3);
+
+        // Featured News (Left Side - 55%)
+        const featuredHtml = `
+            <div class="featured-news">
+                <div class="featured-card">
+                    <div class="featured-image-container">
+                        <img src="${featuredNews.image}" alt="${featuredNews.title}" class="featured-image" onerror="this.src='https://via.placeholder.com/800x400?text=News+Image'">
+                        <div class="featured-badge">${featuredNews.category}</div>
+                    </div>
+                    <div class="featured-content">
+                        <div class="featured-date">
+                            <i class="far fa-calendar"></i> ${featuredNews.date}
+                        </div>
+                        <h3 class="featured-title">${featuredNews.title}</h3>
+                        <p class="featured-excerpt">${featuredNews.excerpt}</p>
+                        <a href="#" class="featured-read-more" data-news-id="${featuredNews.id}"> Read More <i class="fas fa-arrow-right"></i> </a>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // News List (Right Side - 45%)
+        let newsListHtml = `
+            <div class="news-list">
+                <div class="news-list-header">
+                    <h3 class="news-list-title">Mga Balita</h3>
+                </div>
+                <div class="news-list-items" id="news-list-items">
+        `;
+
+        regularNews.forEach(news => {
+            newsListHtml += `
+                <div class="news-item" data-news-id="${news.id}">
+                    <div class="news-item-image-container">
+                        <img src="${news.image}" alt="${news.title}" class="news-item-image" onerror="this.src='https://via.placeholder.com/300x200?text=News'">
+                        <div class="news-item-badge">${news.category}</div>
+                    </div>
+                    <div class="news-item-content">
+                        <div class="news-item-date">
+                            <i class="far fa-calendar"></i> ${news.date}
+                        </div>
+                        <h4 class="news-item-title">${news.title}</h4>
+                        <p class="news-item-excerpt">${news.excerpt}</p>
+                        <div class="news-item-meta">
+                            <a href="#" class="news-item-read-more" data-news-id="${news.id}"> Read More <i class="fas fa-arrow-right"></i> </a>
+                            <span class="news-item-read-time"><i class="far fa-clock"></i> ${news.readTime}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        newsListHtml += `
+                </div>
+            </div>
+        `;
+        
+        newsGrid.innerHTML = featuredHtml + newsListHtml;
+        
+        // Update section titles
+        if (document.getElementById('news-section-title')) {
+            document.getElementById('news-section-title').textContent = barangayNewsData.newsSection.title;
+        }
+        if (document.getElementById('news-section-subtitle')) {
+            document.getElementById('news-section-subtitle').textContent = barangayNewsData.newsSection.subtitle;
+        }
+    }
+
+    // Setup dynamic scrolling for news list
+    function setupNewsListScrolling() {
+        const newsListItems = document.getElementById('news-list-items');
+        if (!newsListItems) return;
+        
+        // Calculate max height based on 3 items
+        const calculateMaxHeight = () => {
+            if (newsListItems.children.length === 0) return;
+            
+            const firstItem = newsListItems.children[0];
+            const itemHeight = firstItem.offsetHeight;
+            const gap = 0; // No gap in new design
+            
+            // Set max height to show exactly 3 items
+            const maxHeight = (itemHeight * 3) + (gap * 2);
+            newsListItems.style.maxHeight = `${maxHeight}px`;
+            
+            // Ensure width matches layout
+            const featuredNews = document.querySelector('.featured-news');
+            if (featuredNews) {
+                const featuredWidth = featuredNews.offsetWidth;
+                newsListItems.parentElement.style.maxWidth = `${featuredWidth * 0.818}px`; // 45% of 55%
+            }
+        };
+        
+        // Calculate initially
+        setTimeout(calculateMaxHeight, 100);
+        
+        // Recalculate on window resize
+        window.addEventListener('resize', calculateMaxHeight);
+    }
+
+    // News Modal Functions
+    function showNewsModal(newsId) {
+        const newsItem = barangayNewsData.news.find(item => item.id === newsId);
+        if (newsItem) {
+            document.getElementById('news-modal-title').textContent = newsItem.title;
+            document.getElementById('news-modal-date').innerHTML = `<i class="far fa-calendar"></i> ${newsItem.date}`;
+            document.getElementById('news-modal-category').textContent = newsItem.category;
+            document.getElementById('news-modal-image').src = newsItem.image;
+            document.getElementById('news-modal-image').alt = newsItem.title;
+            document.getElementById('news-modal-body').innerHTML = `
+                <p>${newsItem.content}</p>
+            `;
+            document.getElementById('news-modal').style.display = 'flex';
+        }
+    }
+
+    function closeNewsModal() {
+        document.getElementById('news-modal').style.display = 'none';
+    }
+
+    // Set up news event listeners
+    function setupNewsEventListeners() {
+        // Read more buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('featured-read-more') || 
+                e.target.classList.contains('news-item-read-more') ||
+                e.target.parentElement.classList.contains('featured-read-more') ||
+                e.target.parentElement.classList.contains('news-item-read-more')) {
+                e.preventDefault();
+                const newsId = parseInt(e.target.getAttribute('data-news-id') || 
+                              e.target.parentElement.getAttribute('data-news-id'));
+                showNewsModal(newsId);
+            }
+            
+            // News items click
+            if (e.target.closest('.news-item')) {
+                e.preventDefault();
+                const newsItem = e.target.closest('.news-item');
+                const newsId = parseInt(newsItem.getAttribute('data-news-id'));
+                showNewsModal(newsId);
+            }
+        });
+        
+        // Modal close buttons
+        const newsModalClose = document.getElementById('news-modal-close');
+        if (newsModalClose) {
+            newsModalClose.addEventListener('click', closeNewsModal);
+        }
+        
+        const newsModalCloseBtn = document.getElementById('news-modal-close-btn');
+        if (newsModalCloseBtn) {
+            newsModalCloseBtn.addEventListener('click', closeNewsModal);
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('news-modal')) {
+                closeNewsModal();
+            }
+        });
+    }
+    
+    // ===== CALENDAR SECTION FUNCTIONS (ORIGINAL) =====
+    
+    // Render events list
+    function renderEvents() {
+        const eventsContainer = document.getElementById('events-container');
+        if (!eventsContainer) return;
+    
+        eventsContainer.innerHTML = '';
+        
+        if (!barangayCalendarData.events || barangayCalendarData.events.length === 0) {
+            eventsContainer.innerHTML = '<div class="no-events">No upcoming events</div>';
+            return;
+        }
+    
+        // Sort events by date
+        const sortedEvents = [...barangayCalendarData.events].sort((a, b) => {
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const aMonth = monthNames.indexOf(a.month);
+            const bMonth = monthNames.indexOf(b.month);
+            const aDay = parseInt(a.day);
+            const bDay = parseInt(b.day);
+            
+            if (aMonth !== bMonth) return aMonth - bMonth;
+            return aDay - bDay;
+        });
+    
+        // Show only upcoming events (max 5)
+        const today = new Date();
+        const currentMonthIndex = today.getMonth();
+        const currentDay = today.getDate();
+        
+        const upcomingEvents = sortedEvents.filter(event => {
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const eventMonth = monthNames.indexOf(event.month);
+            const eventDay = parseInt(event.day);
+            
+            // If event is in future month, or same month but future day
+            return eventMonth > currentMonthIndex || 
+                   (eventMonth === currentMonthIndex && eventDay >= currentDay);
+        }).slice(0, 5);
+    
+        upcomingEvents.forEach(event => {
+            const eventItem = document.createElement('div');
+            eventItem.className = 'event-item';
+            eventItem.innerHTML = `
+                <div class="event-date">
+                    <div class="day">${event.day}</div>
+                    <div class="month">${event.month}</div>
+                </div>
+                <div class="event-details">
+                    <h4 class="event-title">${event.title}</h4>
+                    <p class="event-description">${event.description}</p>
+                    <div class="event-time"><i class="far fa-clock"></i> ${event.time}</div>
+                    <div class="event-location"><i class="fas fa-map-marker-alt"></i> ${event.location}</div>
+                </div>
+            `;
+            eventItem.addEventListener('click', () => showEventModal(event));
+            eventsContainer.appendChild(eventItem);
+        });
+        
+        // Update section titles
+        if (document.getElementById('events-title')) {
+            document.getElementById('events-title').textContent = barangayCalendarData.sectionTitles.events;
+        }
+        if (document.getElementById('upcoming-events-title')) {
+            document.getElementById('upcoming-events-title').textContent = barangayCalendarData.sectionTitles.upcomingEvents;
+        }
+    }
+    
+    // Generate calendar dynamically
+    function generateCalendar(month, year) {
+        const calendarDates = document.getElementById('calendar-dates');
+        if (!calendarDates) return;
+        
+        calendarDates.innerHTML = '';
+        
+        // Update month display
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const monthShortNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+        
+        if (document.getElementById('calendar-month')) {
+            document.getElementById('calendar-month').textContent = `${monthNames[month]} ${year}`;
+        }
+        
+        // Add day headers
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        days.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            dayElement.textContent = day;
+            calendarDates.appendChild(dayElement);
+        });
+        
+        // Get first day of month and number of days
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        // Get days from previous month
+        const daysInPrevMonth = new Date(year, month, 0).getDate();
+        
+        // Add empty cells for days before the first day of the month (previous month)
+        for (let i = firstDay - 1; i >= 0; i--) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'calendar-date other-month';
+            emptyCell.textContent = daysInPrevMonth - i;
+            calendarDates.appendChild(emptyCell);
+        }
+        
+        // Add dates for the current month
+        const today = new Date();
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dateElement = document.createElement('div');
+            dateElement.className = 'calendar-date';
+            dateElement.textContent = i;
+            dateElement.dataset.date = `${year}-${month + 1}-${i}`;
+            
+            // Mark today
+            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                dateElement.classList.add('today');
+            }
+    
+            // Mark events
+            const hasEvent = barangayCalendarData.events.some(event => {
+                const eventMonthIndex = monthShortNames.findIndex(m => m.toLowerCase() === event.month.toLowerCase());
+                return parseInt(event.day) === i && eventMonthIndex === month && year === 2025;
+            });
+            
+            if (hasEvent) {
+                dateElement.classList.add('event');
+                dateElement.addEventListener('click', () => showEventDetails(i, month, year));
+            } else {
+                dateElement.addEventListener('click', () => {
+                    // Show "No events" message
+                    const modalBody = document.getElementById('modal-body');
+                    modalBody.innerHTML = `
+                        <div class="modal-event-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>${monthNames[month]} ${i}, ${year}</span>
+                        </div>
+                        <h3 class="modal-event-title">No Events Scheduled</h3>
+                        <p class="modal-event-description">There are no events scheduled for this date. Check back later for updates!</p>
+                    `;
+                    document.getElementById('event-modal').style.display = 'flex';
+                });
+            }
+            
+            calendarDates.appendChild(dateElement);
+        }
+        
+        // Add empty cells for next month to complete the grid
+        const totalCells = 42; // 6 rows x 7 days
+        const cellsUsed = firstDay + daysInMonth;
+        const remainingCells = totalCells - cellsUsed;
+        
+        for (let i = 1; i <= remainingCells; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'calendar-date other-month';
+            emptyCell.textContent = i;
+            calendarDates.appendChild(emptyCell);
+        }
+    }
+    
+    // Show event details in modal
+    function showEventDetails(day, month, year) {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        
+        const monthShortNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+        
+        // Find ALL events for this date
+        const eventsForDate = barangayCalendarData.events.filter(event => {
+            const eventMonthIndex = monthShortNames.findIndex(m => m.toLowerCase() === event.month.toLowerCase());
+            return parseInt(event.day) === day && eventMonthIndex === month && year === 2025;
+        });
+        
+        if (eventsForDate.length > 0) {
+            const modalBody = document.getElementById('modal-body');
+            
+            // If multiple events on same day
+            if (eventsForDate.length > 1) {
+                modalBody.innerHTML = `
+                    <div class="modal-event-date">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>${monthNames[month]} ${day}, ${year}</span>
+                        <span style="margin-left: auto; font-size: 0.9rem; color: var(--gray);">
+                            ${eventsForDate.length} events
+                        </span>
+                    </div>
+                    <h3 class="modal-event-title">Events on ${monthNames[month]} ${day}</h3>
+                `;
+                
+                eventsForDate.forEach((event, index) => {
+                    modalBody.innerHTML += `
+                        <div style="margin-bottom: 20px; padding: 15px; background: var(--gray-light); border-radius: 10px;">
+                            <h4 style="margin-bottom: 10px; color: var(--primary);">${event.title}</h4>
+                            <p style="margin-bottom: 10px; color: var(--gray);">${event.description}</p>
+                            <div style="display: flex; flex-direction: column; gap: 5px;">
+                                <div class="modal-event-detail">
+                                    <i class="far fa-clock"></i>
+                                    <span>${event.time}</span>
+                                </div>
+                                <div class="modal-event-detail">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${event.location}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                // Single event
+                const event = eventsForDate[0];
+                modalBody.innerHTML = `
+                    <div class="modal-event-date">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>${monthNames[month]} ${day}, ${year}</span>
+                    </div>
+                    <h3 class="modal-event-title">${event.title}</h3>
+                    <p class="modal-event-description">${event.description}</p>
+                    <div class="modal-event-details">
+                        <div class="modal-event-detail">
+                            <i class="far fa-clock"></i>
+                            <span>${event.time}</span>
+                        </div>
+                        <div class="modal-event-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${event.location}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('event-modal').style.display = 'flex';
+        }
+    }
+    
+    // Show event modal for individual event
+    function showEventModal(event) {
+        const modalBody = document.getElementById('modal-body');
+        modalBody.innerHTML = `
+            <div class="modal-event-date">
+                <i class="far fa-calendar-alt"></i>
+                <span>${event.month} ${event.day}, 2025</span>
+            </div>
+            <h3 class="modal-event-title">${event.title}</h3>
+            <p class="modal-event-description">${event.description}</p>
+            <div class="modal-event-details">
+                <div class="modal-event-detail">
+                    <i class="far fa-clock"></i>
+                    <span>${event.time}</span>
+                </div>
+                <div class="modal-event-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${event.location}</span>
+                </div>
+            </div>
+        `;
+        document.getElementById('event-modal').style.display = 'flex';
+    }
+    
+    // Set up event listeners for calendar
+    function setupEventListeners() {
+        // Calendar navigation
+        const prevMonthBtn = document.getElementById('prev-month');
+        if (prevMonthBtn) {
+            prevMonthBtn.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+        }
+        
+        const nextMonthBtn = document.getElementById('next-month');
+        if (nextMonthBtn) {
+            nextMonthBtn.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+        }
+        
+        // Modal close button
+        const closeModalBtn = document.getElementById('close-modal');
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                document.getElementById('event-modal').style.display = 'none';
+            });
+        }
+        
+        // Close modal button in footer
+        const closeModalFooterBtn = document.getElementById('close-modal-btn');
+        if (closeModalFooterBtn) {
+            closeModalFooterBtn.addEventListener('click', () => {
+                document.getElementById('event-modal').style.display = 'none';
+            });
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('event-modal')) {
+                document.getElementById('event-modal').style.display = 'none';
+            }
+        });
+    }
+    
+    // Export admin functions
+    window.barangayNews = {
+        updateNewsSection: (title, subtitle) => {
+            barangayNewsData.newsSection.title = title;
+            barangayNewsData.newsSection.subtitle = subtitle;
+            renderNews();
+        },
+        updateNews: (newNews) => {
+            barangayNewsData.news = newNews;
+            renderNews();
+        },
+        getNewsData: () => barangayNewsData.news,
+        addNews: (newsItem) => {
+            // Generate new ID
+            const newId = barangayNewsData.news.length > 0 ? 
+                Math.max(...barangayNewsData.news.map(n => n.id)) + 1 : 1;
+            
+            newsItem.id = newId;
+            barangayNewsData.news.push(newsItem);
+            renderNews();
+        },
+        removeNews: (newsId) => {
+            const index = barangayNewsData.news.findIndex(news => news.id === newsId);
+            if (index !== -1) {
+                barangayNewsData.news.splice(index, 1);
+                renderNews();
+            }
+        },
+        markAsFeatured: (newsId) => {
+            // Remove featured from all news
+            barangayNewsData.news.forEach(news => {
+                news.isFeatured = false;
+            });
+            
+            // Mark selected as featured
+            const newsItem = barangayNewsData.news.find(news => news.id === newsId);
+            if (newsItem) {
+                newsItem.isFeatured = true;
+                renderNews();
+            }
+        },
+        renderNews
+    };
+    
+    window.barangayCalendar = {
+        updateEvents: (newEvents) => {
+            barangayCalendarData.events = newEvents;
+            renderEvents();
+            generateCalendar(currentMonth, currentYear);
+        },
+        updateSectionTitles: (newTitles) => {
+            barangayCalendarData.sectionTitles = newTitles;
+            renderEvents();
+        },
+        getEventsData: () => barangayCalendarData.events,
+        addEvent: (event) => {
+            barangayCalendarData.events.push(event);
+            renderEvents();
+            generateCalendar(currentMonth, currentYear);
+        },
+        removeEvent: (eventIndex) => {
+            barangayCalendarData.events.splice(eventIndex, 1);
+            renderEvents();
+            generateCalendar(currentMonth, currentYear);
+        },
+        goToToday: () => {
+            const today = new Date();
+            currentMonth = today.getMonth();
+            currentYear = today.getFullYear();
+            generateCalendar(currentMonth, currentYear);
+        },
+        goToMonth: (month, year) => {
+            currentMonth = month;
+            currentYear = year;
+            generateCalendar(currentMonth, currentYear);
+        }
+    };
+    
+    console.log('Barangay News & Calendar System Loaded');
+</script>
+
+</body>
+</html>

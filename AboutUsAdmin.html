@@ -1,0 +1,2935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Admin | Barangay 118</title>
+    <link rel="shortcut icon" type="image/png" href="Logo-Favicon-removebg-preview.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="AboutUsAdmin.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo" onclick="window.open('PanelUserView.html', '_blank')">
+                    <div class="logo-icon"><i class="fas fa-cog"></i></div>
+                    <h1>BARANGAY 118 ONLINE SYSTEM - ABOUT US ADMIN</h1>
+                </div>
+
+                <div class="nav-links">
+                    <a href="PanelAdminView.html">Home</a>
+                    <a href="AboutUsAdmin.html" class="active">About</a>
+                    <a href="NewsAdmin.html">News</a>
+                    <a href="EmergencyAdmin.html">Emergency</a>
+                    <a href="CreateAccountAdmin.html">Create</a>
+                    <a href="LogAdminControl.html">LogIn</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel">
+        <!-- Left Sidebar - Control Center -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title"><i class="fas fa-cogs"></i> Control Center</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-tab="welcome"><span class="sidebar-icon"><i class="fas fa-home"></i></span> Dashboard</a></li>
+                <li><a href="#" data-tab="header"><span class="sidebar-icon"><i class="fas fa-heading"></i></span> Header & Hero</a></li>
+                <li><a href="#" data-tab="about"><span class="sidebar-icon"><i class="fas fa-info-circle"></i></span> About Barangay</a></li>
+                <li><a href="#" data-tab="mission"><span class="sidebar-icon"><i class="fas fa-bullseye"></i></span> Mission & Vision</a></li>
+                <li><a href="#" data-tab="officials"><span class="sidebar-icon"><i class="fas fa-users"></i></span> Barangay Officials</a></li>
+                <li><a href="#" data-tab="committees"><span class="sidebar-icon"><i class="fas fa-user-friends"></i></span> Committees</a></li>
+                <li><a href="#" data-tab="documents"><span class="sidebar-icon"><i class="fas fa-file-alt"></i></span> Document Requirements</a></li>
+                <li><a href="#" data-tab="location"><span class="sidebar-icon"><i class="fas fa-map-marker-alt"></i></span> Location</a></li>
+                <li><a href="#" data-tab="contact"><span class="sidebar-icon"><i class="fas fa-phone-alt"></i></span> Contact Information</a></li>
+                <li><a href="#" data-tab="faq"><span class="sidebar-icon"><i class="fas fa-question-circle"></i></span> FAQ</a></li>
+                <li><a href="#" data-tab="feedback"><span class="sidebar-icon"><i class="fas fa-comments"></i></span> User Feedback</a></li>
+            </ul>
+
+            <!-- ADDED LOGOUT BUTTON AT BOTTOM OF SIDEBAR -->
+            <div class="sidebar-footer">
+                <a href="LogIn.html" class="sidebar-logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <!-- Dashboard Tab -->
+            <div id="welcome" class="tab-content active">
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> Dashboard Overview</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value" id="system-status">Ready</div>
+                            <div class="stat-label">System Status</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-officials">0</div>
+                            <div class="stat-label">Total Officials</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-committees">0</div>
+                            <div class="stat-label">Active Committees</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="data-size">0 KB</div>
+                            <div class="stat-label">Data Size</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success">
+                        <strong><i class="fas fa-check-circle"></i> System Ready!</strong> Welcome to the Barangay 118 Admin Control Panel.
+                    </div>
+                    
+                    <h3 style="margin-bottom: 15px; color: var(--dark);">Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-primary" id="preview-site-btn">
+                            <i class="fas fa-external-link-alt"></i> Preview Site
+                        </button>
+                        <button class="btn btn-secondary" id="export-data-btn">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                        <button class="btn btn-success" id="backup-btn">
+                            <i class="fas fa-database"></i> Backup Data
+                        </button>
+                        <button class="btn btn-warning" id="refresh-btn">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                        <button class="btn btn-danger" id="clear-all-data-btn">
+                            <i class="fas fa-trash"></i> Clear All Data
+                        </button>
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <h2 class="section-title"><i class="fas fa-history"></i> Recent Activity</h2>
+                    <div id="recent-activity">
+                        <p style="color: var(--gray); text-align: center; padding: 20px;">
+                            <i class="fas fa-clock"></i> Activity log will appear here...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="welcome-guide" class="guide-section">
+                        <h4>Dashboard Overview</h4>
+                        <p>The dashboard provides a quick overview of your system's key metrics and recent activity.</p>
+                        <ul>
+                            <li>Monitor system status and data size</li>
+                            <li>Track total officials and committees</li>
+                            <li>View recent system activity</li>
+                            <li>Use quick actions for common tasks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header & Hero Tab -->
+            <div id="header" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-heading"></i> Header & Hero Section Management</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Update the main header and hero section that appears at the top of your About Us page.</p>
+                    
+                    <form id="header-form">
+                        <div class="form-group">
+                            <label class="form-label" for="site-title">Site Title</label>
+                            <input type="text" class="form-control" id="site-title" placeholder="Enter site title">
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">This appears in the header navigation</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="page-hero-title">Page Hero Title</label>
+                            <input type="text" class="form-control" id="page-hero-title" placeholder="Enter page hero title">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="page-hero-subtitle">Page Hero Subtitle</label>
+                            <textarea class="form-control" id="page-hero-subtitle" placeholder="Enter page hero subtitle"></textarea>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Header & Hero
+                            </button>
+                            <button type="button" class="btn btn-warning" id="header-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="header-guide" class="guide-section">
+                        <h4>Header & Hero Section</h4>
+                        <p>Customize the main header and hero section of your About Us page.</p>
+                        <ul>
+                            <li>Update the site title in the header</li>
+                            <li>Modify the hero title and subtitle</li>
+                            <li>Changes appear immediately on the main site</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Barangay Tab -->
+            <div id="about" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-info-circle"></i> About Barangay Section</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Tell the story of your barangay and upload an image of your barangay hall or community.</p>
+                    
+                    <form id="about-form">
+                        <div class="form-group">
+                            <label class="form-label" for="about-story-title">Story Title</label>
+                            <input type="text" class="form-control" id="about-story-title" placeholder="Enter story title">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="about-story-para1">Story Paragraph 1</label>
+                            <textarea class="form-control" id="about-story-para1" placeholder="Enter first paragraph"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="about-story-para2">Story Paragraph 2</label>
+                            <textarea class="form-control" id="about-story-para2" placeholder="Enter second paragraph"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="about-story-para3">Story Paragraph 3</label>
+                            <textarea class="form-control" id="about-story-para3" placeholder="Enter third paragraph"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="about-barangay-image">Barangay Image URL</label>
+                            <input type="text" class="form-control" id="about-barangay-image" placeholder="https://example.com/barangay-image.jpg">
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">Enter direct URL to high-quality barangay image</small>
+                            <div class="image-preview-container">
+                                <img id="about-barangay-image-preview" class="image-preview" alt="Barangay image preview">
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update About Section
+                            </button>
+                            <button type="button" class="btn btn-warning" id="about-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="about-guide" class="guide-section">
+                        <h4>About Barangay Section</h4>
+                        <p>Customize the about section with your barangay's story and image.</p>
+                        <ul>
+                            <li>Update the story title and paragraphs</li>
+                            <li>Add a barangay hall or community image</li>
+                            <li>Preview images before saving</li>
+                            <li>Changes appear on the About Us page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission & Vision Tab -->
+            <div id="mission" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-bullseye"></i> Mission & Vision Section</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Define your barangay's mission and vision statements.</p>
+                    
+                    <form id="mission-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="mission-title">Mission Title</label>
+                                <input type="text" class="form-control" id="mission-title" placeholder="Enter mission title">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="vision-title">Vision Title</label>
+                                <input type="text" class="form-control" id="vision-title" placeholder="Enter vision title">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="mission-text">Mission Text</label>
+                                <textarea class="form-control" id="mission-text" placeholder="Enter mission statement"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="vision-text">Vision Text</label>
+                                <textarea class="form-control" id="vision-text" placeholder="Enter vision statement"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Mission & Vision
+                            </button>
+                            <button type="button" class="btn btn-warning" id="mission-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="mission-guide" class="guide-section">
+                        <h4>Mission & Vision Section</h4>
+                        <p>Define your barangay's mission and vision statements.</p>
+                        <ul>
+                            <li>Update mission and vision titles</li>
+                            <li>Edit mission and vision statements</li>
+                            <li>Keep statements concise and impactful</li>
+                            <li>Changes appear on the About Us page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barangay Officials Tab -->
+            <div id="officials" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-users"></i> Barangay Officials Section</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Manage the list of barangay officials. You can add, edit, or remove officials as needed.</p>
+                    
+                    <div class="search-container">
+                        <input type="text" class="search-bar" id="officials-search" placeholder="Search officials by name or position...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <div class="tabs">
+                        <div class="tab active" data-official-tab="existing">
+                            <i class="fa-solid fa-users"></i> Existing Officials
+                        </div>
+                        <div class="tab" data-official-tab="add">
+                            <i class="fa-solid fa-user-plus"></i> Add New Official
+                        </div>
+                    </div>
+                    
+                    <div id="existing-officials" class="tab-content active">
+                        <div class="alert alert-success">
+                            <strong><i class="fas fa-info-circle"></i> Pro Tip:</strong> Click on any official to edit their details.
+                        </div>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Avatar</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Description</th>
+                                    <th>Contact</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="officials-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="add-official" class="tab-content">
+                        <form id="official-form">
+                            <input type="hidden" id="official-edit-id" value="">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="official-name">Name *</label>
+                                    <input type="text" class="form-control" id="official-name" placeholder="Enter official name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="official-position">Position *</label>
+                                    <input type="text" class="form-control" id="official-position" placeholder="Enter official position" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="official-description">Description / Position Details</label>
+                                <textarea class="form-control" id="official-description" placeholder="Enter official description"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="official-contact">Contact Information</label>
+                                <input type="text" class="form-control" id="official-contact" placeholder="Enter contact details">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="official-avatar">Profile Image URL</label>
+                                <input type="text" class="form-control" id="official-avatar" placeholder="https://example.com/avatar.jpg">
+                                <small style="color: var(--gray); margin-top: 5px; display: block;">Enter direct URL to profile image (recommended size: 100x100 pixels)</small>
+                                <div class="image-preview-container">
+                                    <img id="official-avatar-preview" class="avatar-preview" alt="Official avatar preview">
+                                </div>
+                            </div>
+                            
+                            <div class="action-buttons-container">
+                                <button type="submit" class="btn btn-success" id="official-submit-btn">
+                                    <i class="fas fa-plus-circle"></i> Add Official
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="official-cancel-edit" style="display: none;">
+                                    <i class="fas fa-times"></i> Cancel Edit
+                                </button>
+                                <button type="button" class="btn btn-warning" id="officials-reset-btn">
+                                    <i class="fas fa-undo"></i> Reset All Officials
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="officials-guide" class="guide-section">
+                        <h4>Barangay Officials Management</h4>
+                        <p>Manage all barangay officials and their information.</p>
+                        <ul>
+                            <li>Add, edit, and delete officials</li>
+                            <li>Upload profile images for each official</li>
+                            <li>Include contact information</li>
+                            <li>Add detailed descriptions for each official</li>
+                            <li>Changes appear on the About Us page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Committees Tab -->
+            <div id="committees" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-user-friends"></i> Committees Section</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Manage the different committees in your barangay and their members.</p>
+                    
+                    <div class="search-container">
+                        <input type="text" class="search-bar" id="committees-search" placeholder="Search committees by title...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <div class="tabs">
+                        <div class="tab active" data-committee-tab="existing">
+                            <i class="fa-solid fa-shield"></i> Existing Committees
+                        </div>
+                        <div class="tab" data-committee-tab="add">
+                            <i class="fa-solid fa-circle-plus"></i> Add New Committee
+                        </div>
+                    </div>
+                    
+                    <div id="existing-committees" class="tab-content active">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Committee Name</th>
+                                    <th>Chairperson</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="committees-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="add-committee" class="tab-content">
+                        <form id="committee-form">
+                            <input type="hidden" id="committee-edit-id" value="">
+                            <div class="form-group">
+                                <label class="form-label" for="committee-name">Committee Name *</label>
+                                <input type="text" class="form-control" id="committee-name" placeholder="Enter committee name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="committee-chairperson">Committee Chairperson</label>
+                                <input type="text" class="form-control" id="committee-chairperson" placeholder="Enter committee chairperson">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="committee-description">Committee Description</label>
+                                <textarea class="form-control" id="committee-description" placeholder="Enter committee description"></textarea>
+                            </div>
+                            
+                            <div class="action-buttons-container">
+                                <button type="submit" class="btn btn-success" id="committee-submit-btn">
+                                    <i class="fas fa-plus-circle"></i> Add Committee
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="committee-cancel-edit" style="display: none;">
+                                    <i class="fas fa-times"></i> Cancel Edit
+                                </button>
+                                <button type="button" class="btn btn-warning" id="committees-reset-btn">
+                                    <i class="fas fa-undo"></i> Reset All Committees
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="committees-guide" class="guide-section">
+                        <h4>Committees Management</h4>
+                        <p>Manage barangay committees and their members.</p>
+                        <ul>
+                            <li>Add, edit, and delete committees</li>
+                            <li>Include committee name, chairperson, and description</li>
+                            <li>Organize by committee functions</li>
+                            <li>Keep information up-to-date</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Tab -->
+            <div id="documents" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-file-alt"></i> Document Requirements Section</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">List the documents residents can request and their requirements.</p>
+                    
+                    <div class="search-container">
+                        <input type="text" class="search-bar" id="documents-search" placeholder="Search documents by title...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <div class="tabs">
+                        <div class="tab active" data-document-tab="existing">
+                            <i class="fa-solid fa-file-lines"></i> Existing Documents
+                        </div>
+                        <div class="tab" data-document-tab="add">
+                            <i class="fa-solid fa-file-circle-plus"></i> Add New Document
+                        </div>
+                    </div>
+                    
+                    <div id="existing-documents" class="tab-content active">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Requirements</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="documents-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="add-document" class="tab-content">
+                        <form id="document-form">
+                            <input type="hidden" id="document-edit-id" value="">
+                            <div class="form-group">
+                                <label class="form-label" for="document-title">Document Title *</label>
+                                <input type="text" class="form-control" id="document-title" placeholder="Enter document title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="document-description">Document Description</label>
+                                <textarea class="form-control" id="document-description" placeholder="Describe the document purpose"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="document-requirements">Requirements</label>
+                                <textarea class="form-control" id="document-requirements" placeholder="Enter requirements (one per line)"></textarea>
+                                <small style="color: var(--gray); margin-top: 5px; display: block;">Each line will become a separate requirement</small>
+                            </div>
+                            
+                            <div class="action-buttons-container">
+                                <button type="submit" class="btn btn-success" id="document-submit-btn">
+                                    <i class="fas fa-plus-circle"></i> Add Document
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="document-cancel-edit" style="display: none;">
+                                    <i class="fas fa-times"></i> Cancel Edit
+                                </button>
+                                <button type="button" class="btn btn-warning" id="documents-reset-btn">
+                                    <i class="fas fa-undo"></i> Reset All Documents
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="documents-guide" class="guide-section">
+                        <h4>Document Requirements Management</h4>
+                        <p>Manage document requirements and information.</p>
+                        <ul>
+                            <li>Add, edit, and delete document types</li>
+                            <li>Include descriptions and requirements</li>
+                            <li>Specify processing fees if applicable</li>
+                            <li>Keep information accurate and up-to-date</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Tab -->
+            <div id="location" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-map-marker-alt"></i> Location Section</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Provide information about your barangay's location.</p>
+                    
+                    <form id="location-form">
+                        <div class="form-group">
+                            <label class="form-label" for="location-title">Section Title</label>
+                            <input type="text" class="form-control" id="location-title" placeholder="Enter section title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="location-subtitle">Section Subtitle</label>
+                            <input type="text" class="form-control" id="location-subtitle" placeholder="Enter section subtitle">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="map-description">Map Embed URL *</label>
+                            <input type="text" class="form-control" id="map-description" placeholder="Enter Google Maps embed URL">
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">Paste the full Google Maps embed URL (iframe src)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="map-address">Map Address</label>
+                            <input type="text" class="form-control" id="map-address" placeholder="Enter map address">
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Location Section
+                            </button>
+                            <button type="button" class="btn btn-warning" id="location-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="location-guide" class="guide-section">
+                        <h4>Location Section</h4>
+                        <p>Provide information about your barangay's location.</p>
+                        <ul>
+                            <li>Update section title and subtitle</li>
+                            <li>Modify map embed URL (Google Maps iframe src)</li>
+                            <li>Update barangay address</li>
+                            <li>Changes appear on the About Us page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Tab -->
+            <div id="contact" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-phone-alt"></i> Contact Information</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Update your barangay's contact details.</p>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label class="form-label" for="contact-title">Section Title</label>
+                            <input type="text" class="form-control" id="contact-title" placeholder="Enter section title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contact-location-address">Location Address</label>
+                            <input type="text" class="form-control" id="contact-location-address" placeholder="Enter location address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contact-email-address">Email Address</label>
+                            <input type="text" class="form-control" id="contact-email-address" placeholder="Enter email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contact-phone-number">Phone Number</label>
+                            <input type="text" class="form-control" id="contact-phone-number" placeholder="Enter phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="map-link-text">Map Link Text</label>
+                            <input type="text" class="form-control" id="map-link-text" placeholder="Enter map link text">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contact-map-link">Map Link URL</label>
+                            <input type="text" class="form-control" id="contact-map-link" placeholder="Enter Google Maps link URL">
+                            <small style="color: var(--gray); margin-top: 5px; display: block;">Enter the full Google Maps share link URL</small>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-container">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Contact Information
+                            </button>
+                            <button type="button" class="btn btn-warning" id="contact-reset-btn">
+                                <i class="fas fa-undo"></i> Reset to Defaults
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="contact-guide" class="guide-section">
+                        <h4>Contact Information</h4>
+                        <p>Update your barangay's contact details.</p>
+                        <ul>
+                            <li>Update section title</li>
+                            <li>Modify location address</li>
+                            <li>Update email and phone number</li>
+                            <li>Customize map link text and URL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Tab -->
+            <div id="faq" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-question-circle"></i> FAQ Section</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">Manage frequently asked questions and their answers.</p>
+                    
+                    <div class="search-container">
+                        <input type="text" class="search-bar" id="faq-search" placeholder="Search FAQs by question...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <div class="tabs">
+                        <div class="tab active" data-faq-tab="existing">
+                            <i class="fa-solid fa-question-circle"></i> Existing FAQs
+                        </div>
+                        <div class="tab" data-faq-tab="add">
+                            <i class="fa-solid fa-circle-plus"></i> Add New FAQ
+                        </div>
+                    </div>
+                    
+                    <div id="existing-faqs" class="tab-content active">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Answer</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="faq-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="add-faq" class="tab-content">
+                        <form id="faq-form">
+                            <input type="hidden" id="faq-edit-id" value="">
+                            <div class="form-group">
+                                <label class="form-label" for="faq-question">Question *</label>
+                                <input type="text" class="form-control" id="faq-question" placeholder="Enter FAQ question" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="faq-answer">Answer *</label>
+                                <textarea class="form-control" id="faq-answer" placeholder="Enter FAQ answer" required></textarea>
+                            </div>
+                            
+                            <div class="action-buttons-container">
+                                <button type="submit" class="btn btn-success" id="faq-submit-btn">
+                                    <i class="fas fa-plus-circle"></i> Add FAQ
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="faq-cancel-edit" style="display: none;">
+                                    <i class="fas fa-times"></i> Cancel Edit
+                                </button>
+                                <button type="button" class="btn btn-warning" id="faq-reset-btn">
+                                    <i class="fas fa-undo"></i> Reset All FAQs
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="faq-guide" class="guide-section">
+                        <h4>FAQ Management</h4>
+                        <p>Manage frequently asked questions and their answers.</p>
+                        <ul>
+                            <li>Add, edit, and delete FAQs</li>
+                            <li>Provide clear and concise answers</li>
+                            <li>Organize by common topics</li>
+                            <li>Keep information up-to-date</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Tab -->
+            <div id="feedback" class="tab-content">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fas fa-comments"></i> User Feedback</h2>
+                        <div class="action-buttons">
+                            <a href="AboutUs.html" target="_blank" class="btn btn-success btn-sm">
+                                <i class="fas fa-eye"></i> View Site
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <p style="color: var(--gray); margin-bottom: 25px;">View and manage user feedback from the contact form. You can reply to users via EmailJS.</p>
+                    
+                    <div class="search-container">
+                        <input type="text" class="search-bar" id="feedback-search" placeholder="Search feedback by name, email, subject, or message...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <div class="tabs">
+                        <div class="tab active" data-feedback-tab="all">
+                            <i class="fa-solid fa-envelope"></i> All Feedback
+                        </div>
+                        <div class="tab" data-feedback-tab="unread">
+                            <i class="fa-solid fa-envelope-circle-check"></i> Unread
+                        </div>
+                        <div class="tab" data-feedback-tab="read">
+                            <i class="fa-solid fa-envelope-open-text"></i> Read
+                        </div>
+                    </div>
+                    
+                    <div id="feedback-content" class="tab-content active">
+                        <table class="feedback-table">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="feedback-table-body">
+                                <!-- Feedback rows will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="quick-guide-center">
+                    <div class="quick-guide-header">
+                        <h2 class="quick-guide-title"><i class="fas fa-book"></i> Quick Guide</h2>
+                    </div>
+                    
+                    <div id="feedback-guide" class="guide-section">
+                        <h4>User Feedback Management</h4>
+                        <p>Manage user feedback from the contact form.</p>
+                        <ul>
+                            <li>View all user messages with details</li>
+                            <li>Mark messages as read or unread</li>
+                            <li>Reply to users via EmailJS</li>
+                            <li>Delete messages when no longer needed</li>
+                            <li>Use search to find specific messages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Save Status Indicator - MOVED TO RIGHT SIDE -->
+    <div id="save-status" class="save-status">• Manual Save</div>
+
+    <!-- Feedback Details Modal -->
+    <div id="feedback-modal" class="edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Feedback Details</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="feedback-detail-item">
+                    <div class="feedback-detail-label">Name:</div>
+                    <div class="feedback-detail-value" id="feedback-detail-name"></div>
+                </div>
+                <div class="feedback-detail-item">
+                    <div class="feedback-detail-label">Email:</div>
+                    <div class="feedback-detail-value" id="feedback-detail-email"></div>
+                </div>
+                <div class="feedback-detail-item">
+                    <div class="feedback-detail-label">Subject:</div>
+                    <div class="feedback-detail-value" id="feedback-detail-subject"></div>
+                </div>
+                <div class="feedback-detail-item">
+                    <div class="feedback-detail-label">Message:</div>
+                    <div class="feedback-detail-value" id="feedback-detail-message"></div>
+                </div>
+                <div class="feedback-detail-item">
+                    <div class="feedback-detail-label">Time:</div>
+                    <div class="feedback-detail-value" id="feedback-detail-time"></div>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="btn btn-danger" id="feedback-modal-delete-btn">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+                <button class="btn btn-warning" id="feedback-modal-hide-btn">
+                    <i class="fas fa-eye-slash"></i> Hide/Archive
+                </button>
+                <button class="btn btn-success" id="feedback-modal-resolve-btn">
+                    <i class="fas fa-check-circle"></i> Mark as Resolved
+                </button>
+                <button class="btn btn-secondary" id="feedback-modal-close-btn">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add Font Awesome solid icons
+        const faScript = document.createElement('script');
+        faScript.src = 'https://kit.fontawesome.com/4b5e5b5a5e.js';
+        faScript.crossOrigin = 'anonymous';
+        document.head.appendChild(faScript);
+
+        // Default data structure matching the user view
+        const defaultAboutUsData = {
+            systemName: "BARANGAY 118 ONLINE SYSTEM",
+            aboutUs: {
+                hero: {
+                    title: "Barangay Information",
+                    description: "Learn about our barangay's mission, leadership, services, and commitment to the community."
+                },
+                story: {
+                    title: "Our Community Story",
+                    content1: "For over 62 years, Barangay 118 has stood as a pillar of public service — committed to delivering efficient, transparent, and accessible government services to our residents. Located in the heart of the city, our barangay is home to a vibrant community of families, businesses, and institutions working together for progress and unity.",
+                    content2: "Through the launch of our Online System, we are taking our commitment to the next level — providing 24/7 access to essential services from the comfort of your home. This digital transformation bridges the gap between the barangay administration and the people we serve, ensuring convenience and connectivity for all.",
+                    content3: "Behind every program and project is a dedicated team of officials and staff who serve with integrity, transparency, and compassion — ensuring that every resident feels heard, supported, and cared for.",
+                    image: "Screen Shot 2025-11-23 at 10.35.19 AM.png"
+                },
+                missionVision: {
+                    mission: {
+                        title: "Our Mission",
+                        description: "To provide efficient, transparent, and accessible government services to all residents through innovative digital solutions, fostering a connected and empowered community."
+                    },
+                    vision: {
+                        title: "Our Vision",
+                        description: "To be a model barangay known for excellent public service, community engagement, and technological innovation that improves the quality of life for all residents."
+                    }
+                },
+                officials: {
+                    subtitle: "Meet the dedicated team serving our community",
+                    list: [
+                        { id: 1, avatar: 'J', name: 'Jerryllyn D. Bolo', position: 'Chairwoman', description: 'Leading Barangay 118 with dedication and commitment to community service.' },
+                        { id: 2, avatar: 'J', name: 'Jeremy Abesamis', position: 'SK Chairman', description: 'Representing the youth of Barangay 118 and advocating for their needs.' },
+                        { id: 3, avatar: 'R', name: 'Richard Rayos', position: 'Secretary', description: 'Managing barangay documentation and administrative processes.' },
+                        { id: 4, avatar: 'C', name: 'Carolina T. Manabat', position: 'Treasurer', description: 'Overseeing barangay finances and budget management.' },
+                        { id: 5, avatar: 'A', name: 'Annalyn Abesamis', position: 'Kagawad', description: 'Committee on Violence Against Women and Children.' },
+                        { id: 6, avatar: 'J', name: 'Joemarie F. Dohinog', position: 'Kagawad', description: 'Committee on Infrastructure.' },
+                        { id: 7, avatar: 'R', name: 'Ronald Allan Mateo', position: 'Kagawad', description: 'Committee on Public Safety.' },
+                        { id: 8, avatar: 'L', name: 'Lucas Badilla', position: 'Kagawad', description: 'Committee on Health and Sanitation.' },
+                        { id: 9, avatar: 'N', name: 'Novel Nolasco', position: 'Kagawad', description: 'Committee on Peace and Order.' },
+                        { id: 10, avatar: 'M', name: 'Ma. Theresa Neri', position: 'Kagawad', description: 'Committee on Education.' },
+                        { id: 11, avatar: 'A', name: 'Alex Bolo', position: 'Kagawad', description: 'Committee on Environmental.' }
+                    ]
+                },
+                committees: {
+                    subtitle: "Our specialized committees addressing various community needs",
+                    list: [
+                        { id: 1, icon: 'fas fa-shield-heart', name: 'Committee on Violence Against Women and Children', chairperson: 'Annalyn Abesamis', description: 'Addressing issues related to violence against women and children and providing support services. This committee ensures protection and empowerment for vulnerable groups in our community.' },
+                        { id: 2, icon: 'fas fa-hammer', name: 'Committee on Infrastructure', chairperson: 'Joemarie F. Dohinog', description: 'Overseeing barangay infrastructure projects and maintenance of public facilities. This committee ensures our community has well-maintained roads, buildings, and public spaces.' },
+                        { id: 3, icon: 'fas fa-user-shield', name: 'Committee on Public Safety', chairperson: 'Ronald Allan Mateo', description: 'Ensuring the safety and security of residents through various safety programs. This committee coordinates with local authorities to maintain a secure environment for all.' },
+                        { id: 4, icon: 'fas fa-hand-holding-medical', name: 'Committee on Health and Sanitation', chairperson: 'Lucas Badilla', description: 'Promoting health programs and maintaining cleanliness in the community. This committee organizes medical missions and ensures proper waste management.' },
+                        { id: 5, icon: 'fas fa-peace', name: 'Committee on Peace and Order', chairperson: 'Novel Nolasco', description: 'Maintaining peace and order within the barangay through community policing. This committee resolves disputes and promotes harmonious living.' },
+                        { id: 6, icon: 'fas fa-graduation-cap', name: 'Committee on Education', chairperson: 'Ma. Theresa Neri', description: 'Supporting educational initiatives and programs for residents of all ages. This committee provides scholarships and organizes literacy programs.' },
+                        { id: 7, icon: 'fas fa-leaf', name: 'Committee on Environmental', chairperson: 'Alex Bolo', description: 'Implementing environmental programs and sustainability initiatives. This committee promotes green spaces and environmental awareness campaigns.' }
+                    ]
+                },
+                documents: {
+                    subtitle: "Information about the documents you can request and their requirements",
+                    list: [
+                        {
+                            id: 1,
+                            name: 'Barangay Clearance',
+                            description: 'Required for various transactions including employment, business permits, and legal matters. This document certifies your good standing in the community.',
+                            requirements: ['Valid government-issued ID', 'Proof of Residency (utility bill or lease agreement)', 'Community Tax Certificate (cedula)'],
+                            processingTime: '10-15 minutes'
+                        },
+                        {
+                            id: 2,
+                            name: 'Certificate of Residency',
+                            description: 'Proof of residency in Barangay 118 for various purposes such as school enrollment, loan applications, and government transactions.',
+                            requirements: ['Valid government-issued ID', 'Proof of Residency (utility bill or barangay ID)', 'Completed application form'],
+                            processingTime: 'Same day'
+                        },
+                        {
+                            id: 3,
+                            name: 'Certificate of Indigency',
+                            description: 'For availing government assistance programs and benefits. This document certifies your eligibility for social welfare programs.',
+                            requirements: ['Valid ID', 'Proof of Income or Affidavit of No Income', 'Proof of Residency'],
+                            processingTime: '1-2 days'
+                        },
+                        {
+                            id: 4,
+                            name: 'Barangay ID',
+                            description: 'Official identification card issued by Barangay 118. Valid for local transactions and as supplementary identification.',
+                            requirements: ['Valid ID (if available)', 'Proof of Residency', '1x1 ID Photo', 'Completed application form'],
+                            processingTime: '3-5 working days'
+                        },
+                    ]
+                },
+                location: {
+                    title: "Barangay Location",
+                    subtitle: "Find our barangay hall and important facilities",
+                    mapLink: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.756058428442!2d120.98186107483958!3d14.617918276090184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5f6a5b2c8b1%3A0x3a5c6c3c3c3c3c3c!2s402%202nd%20St%2C%20Grace%20Park%20East%2C%20Caloocan%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1690000000000!5m2!1sen!2sph",
+                    address: '402 2nd St, Grace Park East, Caloocan, Metro Manila',
+                    location: 'Barangay 118 Hall, Grace Park East, Caloocan'
+                },
+                contact: {
+                    title: "Get In Touch",
+                    address: '402 2nd St, Grace Park East, Caloocan, Metro Manila',
+                    email: 'info@barangay118.gov.ph',
+                    phone: '(02) 8123-4567',
+                    mapLink: "https://maps.app.goo.gl/vic9Xuyab5eZhxSaA",
+                    hours: {
+                        weekdays: 'Monday-Friday: 8:00 AM - 3:00 PM',
+                        saturday: 'Saturday: 8:00 AM - 12:00 PM'
+                    },
+                    mapLinkText: "View on Google Maps"
+                },
+                faqs: {
+                    list: [
+                        {
+                            id: 1,
+                            question: 'What are the office hours of the barangay hall?',
+                            answer: 'Our barangay hall is open from Monday to Friday, 8:00 AM to 3:00 PM, and on Saturdays from 8:00 AM to 12:00 PM. We are closed on Sundays and holidays.'
+                        },
+                        {
+                            id: 2,
+                            question: 'How can I request a Barangay Clearance?',
+                            answer: 'Required documents: Valid government-issued ID (driver\'s license, passport, voter\'s ID), proof of residency (utility bill, lease/rental contract), completed barangay clearance application form, Community Tax Certificate (cedula), and passport-size photo if required. Fees: Free (no payment required). Processing time: Usually issued immediately (10–15 minutes). Where & How to apply: Apply in person at Barangay 118 Hall, weekdays 8 AM–5 PM. Submit requirements and receive your clearance.'
+                        },
+                        {
+                            id: 3,
+                            question: 'How can I request a Certificate of Residency?',
+                            answer: 'Required documents: Government-issued ID, proof of address (utility bill, lease, or cedula), and completed residency certificate form. Fees: Free (no payment required). Processing time: On the spot or same day. Where & How to apply: Apply at Barangay 118 Hall, weekdays 8 AM–5 PM. Present your documents and receive the certificate.'
+                        },
+                        {
+                            id: 4,
+                            question: 'How can I request a Certificate of Indigency?',
+                            answer: 'Required documents: Government-issued ID, proof of residence (barangay ID, voter\'s record, or utility bill), supporting income documents if applicable, and purpose statement. Fees: Free. Processing time: Usually issued immediately. Where & How to apply: Submit request at Barangay 118 Hall, weekdays 8 AM–5 PM. The officer will review and issue the certificate.'
+                        },
+                        {
+                            id: 5,
+                            question: 'How can I get a Barangay ID?',
+                            answer: 'Required documents: Valid ID (if any), proof of residency (utility bill, barangay certificate, or cedula), 1–2 passport-size photos, and completed application form. Fees: Free. Processing time: Usually issued on the same day. Where & How to apply: Apply at Barangay 118 Hall, weekdays 8 AM–5 PM. Submit your requirements and receive your Barangay ID.'
+                        },
+                        {
+                            id: 6,
+                            question: 'How can I report a community concern?',
+                            answer: 'You can report concerns by visiting the Barangay 118 Hall, calling our office at (02) 8123-4567, or using the contact form on our website. For emergencies, contact proper emergency services first. You may also use the "Get In Touch" section on our site; our team will review and assist you accordingly.'
+                        }
+                    ]
+                }
+            },
+            footer: {
+                title: "Barangay 118 Online System",
+                description: "Secure and efficient online services for Barangay 118. Connecting our community through technology.",
+                socialMedia: {
+                    facebook: "https://facebook.com/barangay118",
+                    messenger: "https://m.me/barangay118"
+                },
+                contactInfo: [
+                    "402 2nd St, Grace Park East, Caloocan",
+                    "Metro Manila, Philippines",
+                    "(02) 8123-4567",
+                    "info@barangay118.gov.ph",
+                    "Mon–Fri: 8:00 AM – 5:00 PM"
+                ],
+                copyright: "&copy; 2025 Barangay 118 Online System. All Rights Reserved."
+            }
+        };
+
+        // Enhanced About Us Admin Panel with Manual Save - CONNECTED VERSION
+        class AboutUsAdminPanel {
+            constructor() {
+                this.dataKey = 'barangayContent'; // CHANGED TO MATCH USER VIEW
+                this.currentData = null;
+                this.activityLog = [];
+                this.lastSavedData = null;
+                this.saveStatusTimeout = null;
+                this.currentFeedbackFilter = 'all';
+                this.renderedTabs = new Set(); // Track which tabs have been rendered
+                this.currentFeedbackId = null; // Track current feedback being viewed
+                this.init();
+            }
+
+            init() {
+                this.loadData();
+                this.lastSavedData = JSON.parse(JSON.stringify(this.currentData));
+                this.setupEventListeners();
+                this.updateDashboard();
+                this.logActivity('System initialized with pre-loaded data', 'success');
+                this.updateSaveStatus('• Manual Save');
+                this.checkUserViewConnection();
+                
+                // Hide all tabs except the active one
+                this.hideAllTabs();
+                
+                // Show the welcome tab by default
+                this.switchTab('welcome');
+                
+                // Initialize feedback modal event listeners
+                this.setupFeedbackModal();
+            }
+
+            hideAllTabs() {
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+            }
+
+            getDefaultData() {
+                return JSON.parse(JSON.stringify(defaultAboutUsData));
+            }
+
+            loadData() {
+                let loaded = false;
+                const savedData = localStorage.getItem(this.dataKey);
+                if (savedData) {
+                    try {
+                        this.currentData = JSON.parse(savedData);
+                        console.log('Data loaded from localStorage with key:', this.dataKey);
+                        loaded = true;
+                    } catch (error) {
+                        console.error('Error parsing localStorage data:', error);
+                    }
+                }
+                
+                if (!loaded) {
+                    this.currentData = this.getDefaultData();
+                    console.log('Using pre-loaded default data');
+                }
+                
+                this.populateForms();
+            }
+
+            hasActualChanges() {
+                if (!this.lastSavedData) return true;
+                
+                const currentDataStr = JSON.stringify(this.currentData);
+                const lastSavedDataStr = JSON.stringify(this.lastSavedData);
+                
+                return currentDataStr !== lastSavedDataStr;
+            }
+
+            // Manual save data with change detection
+            saveData(forceSave = false) {
+                if (!forceSave && !this.hasActualChanges()) {
+                    console.log('No changes detected, skipping save');
+                    this.updateSaveStatus('No changes to save', 'info');
+                    this.showAlert('No changes to save', 'info');
+                    return true;
+                }
+
+                let saved = false;
+                
+                try {
+                    localStorage.setItem(this.dataKey, JSON.stringify(this.currentData));
+                    console.log('Data saved to localStorage with key:', this.dataKey);
+                    saved = true;
+                    
+                    this.lastSavedData = JSON.parse(JSON.stringify(this.currentData));
+                    
+                    this.updateDashboard();
+                    this.updateSaveStatus('Saved successfully', 'success');
+                    this.logActivity('Data saved successfully', 'success');
+                    
+                    // Trigger storage event for user view to update
+                    window.dispatchEvent(new StorageEvent('storage', {
+                        key: this.dataKey,
+                        newValue: JSON.stringify(this.currentData)
+                    }));
+                    
+                } catch (error) {
+                    console.error('Save failed:', error);
+                    this.updateSaveStatus('Save failed', 'error');
+                    this.logActivity('Data save failed', 'error');
+                    saved = false;
+                }
+                
+                return saved;
+            }
+            
+            updateSaveStatus(message = '• Manual Save', type = 'default') {
+                const statusElement = document.getElementById('save-status');
+                if (!statusElement) return;
+                
+                // Clear existing timeout
+                if (this.saveStatusTimeout) {
+                    clearTimeout(this.saveStatusTimeout);
+                }
+                
+                // Update text and class
+                statusElement.textContent = message;
+                
+                // Remove all existing classes
+                statusElement.className = 'save-status';
+                
+                // Add appropriate class based on type
+                if (type === 'success') {
+                    statusElement.classList.add('success');
+                } else if (type === 'warning') {
+                    statusElement.classList.add('warning');
+                } else if (type === 'error') {
+                    statusElement.classList.add('error');
+                } else if (type === 'info') {
+                    statusElement.classList.add('info');
+                }
+                
+                // If it's a success message, set timeout to return to default after 3 seconds
+                if (type === 'success' || type === 'info' || type === 'warning') {
+                    this.saveStatusTimeout = setTimeout(() => {
+                        statusElement.textContent = '• Manual Save';
+                        statusElement.className = 'save-status';
+                    }, 3000);
+                }
+            }
+
+            populateForms() {
+                if (!this.currentData) return;
+
+                // Header Form
+                document.getElementById('site-title').value = this.currentData.systemName || '';
+                document.getElementById('page-hero-title').value = this.currentData.aboutUs?.hero?.title || '';
+                document.getElementById('page-hero-subtitle').value = this.currentData.aboutUs?.hero?.description || '';
+                
+                // About Form
+                document.getElementById('about-story-title').value = this.currentData.aboutUs?.story?.title || '';
+                document.getElementById('about-story-para1').value = this.currentData.aboutUs?.story?.content1 || '';
+                document.getElementById('about-story-para2').value = this.currentData.aboutUs?.story?.content2 || '';
+                document.getElementById('about-story-para3').value = this.currentData.aboutUs?.story?.content3 || '';
+                document.getElementById('about-barangay-image').value = this.currentData.aboutUs?.story?.image || '';
+                
+                // Mission Form
+                document.getElementById('mission-title').value = this.currentData.aboutUs?.missionVision?.mission?.title || '';
+                document.getElementById('mission-text').value = this.currentData.aboutUs?.missionVision?.mission?.description || '';
+                document.getElementById('vision-title').value = this.currentData.aboutUs?.missionVision?.vision?.title || '';
+                document.getElementById('vision-text').value = this.currentData.aboutUs?.missionVision?.vision?.description || '';
+                
+                // Location Form
+                document.getElementById('location-title').value = this.currentData.aboutUs?.location?.title || '';
+                document.getElementById('location-subtitle').value = this.currentData.aboutUs?.location?.subtitle || '';
+                document.getElementById('map-description').value = this.currentData.aboutUs?.location?.mapLink || '';
+                document.getElementById('map-address').value = this.currentData.aboutUs?.location?.address || '';
+                
+                // Contact Form
+                document.getElementById('contact-title').value = this.currentData.aboutUs?.contact?.title || '';
+                document.getElementById('contact-location-address').value = this.currentData.aboutUs?.contact?.address || '';
+                document.getElementById('contact-email-address').value = this.currentData.aboutUs?.contact?.email || '';
+                document.getElementById('contact-phone-number').value = this.currentData.aboutUs?.contact?.phone || '';
+                document.getElementById('map-link-text').value = this.currentData.aboutUs?.contact?.mapLinkText || '';
+                document.getElementById('contact-map-link').value = this.currentData.aboutUs?.contact?.mapLink || '';
+
+                // Update image previews
+                this.updateImagePreviews();
+            }
+
+            updateImagePreviews() {
+                const aboutPreview = document.getElementById('about-barangay-image-preview');
+                const officialPreview = document.getElementById('official-avatar-preview');
+
+                if (aboutPreview && this.currentData.aboutUs?.story?.image) {
+                    aboutPreview.src = this.currentData.aboutUs.story.image;
+                    aboutPreview.classList.add('visible');
+                }
+
+                if (officialPreview) {
+                    officialPreview.classList.remove('visible');
+                }
+            }
+
+            setupEventListeners() {
+                // Sidebar navigation - FIXED EVENT DELEGATION
+                document.querySelector('.sidebar-menu').addEventListener('click', (e) => {
+                    const link = e.target.closest('a');
+                    if (link && link.hasAttribute('data-tab')) {
+                        e.preventDefault();
+                        const tabId = link.getAttribute('data-tab');
+                        this.switchTab(tabId);
+                    }
+                });
+
+                // Sidebar logout button
+                document.querySelector('.sidebar-logout-btn').addEventListener('click', (e) => {
+                    if (!confirm('Are you sure you want to logout?')) {
+                        e.preventDefault();
+                    }
+                });
+
+                // Sub-tabs
+                document.querySelectorAll('[data-official-tab]').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        this.switchOfficialTab(tab.getAttribute('data-official-tab'));
+                    });
+                });
+
+                document.querySelectorAll('[data-committee-tab]').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        this.switchCommitteeTab(tab.getAttribute('data-committee-tab'));
+                    });
+                });
+
+                document.querySelectorAll('[data-document-tab]').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        this.switchDocumentTab(tab.getAttribute('data-document-tab'));
+                    });
+                });
+
+                document.querySelectorAll('[data-faq-tab]').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        this.switchFAQTab(tab.getAttribute('data-faq-tab'));
+                    });
+                });
+
+                document.querySelectorAll('[data-feedback-tab]').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        this.switchFeedbackTab(tab.getAttribute('data-feedback-tab'));
+                    });
+                });
+
+                // Form submissions
+                this.setupFormListeners();
+
+                // Quick action buttons
+                document.getElementById('preview-site-btn').addEventListener('click', () => {
+                    window.open('AboutUs.html', '_blank');
+                });
+
+                document.getElementById('export-data-btn').addEventListener('click', () => {
+                    this.exportData();
+                });
+
+                document.getElementById('backup-btn').addEventListener('click', () => {
+                    this.exportData();
+                    this.showAlert('Backup created successfully!', 'success');
+                });
+
+                document.getElementById('refresh-btn').addEventListener('click', () => {
+                    this.loadData();
+                    this.showAlert('Data refreshed!', 'success');
+                });
+
+                document.getElementById('clear-all-data-btn').addEventListener('click', () => {
+                    if (confirm('Clear ALL data? This will remove everything and cannot be undone.')) {
+                        this.clearAllData();
+                    }
+                });
+
+                // Image preview handlers
+                document.getElementById('about-barangay-image').addEventListener('input', (e) => {
+                    this.updateImagePreview('about-barangay-image-preview', e.target.value);
+                });
+
+                document.getElementById('official-avatar').addEventListener('input', (e) => {
+                    this.updateImagePreview('official-avatar-preview', e.target.value);
+                });
+
+                // Search handlers
+                document.getElementById('officials-search').addEventListener('input', (e) => {
+                    this.searchOfficials(e.target.value);
+                });
+
+                document.getElementById('committees-search').addEventListener('input', (e) => {
+                    this.searchCommittees(e.target.value);
+                });
+
+                document.getElementById('documents-search').addEventListener('input', (e) => {
+                    this.searchDocuments(e.target.value);
+                });
+
+                document.getElementById('faq-search').addEventListener('input', (e) => {
+                    this.searchFAQ(e.target.value);
+                });
+
+                document.getElementById('feedback-search').addEventListener('input', (e) => {
+                    this.searchFeedback(e.target.value);
+                });
+
+                // Prevent form submission from reloading page
+                document.querySelectorAll('form').forEach(form => {
+                    form.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                    });
+                });
+            }
+
+            setupFormListeners() {
+                // Header Form
+                document.getElementById('header-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const oldData = {
+                        systemName: this.currentData.systemName,
+                        heroTitle: this.currentData.aboutUs.hero.title,
+                        heroDescription: this.currentData.aboutUs.hero.description
+                    };
+                    
+                    const newData = {
+                        systemName: document.getElementById('site-title').value,
+                        heroTitle: document.getElementById('page-hero-title').value,
+                        heroDescription: document.getElementById('page-hero-subtitle').value
+                    };
+                    
+                    // Only update if there are actual changes
+                    if (JSON.stringify(oldData) !== JSON.stringify(newData)) {
+                        this.currentData.systemName = newData.systemName;
+                        this.currentData.aboutUs.hero.title = newData.heroTitle;
+                        this.currentData.aboutUs.hero.description = newData.heroDescription;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('Header section updated successfully!', 'success');
+                        this.logActivity('Header section updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in Header section', 'info');
+                    }
+                });
+
+                // Header Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('header-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset Header section to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentAbout = {...this.currentData.aboutUs};
+                        
+                        // Reset only header section
+                        this.currentData.systemName = defaultData.systemName;
+                        this.currentData.aboutUs.hero = {...defaultData.aboutUs.hero};
+                        
+                        // Restore other sections
+                        this.currentData.aboutUs.story = currentAbout.story;
+                        this.currentData.aboutUs.missionVision = currentAbout.missionVision;
+                        this.currentData.aboutUs.officials = currentAbout.officials;
+                        this.currentData.aboutUs.committees = currentAbout.committees;
+                        this.currentData.aboutUs.documents = currentAbout.documents;
+                        this.currentData.aboutUs.location = currentAbout.location;
+                        this.currentData.aboutUs.contact = currentAbout.contact;
+                        this.currentData.aboutUs.faqs = currentAbout.faqs;
+                        
+                        // Update form
+                        document.getElementById('site-title').value = defaultData.systemName;
+                        document.getElementById('page-hero-title').value = defaultData.aboutUs.hero.title;
+                        document.getElementById('page-hero-subtitle').value = defaultData.aboutUs.hero.description;
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('Header section reset to defaults and saved!', 'success');
+                        this.logActivity('Header section reset to defaults and saved', 'warning');
+                    }
+                });
+
+                // About Form
+                document.getElementById('about-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const oldData = {...this.currentData.aboutUs.story};
+                    const newData = {
+                        title: document.getElementById('about-story-title').value,
+                        content1: document.getElementById('about-story-para1').value,
+                        content2: document.getElementById('about-story-para2').value,
+                        content3: document.getElementById('about-story-para3').value,
+                        image: document.getElementById('about-barangay-image').value
+                    };
+                    
+                    // Check if there are actual changes
+                    if (JSON.stringify(oldData) !== JSON.stringify(newData)) {
+                        this.currentData.aboutUs.story = newData;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('About section updated successfully!', 'success');
+                        this.logActivity('About section updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in About section', 'info');
+                    }
+                });
+
+                // About Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('about-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset About section to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentHeader = {...this.currentData.aboutUs.hero};
+                        const currentSystemName = this.currentData.systemName;
+                        const currentMission = {...this.currentData.aboutUs.missionVision};
+                        const currentOfficials = {...this.currentData.aboutUs.officials};
+                        const currentCommittees = {...this.currentData.aboutUs.committees};
+                        const currentDocuments = {...this.currentData.aboutUs.documents};
+                        const currentLocation = {...this.currentData.aboutUs.location};
+                        const currentContact = {...this.currentData.aboutUs.contact};
+                        const currentFAQs = {...this.currentData.aboutUs.faqs};
+                        
+                        // Reset only about section
+                        this.currentData.aboutUs.story = {...defaultData.aboutUs.story};
+                        
+                        // Restore other sections
+                        this.currentData.aboutUs.hero = currentHeader;
+                        this.currentData.systemName = currentSystemName;
+                        this.currentData.aboutUs.missionVision = currentMission;
+                        this.currentData.aboutUs.officials = currentOfficials;
+                        this.currentData.aboutUs.committees = currentCommittees;
+                        this.currentData.aboutUs.documents = currentDocuments;
+                        this.currentData.aboutUs.location = currentLocation;
+                        this.currentData.aboutUs.contact = currentContact;
+                        this.currentData.aboutUs.faqs = currentFAQs;
+                        
+                        // Update form
+                        document.getElementById('about-story-title').value = defaultData.aboutUs.story.title;
+                        document.getElementById('about-story-para1').value = defaultData.aboutUs.story.content1;
+                        document.getElementById('about-story-para2').value = defaultData.aboutUs.story.content2;
+                        document.getElementById('about-story-para3').value = defaultData.aboutUs.story.content3;
+                        document.getElementById('about-barangay-image').value = defaultData.aboutUs.story.image;
+                        
+                        // Update image previews
+                        this.updateImagePreviews();
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('About section reset to defaults and saved!', 'success');
+                        this.logActivity('About section reset to defaults and saved', 'warning');
+                    }
+                });
+
+                // Mission Form
+                document.getElementById('mission-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const oldData = {...this.currentData.aboutUs.missionVision};
+                    const newData = {
+                        mission: {
+                            title: document.getElementById('mission-title').value,
+                            description: document.getElementById('mission-text').value
+                        },
+                        vision: {
+                            title: document.getElementById('vision-title').value,
+                            description: document.getElementById('vision-text').value
+                        }
+                    };
+                    
+                    // Check if there are actual changes
+                    if (JSON.stringify(oldData) !== JSON.stringify(newData)) {
+                        this.currentData.aboutUs.missionVision = newData;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('Mission & Vision updated successfully!', 'success');
+                        this.logActivity('Mission & Vision updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in Mission & Vision', 'info');
+                    }
+                });
+
+                // Mission Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('mission-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset Mission & Vision to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentHeader = {...this.currentData.aboutUs.hero};
+                        const currentSystemName = this.currentData.systemName;
+                        const currentAbout = {...this.currentData.aboutUs.story};
+                        const currentOfficials = {...this.currentData.aboutUs.officials};
+                        const currentCommittees = {...this.currentData.aboutUs.committees};
+                        const currentDocuments = {...this.currentData.aboutUs.documents};
+                        const currentLocation = {...this.currentData.aboutUs.location};
+                        const currentContact = {...this.currentData.aboutUs.contact};
+                        const currentFAQs = {...this.currentData.aboutUs.faqs};
+                        
+                        // Reset only mission vision section
+                        this.currentData.aboutUs.missionVision = {...defaultData.aboutUs.missionVision};
+                        
+                        // Restore other sections
+                        this.currentData.aboutUs.hero = currentHeader;
+                        this.currentData.systemName = currentSystemName;
+                        this.currentData.aboutUs.story = currentAbout;
+                        this.currentData.aboutUs.officials = currentOfficials;
+                        this.currentData.aboutUs.committees = currentCommittees;
+                        this.currentData.aboutUs.documents = currentDocuments;
+                        this.currentData.aboutUs.location = currentLocation;
+                        this.currentData.aboutUs.contact = currentContact;
+                        this.currentData.aboutUs.faqs = currentFAQs;
+                        
+                        // Update form
+                        document.getElementById('mission-title').value = defaultData.aboutUs.missionVision.mission.title;
+                        document.getElementById('mission-text').value = defaultData.aboutUs.missionVision.mission.description;
+                        document.getElementById('vision-title').value = defaultData.aboutUs.missionVision.vision.title;
+                        document.getElementById('vision-text').value = defaultData.aboutUs.missionVision.vision.description;
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('Mission & Vision reset to defaults and saved!', 'success');
+                        this.logActivity('Mission & Vision reset to defaults and saved', 'warning');
+                    }
+                });
+
+                // Official Form
+                document.getElementById('official-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const editId = document.getElementById('official-edit-id').value;
+                    const isEditing = editId !== '';
+
+                    const officialData = {
+                        id: isEditing ? parseInt(editId) : (this.currentData.aboutUs.officials.list.length > 0 ? Math.max(...this.currentData.aboutUs.officials.list.map(o => o.id)) + 1 : 1),
+                        name: document.getElementById('official-name').value,
+                        position: document.getElementById('official-position').value,
+                        description: document.getElementById('official-description').value,
+                        contact: document.getElementById('official-contact').value,
+                        avatar: document.getElementById('official-avatar').value
+                    };
+
+                    if (isEditing) {
+                        const index = this.currentData.aboutUs.officials.list.findIndex(o => o.id == editId);
+                        if (index !== -1) {
+                            this.currentData.aboutUs.officials.list[index] = officialData;
+                        }
+                        this.logActivity(`Official updated: "${officialData.name}"`, 'success');
+                        this.showAlert('Official updated successfully!', 'success');
+                    } else {
+                        this.currentData.aboutUs.officials.list.push(officialData);
+                        this.logActivity(`Official added: "${officialData.name}"`, 'success');
+                        this.showAlert('Official added successfully!', 'success');
+                    }
+
+                    this.saveData();
+                    this.renderOfficialsTable();
+
+                    document.getElementById('official-form').reset();
+                    document.getElementById('official-edit-id').value = '';
+                    document.getElementById('official-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add Official';
+                    document.getElementById('official-cancel-edit').style.display = 'none';
+
+                    if (isEditing) {
+                        this.switchOfficialTab('existing');
+                    }
+                });
+
+                // Committee Form
+                document.getElementById('committee-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const editId = document.getElementById('committee-edit-id').value;
+                    const isEditing = editId !== '';
+
+                    const committeeData = {
+                        id: isEditing ? parseInt(editId) : (this.currentData.aboutUs.committees.list.length > 0 ? Math.max(...this.currentData.aboutUs.committees.list.map(c => c.id)) + 1 : 1),
+                        name: document.getElementById('committee-name').value,
+                        chairperson: document.getElementById('committee-chairperson').value,
+                        description: document.getElementById('committee-description').value,
+                        icon: 'fas fa-users'
+                    };
+
+                    if (isEditing) {
+                        const index = this.currentData.aboutUs.committees.list.findIndex(c => c.id == editId);
+                        if (index !== -1) {
+                            this.currentData.aboutUs.committees.list[index] = committeeData;
+                        }
+                        this.logActivity(`Committee updated: "${committeeData.name}"`, 'success');
+                        this.showAlert('Committee updated successfully!', 'success');
+                    } else {
+                        this.currentData.aboutUs.committees.list.push(committeeData);
+                        this.logActivity(`Committee added: "${committeeData.name}"`, 'success');
+                        this.showAlert('Committee added successfully!', 'success');
+                    }
+
+                    this.saveData();
+                    this.renderCommitteesTable();
+
+                    document.getElementById('committee-form').reset();
+                    document.getElementById('committee-edit-id').value = '';
+                    document.getElementById('committee-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add Committee';
+                    document.getElementById('committee-cancel-edit').style.display = 'none';
+
+                    if (isEditing) {
+                        this.switchCommitteeTab('existing');
+                    }
+                });
+
+                // Document Form
+                document.getElementById('document-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const editId = document.getElementById('document-edit-id').value;
+                    const isEditing = editId !== '';
+
+                    const documentData = {
+                        id: isEditing ? parseInt(editId) : (this.currentData.aboutUs.documents.list.length > 0 ? Math.max(...this.currentData.aboutUs.documents.list.map(d => d.id)) + 1 : 1),
+                        name: document.getElementById('document-title').value,
+                        description: document.getElementById('document-description').value,
+                        requirements: document.getElementById('document-requirements').value.split('\n').filter(req => req.trim() !== ''),
+                        processingTime: ''
+                    };
+
+                    if (isEditing) {
+                        const index = this.currentData.aboutUs.documents.list.findIndex(d => d.id == editId);
+                        if (index !== -1) {
+                            this.currentData.aboutUs.documents.list[index] = documentData;
+                        }
+                        this.logActivity(`Document updated: "${documentData.name}"`, 'success');
+                        this.showAlert('Document updated successfully!', 'success');
+                    } else {
+                        this.currentData.aboutUs.documents.list.push(documentData);
+                        this.logActivity(`Document added: "${documentData.name}"`, 'success');
+                        this.showAlert('Document added successfully!', 'success');
+                    }
+
+                    this.saveData();
+                    this.renderDocumentsTable();
+
+                    document.getElementById('document-form').reset();
+                    document.getElementById('document-edit-id').value = '';
+                    document.getElementById('document-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add Document';
+                    document.getElementById('document-cancel-edit').style.display = 'none';
+
+                    if (isEditing) {
+                        this.switchDocumentTab('existing');
+                    }
+                });
+
+                // FAQ Form
+                document.getElementById('faq-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const editId = document.getElementById('faq-edit-id').value;
+                    const isEditing = editId !== '';
+
+                    const faqData = {
+                        id: isEditing ? parseInt(editId) : (this.currentData.aboutUs.faqs.list.length > 0 ? Math.max(...this.currentData.aboutUs.faqs.list.map(f => f.id)) + 1 : 1),
+                        question: document.getElementById('faq-question').value,
+                        answer: document.getElementById('faq-answer').value
+                    };
+
+                    if (isEditing) {
+                        const index = this.currentData.aboutUs.faqs.list.findIndex(f => f.id == editId);
+                        if (index !== -1) {
+                            this.currentData.aboutUs.faqs.list[index] = faqData;
+                        }
+                        this.logActivity(`FAQ updated: "${faqData.question}"`, 'success');
+                        this.showAlert('FAQ updated successfully!', 'success');
+                    } else {
+                        this.currentData.aboutUs.faqs.list.push(faqData);
+                        this.logActivity(`FAQ added: "${faqData.question}"`, 'success');
+                        this.showAlert('FAQ added successfully!', 'success');
+                    }
+
+                    this.saveData();
+                    this.renderFAQTable();
+
+                    document.getElementById('faq-form').reset();
+                    document.getElementById('faq-edit-id').value = '';
+                    document.getElementById('faq-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add FAQ';
+                    document.getElementById('faq-cancel-edit').style.display = 'none';
+
+                    if (isEditing) {
+                        this.switchFAQTab('existing');
+                    }
+                });
+
+                // Location Form
+                document.getElementById('location-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const oldData = {...this.currentData.aboutUs.location};
+                    const newData = {
+                        title: document.getElementById('location-title').value,
+                        subtitle: document.getElementById('location-subtitle').value,
+                        mapLink: document.getElementById('map-description').value,
+                        address: document.getElementById('map-address').value,
+                        location: this.currentData.aboutUs.location.location
+                    };
+                    
+                    // Check if there are actual changes
+                    if (JSON.stringify(oldData) !== JSON.stringify(newData)) {
+                        this.currentData.aboutUs.location = newData;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('Location section updated successfully!', 'success');
+                        this.logActivity('Location section updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in Location section', 'info');
+                    }
+                });
+
+                // Location Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('location-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset Location section to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentHeader = {...this.currentData.aboutUs.hero};
+                        const currentSystemName = this.currentData.systemName;
+                        const currentAbout = {...this.currentData.aboutUs.story};
+                        const currentMission = {...this.currentData.aboutUs.missionVision};
+                        const currentOfficials = {...this.currentData.aboutUs.officials};
+                        const currentCommittees = {...this.currentData.aboutUs.committees};
+                        const currentDocuments = {...this.currentData.aboutUs.documents};
+                        const currentContact = {...this.currentData.aboutUs.contact};
+                        const currentFAQs = {...this.currentData.aboutUs.faqs};
+                        
+                        // Reset only location section
+                        this.currentData.aboutUs.location = {...defaultData.aboutUs.location};
+                        
+                        // Restore other sections
+                        this.currentData.aboutUs.hero = currentHeader;
+                        this.currentData.systemName = currentSystemName;
+                        this.currentData.aboutUs.story = currentAbout;
+                        this.currentData.aboutUs.missionVision = currentMission;
+                        this.currentData.aboutUs.officials = currentOfficials;
+                        this.currentData.aboutUs.committees = currentCommittees;
+                        this.currentData.aboutUs.documents = currentDocuments;
+                        this.currentData.aboutUs.contact = currentContact;
+                        this.currentData.aboutUs.faqs = currentFAQs;
+                        
+                        // Update form
+                        document.getElementById('location-title').value = defaultData.aboutUs.location.title;
+                        document.getElementById('location-subtitle').value = defaultData.aboutUs.location.subtitle;
+                        document.getElementById('map-description').value = defaultData.aboutUs.location.mapLink;
+                        document.getElementById('map-address').value = defaultData.aboutUs.location.address;
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('Location section reset to defaults and saved!', 'success');
+                        this.logActivity('Location section reset to defaults and saved', 'warning');
+                    }
+                });
+
+                // Contact Form
+                document.getElementById('contact-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const oldData = {...this.currentData.aboutUs.contact};
+                    const newData = {
+                        title: document.getElementById('contact-title').value,
+                        address: document.getElementById('contact-location-address').value,
+                        email: document.getElementById('contact-email-address').value,
+                        phone: document.getElementById('contact-phone-number').value,
+                        mapLinkText: document.getElementById('map-link-text').value,
+                        mapLink: document.getElementById('contact-map-link').value,
+                        hours: this.currentData.aboutUs.contact.hours
+                    };
+                    
+                    // Check if there are actual changes
+                    if (JSON.stringify(oldData) !== JSON.stringify(newData)) {
+                        this.currentData.aboutUs.contact = newData;
+                        
+                        // Save and update
+                        this.saveData();
+                        this.showAlert('Contact information updated successfully!', 'success');
+                        this.logActivity('Contact information updated', 'success');
+                    } else {
+                        this.showAlert('No changes detected in contact information', 'info');
+                    }
+                });
+
+                // Contact Reset to Defaults - NOW AUTOMATICALLY SAVES
+                document.getElementById('contact-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset Contact section to defaults? This will reset and save immediately.')) {
+                        const defaultData = this.getDefaultData();
+                        // Store current data temporarily
+                        const currentHeader = {...this.currentData.aboutUs.hero};
+                        const currentSystemName = this.currentData.systemName;
+                        const currentAbout = {...this.currentData.aboutUs.story};
+                        const currentMission = {...this.currentData.aboutUs.missionVision};
+                        const currentOfficials = {...this.currentData.aboutUs.officials};
+                        const currentCommittees = {...this.currentData.aboutUs.committees};
+                        const currentDocuments = {...this.currentData.aboutUs.documents};
+                        const currentLocation = {...this.currentData.aboutUs.location};
+                        const currentFAQs = {...this.currentData.aboutUs.faqs};
+                        
+                        // Reset only contact section
+                        this.currentData.aboutUs.contact = {...defaultData.aboutUs.contact};
+                        
+                        // Restore other sections
+                        this.currentData.aboutUs.hero = currentHeader;
+                        this.currentData.systemName = currentSystemName;
+                        this.currentData.aboutUs.story = currentAbout;
+                        this.currentData.aboutUs.missionVision = currentMission;
+                        this.currentData.aboutUs.officials = currentOfficials;
+                        this.currentData.aboutUs.committees = currentCommittees;
+                        this.currentData.aboutUs.documents = currentDocuments;
+                        this.currentData.aboutUs.location = currentLocation;
+                        this.currentData.aboutUs.faqs = currentFAQs;
+                        
+                        // Update form
+                        document.getElementById('contact-title').value = defaultData.aboutUs.contact.title;
+                        document.getElementById('contact-location-address').value = defaultData.aboutUs.contact.address;
+                        document.getElementById('contact-email-address').value = defaultData.aboutUs.contact.email;
+                        document.getElementById('contact-phone-number').value = defaultData.aboutUs.contact.phone;
+                        document.getElementById('map-link-text').value = defaultData.aboutUs.contact.mapLinkText;
+                        document.getElementById('contact-map-link').value = defaultData.aboutUs.contact.mapLink;
+                        
+                        // FORCE SAVE AFTER RESET (bypass change detection)
+                        this.saveData(true);
+                        this.showAlert('Contact section reset to defaults and saved!', 'success');
+                        this.logActivity('Contact section reset to defaults and saved', 'warning');
+                    }
+                });
+
+                // Officials Reset All Button
+                document.getElementById('officials-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset ALL officials to defaults? This will remove all current officials and restore defaults.')) {
+                        const defaultData = this.getDefaultData();
+                        this.currentData.aboutUs.officials = {...defaultData.aboutUs.officials};
+                        this.saveData();
+                        this.renderOfficialsTable();
+                        this.showAlert('All officials reset to defaults!', 'success');
+                        this.logActivity('All officials reset to defaults', 'warning');
+                    }
+                });
+
+                // Committees Reset All Button
+                document.getElementById('committees-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset ALL committees to defaults? This will remove all current committees and restore defaults.')) {
+                        const defaultData = this.getDefaultData();
+                        this.currentData.aboutUs.committees = {...defaultData.aboutUs.committees};
+                        this.saveData();
+                        this.renderCommitteesTable();
+                        this.showAlert('All committees reset to defaults!', 'success');
+                        this.logActivity('All committees reset to defaults', 'warning');
+                    }
+                });
+
+                // Documents Reset All Button
+                document.getElementById('documents-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset ALL documents to defaults? This will remove all current documents and restore defaults.')) {
+                        const defaultData = this.getDefaultData();
+                        this.currentData.aboutUs.documents = {...defaultData.aboutUs.documents};
+                        this.saveData();
+                        this.renderDocumentsTable();
+                        this.showAlert('All documents reset to defaults!', 'success');
+                        this.logActivity('All documents reset to defaults', 'warning');
+                    }
+                });
+
+                // FAQ Reset All Button
+                document.getElementById('faq-reset-btn').addEventListener('click', () => {
+                    if (confirm('Reset ALL FAQs to defaults? This will remove all current FAQs and restore defaults.')) {
+                        const defaultData = this.getDefaultData();
+                        this.currentData.aboutUs.faqs = {...defaultData.aboutUs.faqs};
+                        this.saveData();
+                        this.renderFAQTable();
+                        this.showAlert('All FAQs reset to defaults!', 'success');
+                        this.logActivity('All FAQs reset to defaults', 'warning');
+                    }
+                });
+
+                // Cancel buttons
+                document.getElementById('official-cancel-edit').addEventListener('click', () => {
+                    document.getElementById('official-form').reset();
+                    document.getElementById('official-edit-id').value = '';
+                    document.getElementById('official-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add Official';
+                    document.getElementById('official-cancel-edit').style.display = 'none';
+                });
+
+                document.getElementById('committee-cancel-edit').addEventListener('click', () => {
+                    document.getElementById('committee-form').reset();
+                    document.getElementById('committee-edit-id').value = '';
+                    document.getElementById('committee-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add Committee';
+                    document.getElementById('committee-cancel-edit').style.display = 'none';
+                });
+
+                document.getElementById('document-cancel-edit').addEventListener('click', () => {
+                    document.getElementById('document-form').reset();
+                    document.getElementById('document-edit-id').value = '';
+                    document.getElementById('document-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add Document';
+                    document.getElementById('document-cancel-edit').style.display = 'none';
+                });
+
+                document.getElementById('faq-cancel-edit').addEventListener('click', () => {
+                    document.getElementById('faq-form').reset();
+                    document.getElementById('faq-edit-id').value = '';
+                    document.getElementById('faq-submit-btn').innerHTML = '<i class="fas fa-plus-circle"></i> Add FAQ';
+                    document.getElementById('faq-cancel-edit').style.display = 'none';
+                });
+            }
+
+            setupFeedbackModal() {
+                // Close modal buttons
+                document.getElementById('feedback-modal-close-btn').addEventListener('click', () => {
+                    document.getElementById('feedback-modal').classList.remove('active');
+                });
+
+                document.querySelector('#feedback-modal .close-modal').addEventListener('click', () => {
+                    document.getElementById('feedback-modal').classList.remove('active');
+                });
+
+                // Delete feedback from modal
+                document.getElementById('feedback-modal-delete-btn').addEventListener('click', () => {
+                    if (this.currentFeedbackId !== null) {
+                        if (confirm('Are you sure you want to delete this feedback?')) {
+                            this.deleteFeedback(this.currentFeedbackId);
+                            document.getElementById('feedback-modal').classList.remove('active');
+                        }
+                    }
+                });
+
+                // Hide/Archive feedback from modal
+                document.getElementById('feedback-modal-hide-btn').addEventListener('click', () => {
+                    if (this.currentFeedbackId !== null) {
+                        this.hideFeedback(this.currentFeedbackId);
+                        document.getElementById('feedback-modal').classList.remove('active');
+                    }
+                });
+
+                // Mark as resolved from modal
+                document.getElementById('feedback-modal-resolve-btn').addEventListener('click', () => {
+                    if (this.currentFeedbackId !== null) {
+                        this.resolveFeedback(this.currentFeedbackId);
+                        document.getElementById('feedback-modal').classList.remove('active');
+                    }
+                });
+
+                // Close modal when clicking outside
+                document.getElementById('feedback-modal').addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('feedback-modal')) {
+                        document.getElementById('feedback-modal').classList.remove('active');
+                    }
+                });
+            }
+
+            switchTab(tabId) {
+                console.log('Switching to tab:', tabId);
+                
+                // Update sidebar active state
+                document.querySelectorAll('.sidebar-menu a').forEach(item => {
+                    item.classList.remove('active');
+                });
+                const targetLink = document.querySelector(`[data-tab="${tabId}"]`);
+                if (targetLink) {
+                    targetLink.classList.add('active');
+                }
+                
+                // Hide all tab contents
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show the selected tab content
+                const selectedTab = document.getElementById(tabId);
+                if (selectedTab) {
+                    selectedTab.classList.add('active');
+                }
+                
+                this.updateQuickGuide(tabId);
+                
+                // Scroll to top of admin-content area
+                document.querySelector('.admin-content').scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
+                // Load specific content for certain tabs
+                if (tabId === 'officials' && !this.renderedTabs.has('officials')) {
+                    this.renderOfficialsTable();
+                    this.renderedTabs.add('officials');
+                } else if (tabId === 'committees' && !this.renderedTabs.has('committees')) {
+                    this.renderCommitteesTable();
+                    this.renderedTabs.add('committees');
+                } else if (tabId === 'documents' && !this.renderedTabs.has('documents')) {
+                    this.renderDocumentsTable();
+                    this.renderedTabs.add('documents');
+                } else if (tabId === 'faq' && !this.renderedTabs.has('faq')) {
+                    this.renderFAQTable();
+                    this.renderedTabs.add('faq');
+                } else if (tabId === 'feedback' && !this.renderedTabs.has('feedback')) {
+                    this.renderFeedbackTable();
+                    this.renderedTabs.add('feedback');
+                }
+            }
+
+            switchOfficialTab(tab) {
+                document.querySelectorAll('[data-official-tab]').forEach(t => t.classList.remove('active'));
+                document.querySelector(`[data-official-tab="${tab}"]`).classList.add('active');
+
+                document.querySelectorAll('#officials .tab-content').forEach(t => t.classList.remove('active'));
+                document.getElementById(tab === 'existing' ? 'existing-officials' : 'add-official').classList.add('active');
+            }
+
+            switchCommitteeTab(tab) {
+                document.querySelectorAll('[data-committee-tab]').forEach(t => t.classList.remove('active'));
+                document.querySelector(`[data-committee-tab="${tab}"]`).classList.add('active');
+
+                document.querySelectorAll('#committees .tab-content').forEach(t => t.classList.remove('active'));
+                document.getElementById(tab === 'existing' ? 'existing-committees' : 'add-committee').classList.add('active');
+            }
+
+            switchDocumentTab(tab) {
+                document.querySelectorAll('[data-document-tab]').forEach(t => t.classList.remove('active'));
+                document.querySelector(`[data-document-tab="${tab}"]`).classList.add('active');
+
+                document.querySelectorAll('#documents .tab-content').forEach(t => t.classList.remove('active'));
+                document.getElementById(tab === 'existing' ? 'existing-documents' : 'add-document').classList.add('active');
+            }
+
+            switchFAQTab(tab) {
+                document.querySelectorAll('[data-faq-tab]').forEach(t => t.classList.remove('active'));
+                document.querySelector(`[data-faq-tab="${tab}"]`).classList.add('active');
+
+                document.querySelectorAll('#faq .tab-content').forEach(t => t.classList.remove('active'));
+                document.getElementById(tab === 'existing' ? 'existing-faqs' : 'add-faq').classList.add('active');
+            }
+
+            switchFeedbackTab(tab) {
+                document.querySelectorAll('[data-feedback-tab]').forEach(t => t.classList.remove('active'));
+                document.querySelector(`[data-feedback-tab="${tab}"]`).classList.add('active');
+                this.currentFeedbackFilter = tab;
+                this.renderFeedbackTable(tab);
+            }
+
+            updateQuickGuide(tabId) {
+                document.querySelectorAll('.guide-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                const guideId = `${tabId}-guide`;
+                const guideSection = document.getElementById(guideId);
+                if (guideSection) {
+                    guideSection.style.display = 'block';
+                }
+            }
+
+            updateDashboard() {
+                if (!this.currentData) return;
+                
+                // Update simple dashboard stats
+                document.getElementById('system-status').textContent = 'Ready';
+                document.getElementById('total-officials').textContent = this.currentData.aboutUs?.officials?.list?.length || 0;
+                document.getElementById('total-committees').textContent = this.currentData.aboutUs?.committees?.list?.length || 0;
+                
+                // Calculate data size
+                const dataSize = JSON.stringify(this.currentData).length;
+                document.getElementById('data-size').textContent = `${Math.round(dataSize / 1024)} KB`;
+            }
+
+            updateImagePreview(previewId, url) {
+                const preview = document.getElementById(previewId);
+                if (preview) {
+                    if (url) {
+                        preview.src = url;
+                        preview.classList.add('visible');
+                    } else {
+                        preview.classList.remove('visible');
+                    }
+                }
+            }
+
+            // Render methods
+            renderOfficialsTable() {
+                console.log('Rendering officials table');
+                const tbody = document.getElementById('officials-table-body');
+                if (!tbody) return;
+                
+                tbody.innerHTML = '';
+
+                if (!this.currentData.aboutUs.officials.list || this.currentData.aboutUs.officials.list.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--gray); padding: 30px;">No officials yet. Add your first official!</td></tr>`;
+                    return;
+                }
+
+                this.currentData.aboutUs.officials.list.forEach((official) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                ${official.avatar ? `<img src="${official.avatar}" alt="${official.name}" class="avatar-preview" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">` : '<div style="width: 50px; height: 50px; background: var(--gray-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gray);"><i class="fas fa-user"></i></div>'}
+                            </div>
+                        </td>
+                        <td><strong>${official.name}</strong></td>
+                        <td>${official.position}</td>
+                        <td>${official.description || 'No description'}</td>
+                        <td>${official.contact || 'No contact'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm edit-official" data-id="${official.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm delete-official" data-id="${official.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Attach event listeners
+                document.querySelectorAll('.delete-official').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.deleteOfficial(id);
+                    });
+                });
+
+                document.querySelectorAll('.edit-official').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.editOfficial(id);
+                    });
+                });
+            }
+
+            renderCommitteesTable() {
+                console.log('Rendering committees table');
+                const tbody = document.getElementById('committees-table-body');
+                if (!tbody) return;
+                
+                tbody.innerHTML = '';
+
+                if (!this.currentData.aboutUs.committees.list || this.currentData.aboutUs.committees.list.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--gray); padding: 30px;">No committees yet. Add your first committee!</td></tr>`;
+                    return;
+                }
+
+                this.currentData.aboutUs.committees.list.forEach((committee) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${committee.name}</strong></td>
+                        <td>${committee.chairperson || 'No chairperson specified'}</td>
+                        <td>${committee.description ? (committee.description.substring(0, 50) + (committee.description.length > 50 ? '...' : '')) : 'No description'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm edit-committee" data-id="${committee.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm delete-committee" data-id="${committee.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Attach event listeners
+                document.querySelectorAll('.delete-committee').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.deleteCommittee(id);
+                    });
+                });
+
+                document.querySelectorAll('.edit-committee').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.editCommittee(id);
+                    });
+                });
+            }
+
+            renderDocumentsTable() {
+                console.log('Rendering documents table');
+                const tbody = document.getElementById('documents-table-body');
+                if (!tbody) return;
+                
+                tbody.innerHTML = '';
+
+                if (!this.currentData.aboutUs.documents.list || this.currentData.aboutUs.documents.list.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--gray); padding: 30px;">No documents yet. Add your first document!</td></tr>`;
+                    return;
+                }
+
+                this.currentData.aboutUs.documents.list.forEach((doc) => {
+                    const requirements = doc.requirements || [];
+                    const requirementsText = requirements.length > 0
+                        ? requirements.join(', ')
+                        : 'No requirements specified';
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${doc.name}</strong></td>
+                        <td>${doc.description ? (doc.description.substring(0, 50) + (doc.description.length > 50 ? '...' : '')) : 'No description'}</td>
+                        <td>${requirementsText}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm edit-document" data-id="${doc.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm delete-document" data-id="${doc.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Attach event listeners
+                document.querySelectorAll('.delete-document').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.deleteDocument(id);
+                    });
+                });
+
+                document.querySelectorAll('.edit-document').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.editDocument(id);
+                    });
+                });
+            }
+
+            renderFAQTable() {
+                console.log('Rendering FAQ table');
+                const tbody = document.getElementById('faq-table-body');
+                if (!tbody) return;
+                
+                tbody.innerHTML = '';
+
+                if (!this.currentData.aboutUs.faqs.list || this.currentData.aboutUs.faqs.list.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: var(--gray); padding: 30px;">No FAQs yet. Add your first FAQ!</td></tr>`;
+                    return;
+                }
+
+                this.currentData.aboutUs.faqs.list.forEach((faq) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${faq.question}</strong></td>
+                        <td>${faq.answer ? faq.answer.substring(0, 50) + (faq.answer.length > 50 ? '...' : '') : 'No answer'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm edit-faq" data-id="${faq.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-danger btn-sm delete-faq" data-id="${faq.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Attach event listeners
+                document.querySelectorAll('.delete-faq').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.deleteFAQ(id);
+                    });
+                });
+
+                document.querySelectorAll('.edit-faq').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.editFAQ(id);
+                    });
+                });
+            }
+
+            renderFeedbackTable(filter = 'all') {
+                console.log('Rendering feedback table with filter:', filter);
+                const tbody = document.getElementById('feedback-table-body');
+                if (!tbody) return;
+                
+                tbody.innerHTML = '';
+                
+                let feedback = [];
+                try {
+                    const storedFeedback = localStorage.getItem('contactMessages');
+                    feedback = storedFeedback ? JSON.parse(storedFeedback) : [];
+                } catch (error) {
+                    console.error('Error parsing feedback:', error);
+                    feedback = [];
+                }
+                
+                let filteredFeedback = feedback;
+                if (filter === 'unread') {
+                    filteredFeedback = feedback.filter(item => item.status === 'unread');
+                } else if (filter === 'read') {
+                    filteredFeedback = feedback.filter(item => item.status === 'read');
+                }
+                
+                if (filteredFeedback.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--gray); padding: 30px;">No feedback messages found.</td></tr>`;
+                    return;
+                }
+                
+                // Sort by timestamp (newest first)
+                filteredFeedback.sort((a, b) => {
+                    const timeA = a.timestamp ? new Date(a.timestamp) : new Date(0);
+                    const timeB = b.timestamp ? new Date(b.timestamp) : new Date(0);
+                    return timeB - timeA;
+                });
+                
+                filteredFeedback.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><strong>${item.from_name || 'No Name'}</strong></td>
+                        <td>${item.timestamp || 'No timestamp'}</td>
+                        <td>
+                            <span class="status-badge ${item.status === 'unread' ? 'status-unread' : 'status-read'}" data-id="${item.id}">
+                                <i class="fas fa-${item.status === 'unread' ? 'envelope' : 'envelope-open'}"></i>
+                                ${item.status === 'unread' ? 'Unread' : 'Read'}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-sm view-feedback-btn" data-id="${item.id}">
+                                    <i class="fas fa-eye"></i> View Details
+                                </button>
+                                <button class="btn btn-danger btn-sm delete-feedback-btn" data-id="${item.id}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                
+                // Attach event listeners to feedback buttons
+                document.querySelectorAll('.view-feedback-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.viewFeedbackDetails(id);
+                    });
+                });
+                
+                document.querySelectorAll('.delete-feedback-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('button').getAttribute('data-id'));
+                        this.deleteFeedback(id);
+                    });
+                });
+                
+                // Attach event listeners to status badges
+                document.querySelectorAll('.status-badge').forEach(badge => {
+                    badge.addEventListener('click', (e) => {
+                        const id = parseInt(e.target.closest('span').getAttribute('data-id'));
+                        this.toggleFeedbackStatus(id);
+                    });
+                });
+            }
+
+            // Edit methods
+            editOfficial(id) {
+                const official = this.currentData.aboutUs.officials.list.find(o => o.id === id);
+                if (!official) return;
+                
+                this.switchOfficialTab('add');
+                
+                document.getElementById('official-edit-id').value = official.id;
+                document.getElementById('official-name').value = official.name;
+                document.getElementById('official-position').value = official.position;
+                document.getElementById('official-description').value = official.description || '';
+                document.getElementById('official-contact').value = official.contact || '';
+                document.getElementById('official-avatar').value = official.avatar || '';
+                
+                document.getElementById('official-submit-btn').innerHTML = '<i class="fas fa-save"></i> Update Official';
+                document.getElementById('official-cancel-edit').style.display = 'inline-block';
+                
+                this.updateImagePreview('official-avatar-preview', official.avatar);
+                this.logActivity(`Editing official: "${official.name}"`, 'info');
+            }
+
+            editCommittee(id) {
+                const committee = this.currentData.aboutUs.committees.list.find(c => c.id === id);
+                if (!committee) return;
+                
+                this.switchCommitteeTab('add');
+                
+                document.getElementById('committee-edit-id').value = committee.id;
+                document.getElementById('committee-name').value = committee.name;
+                document.getElementById('committee-chairperson').value = committee.chairperson || '';
+                document.getElementById('committee-description').value = committee.description || '';
+                
+                document.getElementById('committee-submit-btn').innerHTML = '<i class="fas fa-save"></i> Update Committee';
+                document.getElementById('committee-cancel-edit').style.display = 'inline-block';
+                
+                this.logActivity(`Editing committee: "${committee.name}"`, 'info');
+            }
+
+            editDocument(id) {
+                const document = this.currentData.aboutUs.documents.list.find(d => d.id === id);
+                if (!document) return;
+                
+                this.switchDocumentTab('add');
+                
+                document.getElementById('document-edit-id').value = document.id;
+                document.getElementById('document-title').value = document.name;
+                document.getElementById('document-description').value = document.description || '';
+                document.getElementById('document-requirements').value = document.requirements ? document.requirements.join('\n') : '';
+                
+                document.getElementById('document-submit-btn').innerHTML = '<i class="fas fa-save"></i> Update Document';
+                document.getElementById('document-cancel-edit').style.display = 'inline-block';
+                
+                this.logActivity(`Editing document: "${document.name}"`, 'info');
+            }
+
+            editFAQ(id) {
+                const faq = this.currentData.aboutUs.faqs.list.find(f => f.id === id);
+                if (!faq) return;
+                
+                this.switchFAQTab('add');
+                
+                document.getElementById('faq-edit-id').value = faq.id;
+                document.getElementById('faq-question').value = faq.question;
+                document.getElementById('faq-answer').value = faq.answer;
+                
+                document.getElementById('faq-submit-btn').innerHTML = '<i class="fas fa-save"></i> Update FAQ';
+                document.getElementById('faq-cancel-edit').style.display = 'inline-block';
+                
+                this.logActivity(`Editing FAQ: "${faq.question}"`, 'info');
+            }
+
+            // View feedback details in modal
+            viewFeedbackDetails(id) {
+                const feedback = JSON.parse(localStorage.getItem('contactMessages')) || [];
+                const item = feedback.find(f => f.id === id);
+                if (!item) return;
+
+                // Set the current feedback ID
+                this.currentFeedbackId = id;
+
+                // Populate modal with feedback details
+                document.getElementById('feedback-detail-name').textContent = item.from_name || 'No Name';
+                document.getElementById('feedback-detail-email').textContent = item.from_email || 'No Email';
+                document.getElementById('feedback-detail-subject').textContent = item.subject || 'No Subject';
+                document.getElementById('feedback-detail-message').textContent = item.message || 'No Message';
+                document.getElementById('feedback-detail-time').textContent = item.timestamp || 'No timestamp';
+
+                // Show the modal
+                document.getElementById('feedback-modal').classList.add('active');
+            }
+
+            // Delete methods
+            deleteOfficial(id) {
+                if (confirm('Are you sure you want to delete this official?')) {
+                    this.currentData.aboutUs.officials.list = this.currentData.aboutUs.officials.list.filter(o => o.id !== id);
+                    this.saveData();
+                    this.renderOfficialsTable();
+                    this.logActivity(`Official deleted`, 'error');
+                    this.showAlert('Official deleted successfully', 'success');
+                }
+            }
+
+            deleteCommittee(id) {
+                if (confirm('Are you sure you want to delete this committee?')) {
+                    this.currentData.aboutUs.committees.list = this.currentData.aboutUs.committees.list.filter(c => c.id !== id);
+                    this.saveData();
+                    this.renderCommitteesTable();
+                    this.logActivity(`Committee deleted`, 'error');
+                    this.showAlert('Committee deleted successfully', 'success');
+                }
+            }
+
+            deleteDocument(id) {
+                if (confirm('Are you sure you want to delete this document?')) {
+                    this.currentData.aboutUs.documents.list = this.currentData.aboutUs.documents.list.filter(d => d.id !== id);
+                    this.saveData();
+                    this.renderDocumentsTable();
+                    this.logActivity(`Document deleted`, 'error');
+                    this.showAlert('Document deleted successfully', 'success');
+                }
+            }
+
+            deleteFAQ(id) {
+                if (confirm('Are you sure you want to delete this FAQ?')) {
+                    this.currentData.aboutUs.faqs.list = this.currentData.aboutUs.faqs.list.filter(f => f.id !== id);
+                    this.saveData();
+                    this.renderFAQTable();
+                    this.logActivity(`FAQ deleted`, 'error');
+                    this.showAlert('FAQ deleted successfully', 'success');
+                }
+            }
+
+            // Feedback methods
+            toggleFeedbackStatus(id) {
+                const feedback = JSON.parse(localStorage.getItem('contactMessages')) || [];
+                const updatedFeedback = feedback.map(item => {
+                    if (item.id === id) {
+                        return {
+                            ...item,
+                            status: item.status === 'unread' ? 'read' : 'unread'
+                        };
+                    }
+                    return item;
+                });
+                
+                localStorage.setItem('contactMessages', JSON.stringify(updatedFeedback));
+                this.renderFeedbackTable(this.currentFeedbackFilter);
+                this.logActivity(`Feedback status updated`, 'success');
+                this.showAlert('Feedback status updated', 'success');
+            }
+
+            deleteFeedback(id) {
+                if (confirm('Are you sure you want to delete this feedback?')) {
+                    const feedback = JSON.parse(localStorage.getItem('contactMessages')) || [];
+                    const updatedFeedback = feedback.filter(item => item.id !== id);
+                    
+                    localStorage.setItem('contactMessages', JSON.stringify(updatedFeedback));
+                    this.renderFeedbackTable(this.currentFeedbackFilter);
+                    this.logActivity(`Feedback deleted`, 'error');
+                    this.showAlert('Feedback deleted successfully', 'success');
+                }
+            }
+
+            hideFeedback(id) {
+                const feedback = JSON.parse(localStorage.getItem('contactMessages')) || [];
+                const updatedFeedback = feedback.map(item => {
+                    if (item.id === id) {
+                        return {
+                            ...item,
+                            status: 'hidden'
+                        };
+                    }
+                    return item;
+                });
+                
+                localStorage.setItem('contactMessages', JSON.stringify(updatedFeedback));
+                this.renderFeedbackTable(this.currentFeedbackFilter);
+                this.logActivity(`Feedback hidden/archived`, 'warning');
+                this.showAlert('Feedback hidden/archived successfully', 'success');
+            }
+
+            resolveFeedback(id) {
+                const feedback = JSON.parse(localStorage.getItem('contactMessages')) || [];
+                const updatedFeedback = feedback.map(item => {
+                    if (item.id === id) {
+                        return {
+                            ...item,
+                            status: 'resolved'
+                        };
+                    }
+                    return item;
+                });
+                
+                localStorage.setItem('contactMessages', JSON.stringify(updatedFeedback));
+                this.renderFeedbackTable(this.currentFeedbackFilter);
+                this.logActivity(`Feedback marked as resolved`, 'success');
+                this.showAlert('Feedback marked as resolved', 'success');
+            }
+
+            // Search methods
+            searchOfficials(query) {
+                const tbody = document.getElementById('officials-table-body');
+                if (!tbody) return;
+                
+                const rows = tbody.querySelectorAll('tr');
+                const searchText = query.trim().toLowerCase();
+                
+                if (searchText === '') {
+                    rows.forEach(row => row.style.display = '');
+                    return;
+                }
+                
+                rows.forEach(row => {
+                    const name = row.cells[1].textContent.toLowerCase();
+                    const position = row.cells[2].textContent.toLowerCase();
+                    const description = row.cells[3].textContent.toLowerCase();
+                    
+                    if (name.includes(searchText) || position.includes(searchText) || description.includes(searchText)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            searchCommittees(query) {
+                const tbody = document.getElementById('committees-table-body');
+                if (!tbody) return;
+                
+                const rows = tbody.querySelectorAll('tr');
+                const searchText = query.trim().toLowerCase();
+                
+                if (searchText === '') {
+                    rows.forEach(row => row.style.display = '');
+                    return;
+                }
+                
+                rows.forEach(row => {
+                    const title = row.cells[0].textContent.toLowerCase();
+                    const chairperson = row.cells[1].textContent.toLowerCase();
+                    const description = row.cells[2].textContent.toLowerCase();
+                    
+                    if (title.includes(searchText) || chairperson.includes(searchText) || description.includes(searchText)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            searchDocuments(query) {
+                const tbody = document.getElementById('documents-table-body');
+                if (!tbody) return;
+                
+                const rows = tbody.querySelectorAll('tr');
+                const searchText = query.trim().toLowerCase();
+                
+                if (searchText === '') {
+                    rows.forEach(row => row.style.display = '');
+                    return;
+                }
+                
+                rows.forEach(row => {
+                    const title = row.cells[0].textContent.toLowerCase();
+                    const description = row.cells[1].textContent.toLowerCase();
+                    const requirements = row.cells[2].textContent.toLowerCase();
+                    
+                    if (title.includes(searchText) || description.includes(searchText) || requirements.includes(searchText)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            searchFAQ(query) {
+                const tbody = document.getElementById('faq-table-body');
+                if (!tbody) return;
+                
+                const rows = tbody.querySelectorAll('tr');
+                const searchText = query.trim().toLowerCase();
+                
+                if (searchText === '') {
+                    rows.forEach(row => row.style.display = '');
+                    return;
+                }
+                
+                rows.forEach(row => {
+                    const question = row.cells[0].textContent.toLowerCase();
+                    const answer = row.cells[1].textContent.toLowerCase();
+                    
+                    if (question.includes(searchText) || answer.includes(searchText)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            searchFeedback(query) {
+                const tbody = document.getElementById('feedback-table-body');
+                if (!tbody) return;
+                
+                const rows = tbody.querySelectorAll('tr');
+                const searchText = query.trim().toLowerCase();
+                
+                if (searchText === '') {
+                    rows.forEach(row => row.style.display = '');
+                    return;
+                }
+                
+                rows.forEach(row => {
+                    const name = row.cells[0].textContent.toLowerCase();
+                    const time = row.cells[1].textContent.toLowerCase();
+                    const status = row.cells[2].textContent.toLowerCase();
+                    
+                    if (name.includes(searchText) || time.includes(searchText) || status.includes(searchText)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            exportData() {
+                const dataStr = JSON.stringify(this.currentData, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `barangay-about-backup-${new Date().toISOString().split('T')[0]}.json`;
+                link.click();
+                URL.revokeObjectURL(url);
+                this.logActivity('Data exported successfully', 'success');
+                this.showAlert('Data exported successfully!', 'success');
+            }
+
+            clearAllData() {
+                if (confirm('Clear ALL data? This will remove everything and cannot be undone.')) {
+                    localStorage.removeItem(this.dataKey);
+                    this.currentData = this.getDefaultData();
+                    this.populateForms();
+                    this.saveData(true); // Force save
+                    this.logActivity('All data cleared', 'error');
+                    this.showAlert('All data has been cleared!', 'success');
+                }
+            }
+
+            showAlert(message, type) {
+                const alert = document.createElement('div');
+                alert.className = `alert alert-${type}`;
+                alert.innerHTML = `<strong><i class="fas fa-${type === 'success' ? 'check' : 'exclamation'}-circle"></i> ${message}</strong>`;
+                
+                const currentTab = document.querySelector('.tab-content.active');
+                if (currentTab) {
+                    currentTab.insertBefore(alert, currentTab.firstChild);
+                }
+                
+                setTimeout(() => {
+                    if (alert.parentNode) {
+                        alert.remove();
+                    }
+                }, 5000);
+            }
+
+            logActivity(message, type) {
+                const activity = {
+                    timestamp: new Date().toLocaleTimeString(),
+                    message: message,
+                    type: type
+                };
+                this.activityLog.unshift(activity);
+                
+                if (this.activityLog.length > 10) {
+                    this.activityLog.pop();
+                }
+                
+                this.updateActivityLog();
+            }
+
+            updateActivityLog() {
+                const container = document.getElementById('recent-activity');
+                if (!container) return;
+
+                if (this.activityLog.length === 0) {
+                    container.innerHTML = `<p style="color: var(--gray); text-align: center; padding: 20px;"><i class="fas fa-clock"></i> No recent activity</p>`;
+                    return;
+                }
+
+                container.innerHTML = this.activityLog.map(activity => `
+                    <div style="padding: 10px 15px; border-left: 3px solid ${
+                        activity.type === 'success' ? 'var(--success)' : 
+                        activity.type === 'error' ? 'var(--error)' : 'var(--warning)'
+                    }; margin-bottom: 10px; background: var(--gray-light); border-radius: 0 var(--radius) var(--radius) 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 15px;">
+                            <span style="font-weight: 600;">${activity.message}</span>
+                            <small style="color: var(--gray);">${activity.timestamp}</small>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            checkUserViewConnection() {
+                console.log('Checking connection with user view...');
+                const userData = localStorage.getItem('barangayContent');
+                if (userData) {
+                    console.log('User view data found:', JSON.parse(userData).systemName);
+                    this.showAlert('Connected to user view successfully!', 'success');
+                } else {
+                    console.log('No user view data found. Admin will create new data.');
+                }
+            }
+        }
+
+        // Initialize the admin panel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            window.aboutUsAdminPanel = new AboutUsAdminPanel();
+        });
+    </script>
+</body>
+</html>
